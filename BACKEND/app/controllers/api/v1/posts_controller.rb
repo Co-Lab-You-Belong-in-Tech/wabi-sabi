@@ -1,5 +1,5 @@
 class Api::V1::PostsController < ApplicationController
-  before_action :set_api_v1_post, only: %i[ show update destroy ]
+  before_action :set_api_v1_post, only: %i[show update destroy]
   before_action :authenticate_user!
 
   # GET /api/v1/posts
@@ -40,13 +40,14 @@ class Api::V1::PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_api_v1_post
-      @api_v1_post = Api::V1::Post.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def api_v1_post_params
-      params.require(:api_v1_post).permit(:title, :content)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_api_v1_post
+    @api_v1_post = Api::V1::Post.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def api_v1_post_params
+    params.require(:api_v1_post).permit(:title, :content)
+  end
 end

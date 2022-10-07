@@ -3,7 +3,7 @@ class Users::SessionsController < Devise::SessionsController
 
   private
 
-  def respond_with(resource, _opts = {})
+  def respond_with(_resource, _opts = {})
     render json: {
       message: 'Logged in.',
       user: current_user
@@ -15,10 +15,10 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def log_out_success
-    render json: { message: "You are logged out." }, status: :ok
+    render json: { message: 'You are logged out.' }, status: :ok
   end
 
   def log_out_failure
-    render json: { message: "Something went wrong."}, status: :unauthorized
+    render json: { message: 'Something went wrong.' }, status: :unauthorized
   end
 end

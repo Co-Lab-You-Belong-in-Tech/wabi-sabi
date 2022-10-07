@@ -8,7 +8,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def register_success
-    render json: { message: 'Signed up successfully. Welcome to wabi-sabi' }
     render json: {
       message: 'Signed up sucessfully.',
       user: current_user
@@ -18,5 +17,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def register_failed
     render json: { message: 'Something went wrong.' }, status: :unprocessable_entity
   end
-
 end
