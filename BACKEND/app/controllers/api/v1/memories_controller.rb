@@ -4,10 +4,25 @@ class Api::V1::MemoriesController < ApplicationController
 
   # GET /api/v1/memories
   def index
-    @api_v1_memories = Api::V1::Memory.all
+    @api_v1_memories = Api::V1::Memory.includes(:user).where(user: current_user).order(created_at: :desc)
+    memories_data = []
+    @api_v1_memories.each do |memory|
+      memories_data << Api::V1::MemorySerializer.new(memory).serializable_hash[:data][:attributes]
+    end
 
-    render json: @api_v1_memories
+    render json: memories_data
   end
+
+  # GET /api/v1/memories/public
+  def public_memories
+    @api_v1_memories = Api::V1::Memory.includes(:user).where(public: true).order(created_at: :desc)
+    public_memories_data = []
+    @api_v1_memories.each do |memory|
+      public_memories_data << Api::V1::MemorySerializer.new(memory).serializable_hash[:data][:attributes]
+    end
+    render json: public_memories_data
+  end
+
 
   # GET /api/v1/memories/1
   def show
@@ -19,9 +34,9 @@ class Api::V1::MemoriesController < ApplicationController
     @api_v1_memory = Api::V1::Memory.new(api_v1_memory_params)
 
     if @api_v1_memory.save
-      render json: @api_v1_memory, status: :created, location: @api_v1_memory
+      render json: { message: 'Memory created successfully' }, status: :created
     else
-      render json: @api_v1_memory.errors, status: :unprocessable_entity
+      render json: { error: @api_v1_memory.errors }, status: :unprocessable_entity
     end
   end
 
@@ -36,7 +51,11 @@ class Api::V1::MemoriesController < ApplicationController
 
   # DELETE /api/v1/memories/1
   def destroy
-    @api_v1_memory.destroy
+    if @api_v1_memory.destroy
+      render json: { message: 'Memory deleted successfully' }, status: :ok
+    else
+      render json: { error: @api_v1_memory.errors }, status: :unprocessable_entity
+    end
   end
 
   private
@@ -47,6 +66,6 @@ class Api::V1::MemoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def api_v1_memory_params
-      params.require(:api_v1_memory).permit(:prompt, :story, :public, :favorite)
+      params.require(:api_v1_memory).permit(:prompt, :story, :public, :favorite, :image)
     end
 end
