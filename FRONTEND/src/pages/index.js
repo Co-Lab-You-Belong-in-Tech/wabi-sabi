@@ -1,11 +1,7 @@
 import React from 'react';
 
-import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-
-// import { userService } from "../services";
-// import { Nav, Alert } from "../components";
 
 const Home = () => {
   const { push } = useRouter();

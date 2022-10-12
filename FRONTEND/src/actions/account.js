@@ -82,17 +82,11 @@ export const login =
       const data = await response.json();
       if (response.ok) {
         console.log(data);
-        //this iff statement is not bieng called
+
         toast.success(data.success);
-        // ommo ee dey call, but why this one no toast
-        // i don't understand too
-        //chill my mouse stopped working, okay boss
 
         dispatch({ type: LOGIN_SUCCESS });
         // dispatch(load_user());
-        //where is this load user coming from
-        // Omo, I no sabi
-        //where is the reducer itself
       } else {
         toast.error(data.error);
         dispatch({ type: LOGIN_FAIL });
