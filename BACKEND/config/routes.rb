@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :memories
+      resources :memories do
+        collection do
+          get :public
+        end
+      end
     end
   end
   devise_for :users,
