@@ -26,12 +26,13 @@ class Api::V1::MemoriesController < ApplicationController
 
   # GET /api/v1/memories/1
   def show
-    render json: @api_v1_memory
+    render json: Api::V1::MemorySerializer.new(@api_v1_memory).serializable_hash[:data][:attributes]
   end
 
   # POST /api/v1/memories
   def create
     @api_v1_memory = Api::V1::Memory.new(api_v1_memory_params)
+    @api_v1_memory.user = current_user
 
     if @api_v1_memory.save
       render json: { message: 'Memory created successfully' }, status: :created
