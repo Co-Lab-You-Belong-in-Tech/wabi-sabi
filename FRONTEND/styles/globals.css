@@ -24,6 +24,10 @@ body {
   text-decoration: inherit;
 } */
 
+input {
+  caret-color: #b2b1b1;
+}
+
 input:focus {
   outline: none !important;
 }

@@ -10,6 +10,7 @@ import {
   LOAD_USER_FAIL,
   START_LOADING,
   STOP_LOADING,
+  LOAD_USER_SUCCESS,
 } from './types';
 import { API_URL } from '../config';
 
@@ -24,6 +25,7 @@ export const register =
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
+          Authorization: '',
         },
         body: JSON.stringify({
           user: {
@@ -32,7 +34,7 @@ export const register =
             password,
           },
         }),
-      });
+      }).then((dat) => console.log(dat.headers.get('Authorization')));
 
       const data = await response.json();
 
@@ -81,11 +83,10 @@ export const login =
 
       const data = await response.json();
       if (response.ok) {
-        console.log(data);
-
-        toast.success(data.success);
+        toast.success(data.message);
 
         dispatch({ type: LOGIN_SUCCESS });
+        dispatch({ type: LOAD_USER_SUCCESS, payload: { user: data.user } });
         // dispatch(load_user());
       } else {
         toast.error(data.error);

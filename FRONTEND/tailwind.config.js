@@ -27,6 +27,9 @@ module.exports = {
         roboto: 'Roboto',
         ANLP: 'Avenir Next LT Pro',
       },
+      dropShadow: {
+        '3xl': '0px 0px 16px rgba(64, 83, 252, 0.24)',
+      },
     },
     colors: {
       gray: {
@@ -36,6 +39,7 @@ module.exports = {
         400: '#0d151e',
         500: '#949495',
         600: '#9C9B9B',
+        700: '#344563',
       },
       white: '#fff',
       black: '#000',
