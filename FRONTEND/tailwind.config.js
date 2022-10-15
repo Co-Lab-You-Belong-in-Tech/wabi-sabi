@@ -30,22 +30,12 @@ module.exports = {
       dropShadow: {
         '3xl': '0px 0px 16px rgba(64, 83, 252, 0.24)',
       },
-    },
-    colors: {
-      gray: {
-        100: '#f7f7f9',
-        200: '#b2b1b1',
-        300: '#747373',
-        400: '#0d151e',
-        500: '#949495',
-        600: '#9C9B9B',
-        700: '#344563',
-      },
-      white: '#fff',
-      black: '#000',
+      boxShadow: {
+        'box': '0px 8px 24px rgba(0, 0, 0, 0.15)',
+      }
     },
     fontSize: {
-      base: '12px',
+      base: '13px',
       lg: '14px',
       xl: '15px',
       '2xl': '18px',
