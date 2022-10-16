@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { ThreeDots } from "react-loader-spinner";
-import { toast } from "react-toastify";
-import { useRouter } from "next/router";
-import { useSelector, useDispatch } from "react-redux";
-import { VscMail, VscLock } from "react-icons/vsc";
-import { BsPerson } from "react-icons/bs";
-import { register } from "../../actions/account";
+import { ThreeDots } from 'react-loader-spinner';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
+import { useSelector, useDispatch } from 'react-redux';
+import { VscMail, VscLock } from 'react-icons/vsc';
+import { BsPerson } from 'react-icons/bs';
+import { register } from '../../actions/account';
 
 const SignUpPage = () => {
   const [formData, setFormData] = useState({
-    full_name: "",
+    full_name: '',
 
-    email: "",
-    password: "",
+    email: '',
+    password: '',
     // password2: "",
   });
 
@@ -21,7 +21,7 @@ const SignUpPage = () => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.account.loading);
   const register_success = useSelector(
-    (state) => state.account.register_success
+    (state) => state.account.register_success,
   );
   const isLoggedIn = useSelector((state) => state.account.isLoggedIn);
   const router = useRouter();
@@ -42,7 +42,7 @@ const SignUpPage = () => {
 
     //
     if (!password || !email || !full_name) {
-      toast.error("Please complete all fields");
+      toast.error('Please complete all fields');
       return;
     }
 
@@ -51,12 +51,12 @@ const SignUpPage = () => {
 
   // redirect to dashboard page if user is logged in
   if (isLoggedIn) {
-    router.push("/home");
+    router.push('/home');
   }
 
   // if register success, redirect to login page
   if (register_success) {
-    router.push("/account/login");
+    router.push('/account/login');
   }
 
   return (
@@ -84,9 +84,9 @@ const SignUpPage = () => {
             className="flex flex-col gap-5 items-center"
           >
             <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-[#cecece] w-[280px]  ">
-              <BsPerson style={{ fontSize: 22, color: "#D0D0D2" }} />
+              <BsPerson style={{ fontSize: 22, color: '#D0D0D2' }} />
               <input
-                className={`border-none bg-[transparent] box-border items-start justify-start `}
+                className="border-none bg-[transparent] box-border items-start justify-start "
                 type="text"
                 value={full_name}
                 name="full_name"
@@ -97,9 +97,9 @@ const SignUpPage = () => {
             </div>
 
             <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-[#cecece] w-[280px]  ">
-              <VscMail style={{ fontSize: 22, color: "#D0D0D2" }} />
+              <VscMail style={{ fontSize: 22, color: '#D0D0D2' }} />
               <input
-                className={`border-none bg-[transparent] box-border items-start justify-start `}
+                className="border-none bg-[transparent] box-border items-start justify-start "
                 type="email"
                 value={email}
                 name="email"
@@ -109,9 +109,9 @@ const SignUpPage = () => {
               />
             </div>
             <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-[#cecece] w-[280px]  ">
-              <VscLock style={{ fontSize: 22, color: "#D0D0D2" }} />
+              <VscLock style={{ fontSize: 22, color: '#D0D0D2' }} />
               <input
-                className={`border-none bg-[transparent] box-border items-start justify-start `}
+                className="border-none bg-[transparent] box-border items-start justify-start "
                 type="password"
                 value={password}
                 name="password"
@@ -130,7 +130,7 @@ const SignUpPage = () => {
                 {loading ? (
                   <ThreeDots color="#FFF" height={40} width={40} />
                 ) : (
-                  "Create your account"
+                  'Create your account'
                 )}
               </b>
             </button>

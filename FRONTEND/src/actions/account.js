@@ -1,4 +1,4 @@
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify';
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -11,21 +11,20 @@ import {
   START_LOADING,
   STOP_LOADING,
   LOAD_USER_SUCCESS,
-} from "./types";
-import API_URL from "../config";
+} from './types';
+import API_URL from '../config';
 
 export const register =
-  ({ name, email, password }) =>
-  async (dispatch) => {
+  ({ name, email, password }) => async (dispatch) => {
     dispatch({ type: START_LOADING });
 
     try {
       const response = await fetch(`${API_URL}/users`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: "",
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: '',
         },
         body: JSON.stringify({
           user: {
@@ -34,12 +33,12 @@ export const register =
             password,
           },
         }),
-      }).then((dat) => console.log(dat.headers.get("Authorization")));
+      }).then((dat) => console.log(dat.headers.get('Authorization')));
 
       const data = await response.json();
 
       if (response.ok) {
-        toast.success("Signed up sucessfully.");
+        toast.success('Signed up sucessfully.');
 
         dispatch({ type: REGISTER_SUCCESS });
       } else {
@@ -62,16 +61,15 @@ export const reset_register_success = () => (dispatch) => {
 };
 
 export const login =
-  ({ email, password }) =>
-  async (dispatch) => {
+  ({ email, password }) => async (dispatch) => {
     dispatch({ type: START_LOADING });
 
     try {
       const response = await fetch(`${API_URL}/users/sign_in`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           user: {
@@ -104,9 +102,9 @@ export const login =
 export const logout = () => async (dispatch) => {
   try {
     const response = await fetch(`${API_URL}/users/sign_out`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json',
       },
     });
 

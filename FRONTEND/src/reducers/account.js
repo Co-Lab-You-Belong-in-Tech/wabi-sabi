@@ -10,7 +10,7 @@ import {
   LOAD_USER_FAIL,
   START_LOADING,
   STOP_LOADING,
-} from "../actions/types";
+} from '../actions/types';
 
 const initialState = {
   user: null,

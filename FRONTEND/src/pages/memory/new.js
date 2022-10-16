@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import moment from "moment/moment";
-import { VscClose, VscCheck, VscAdd } from "react-icons/vsc";
-import { BsHeartFill, BsHeart } from "react-icons/bs";
+import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
+import moment from 'moment/moment';
+import { VscClose, VscCheck, VscAdd } from 'react-icons/vsc';
+import { BsHeartFill, BsHeart } from 'react-icons/bs';
 
 const NewMemory = () => {
   // handle image preview
@@ -10,11 +10,11 @@ const NewMemory = () => {
   const [preview, setPreview] = useState();
 
   // state variables for the memory entry
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
   const [favorite, setFavorite] = useState(false);
   const [isPublic, setIsPublic] = useState(false);
-  const prompt = "What are you grateful for today?";
+  const prompt = 'What are you grateful for today?';
 
   // keep track of the character count for the story
   const [storyCount, setStoryCount] = useState(0);
@@ -42,16 +42,16 @@ const NewMemory = () => {
   };
 
   const submitMemory = () => {
-    console.log("submitting memory");
+    console.log('submitting memory');
     // prevent default behavior
     // send the data to the backend
     const formData = new FormData();
-    formData.append("api_v1_memory[title]", title);
-    formData.append("api_v1_memory[description]", description);
-    formData.append("api_v1_memory[favorite]", favorite);
-    formData.append("api_v1_memory[isPublic]", isPublic);
-    formData.append("api_v1_memory[image]", selectedFile);
-    formData.append("api_v1_memory[prompt]", prompt);
+    formData.append('api_v1_memory[title]', title);
+    formData.append('api_v1_memory[description]', description);
+    formData.append('api_v1_memory[favorite]', favorite);
+    formData.append('api_v1_memory[isPublic]', isPublic);
+    formData.append('api_v1_memory[image]', selectedFile);
+    formData.append('api_v1_memory[prompt]', prompt);
   };
 
   return (
@@ -60,7 +60,7 @@ const NewMemory = () => {
         <nav className="flex items-center justify-between w-full p-4 text-2xl sm:text-4xl">
           <VscClose />
           <span className="text-base leading-6 uppercase sm:text-2xl sm:px-6">
-            {moment().format("ddd ll")}
+            {moment().format('ddd ll')}
           </span>
           <button
             onClick={submitMemory}
@@ -169,7 +169,7 @@ const NewMemory = () => {
             />
             <p className="text-base font-medium">
               <span
-                className={storyCount < 100 ? "text-red-500" : "text-green-500"}
+                className={storyCount < 100 ? 'text-red-500' : 'text-green-500'}
               >
                 {storyCount}
               </span>

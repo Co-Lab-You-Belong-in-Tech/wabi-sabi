@@ -1,5 +1,5 @@
-import React from "react";
-import { useRouter } from "next/router";
+import React from 'react';
+import { useRouter } from 'next/router';
 
 const Home = () => {
   const { push } = useRouter();
@@ -77,7 +77,7 @@ const Home = () => {
             <div className="flex flex-col gap-2.5 items-center w-full">
               <button
                 type="button"
-                onClick={() => push("/account/register")}
+                onClick={() => push('/account/register')}
                 className="cursor-pointer inline-block mt-10 border-0 text-white p-2.5 rounded-[15px] bg-gray-200 w-full"
               >
                 Get Started
