@@ -1,19 +1,19 @@
-import React from 'react';
-import { useState } from 'react';
-import { ThreeDots } from 'react-loader-spinner';
-import { toast } from 'react-toastify';
-import { useRouter } from 'next/router';
-import { useSelector, useDispatch } from 'react-redux';
-import { register } from '../../actions/account';
-import { VscMail, VscLock } from 'react-icons/vsc';
-import { BsPerson } from 'react-icons/bs';
+import React, { useState } from "react";
+
+import { ThreeDots } from "react-loader-spinner";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
+import { useSelector, useDispatch } from "react-redux";
+import { VscMail, VscLock } from "react-icons/vsc";
+import { BsPerson } from "react-icons/bs";
+import { register } from "../../actions/account";
 
 const SignUpPage = () => {
   const [formData, setFormData] = useState({
-    full_name: '',
+    full_name: "",
 
-    email: '',
-    password: '',
+    email: "",
+    password: "",
     // password2: "",
   });
 
@@ -31,12 +31,10 @@ const SignUpPage = () => {
 
   // create function to handle input onChange
   const onChange = (event) => {
-    setFormData((prevState) => {
-      return {
-        ...prevState,
-        [event.target.name]: event.target.value,
-      };
-    });
+    setFormData((prevState) => ({
+      ...prevState,
+      [event.target.name]: event.target.value,
+    }));
   };
 
   const onSubmit = (event) => {
@@ -44,7 +42,7 @@ const SignUpPage = () => {
 
     //
     if (!password || !email || !full_name) {
-      toast.error('Please complete all fields');
+      toast.error("Please complete all fields");
       return;
     }
 
@@ -53,12 +51,12 @@ const SignUpPage = () => {
 
   // redirect to dashboard page if user is logged in
   if (isLoggedIn) {
-    router.push('/home');
+    router.push("/home");
   }
 
   // if register success, redirect to login page
   if (register_success) {
-    router.push('/account/login');
+    router.push("/account/login");
   }
 
   return (
@@ -86,7 +84,7 @@ const SignUpPage = () => {
             className="flex flex-col gap-5 items-center"
           >
             <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-[#cecece] w-[280px]  ">
-              <BsPerson style={{ fontSize: 22, color: '#D0D0D2' }} />
+              <BsPerson style={{ fontSize: 22, color: "#D0D0D2" }} />
               <input
                 className={`border-none bg-[transparent] box-border items-start justify-start `}
                 type="text"
@@ -99,7 +97,7 @@ const SignUpPage = () => {
             </div>
 
             <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-[#cecece] w-[280px]  ">
-              <VscMail style={{ fontSize: 22, color: '#D0D0D2' }} />
+              <VscMail style={{ fontSize: 22, color: "#D0D0D2" }} />
               <input
                 className={`border-none bg-[transparent] box-border items-start justify-start `}
                 type="email"
@@ -111,7 +109,7 @@ const SignUpPage = () => {
               />
             </div>
             <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-[#cecece] w-[280px]  ">
-              <VscLock style={{ fontSize: 22, color: '#D0D0D2' }} />
+              <VscLock style={{ fontSize: 22, color: "#D0D0D2" }} />
               <input
                 className={`border-none bg-[transparent] box-border items-start justify-start `}
                 type="password"
@@ -132,7 +130,7 @@ const SignUpPage = () => {
                 {loading ? (
                   <ThreeDots color="#FFF" height={40} width={40} />
                 ) : (
-                  'Create your account'
+                  "Create your account"
                 )}
               </b>
             </button>

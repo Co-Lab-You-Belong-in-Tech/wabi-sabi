@@ -1,13 +1,12 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import { ThreeDots } from 'react-loader-spinner';
-import { toast } from 'react-toastify';
+import { ThreeDots } from "react-loader-spinner";
+import { toast } from "react-toastify";
 
-import { login, reset_register_success } from '../../actions/account';
-import { useRouter } from 'next/router';
-import { useSelector, useDispatch } from 'react-redux';
-import { VscMail, VscLock } from 'react-icons/vsc';
+import { useRouter } from "next/router";
+import { useSelector, useDispatch } from "react-redux";
+import { VscMail, VscLock } from "react-icons/vsc";
+import { login, reset_register_success } from "../../actions/account";
 
 const SignInPage = () => {
   // load states from redux
@@ -18,8 +17,8 @@ const SignInPage = () => {
 
   // create login form state
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   // destructure login data from state
@@ -31,32 +30,29 @@ const SignInPage = () => {
 
   // create function to handle input onChange
   const onChange = (e) => {
-    setFormData((prevState) => {
-      return {
-        ...prevState,
-        [e.target.name]: e.target.value,
-      };
-    });
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   // create form submit handler function
   const onSubmit = (e) => {
     e.preventDefault();
     if (!email || !password) {
-      toast.error('Please provide all fields');
-      return;
+      toast.error("Please provide all fields");
     } else {
       dispatch(login(formData));
       setFormData({
-        email: '',
-        password: '',
+        email: "",
+        password: "",
       });
     }
   };
 
   // redirect to home page if user is logged in
   if (isLoggedIn) {
-    router.push('/home');
+    router.push("/home");
   }
   console.log(isLoggedIn);
 
@@ -82,7 +78,7 @@ const SignInPage = () => {
             className="flex flex-col gap-5 items-center"
           >
             <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-[#cecece] w-[280px]  ">
-              <VscMail style={{ fontSize: 22, color: '#D0D0D2' }} />
+              <VscMail style={{ fontSize: 22, color: "#D0D0D2" }} />
               <input
                 className={`border-none bg-[transparent] box-border items-start justify-start `}
                 type="email"
@@ -94,7 +90,7 @@ const SignInPage = () => {
               />
             </div>
             <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-[#cecece] w-[280px]  ">
-              <VscLock style={{ fontSize: 22, color: '#D0D0D2' }} />
+              <VscLock style={{ fontSize: 22, color: "#D0D0D2" }} />
               <input
                 className={`border-none bg-[transparent] items-start justify-start  `}
                 type="password"
@@ -115,7 +111,7 @@ const SignInPage = () => {
                 {loading ? (
                   <ThreeDots color="#FFF" height={40} width={40} />
                 ) : (
-                  'Log In'
+                  "Log In"
                 )}
               </b>
             </button>
