@@ -18,6 +18,7 @@ const NewMemory = () => {
 
   // keep track of the character count for the story
   const [storyCount, setStoryCount] = useState(0);
+  const [error, setError] = useState('You need to meet 100 characters for your story.');
 
   // add a reference to the actual file input field
   const uploadButton = useRef(null);
@@ -43,7 +44,19 @@ const NewMemory = () => {
 
   const submitMemory = () => {
     console.log('submitting memory');
-    // prevent default behavior
+    // prevent default behavior if some fields don't meet the requirements
+    if (storyCount < 100) {
+      setError('You need to meet 100 characters for your story.');
+      return;
+    }
+    if (!title) {
+      setError('You need to add a title for your memory.');
+      return;
+    }
+    if (!selectedFile) {
+      setError('You need to add an image for your memory.');
+      return;
+    }
     // send the data to the backend
     const formData = new FormData();
     formData.append('api_v1_memory[title]', title);
@@ -56,7 +69,7 @@ const NewMemory = () => {
 
   return (
     <>
-      <div className="h-full max-w-2xl pb-4 mx-auto bg-white">
+      <div className="relative max-w-2xl min-h-screen pb-4 mx-auto bg-white">
         <nav className="flex items-center justify-between w-full p-4 text-2xl sm:text-4xl">
           <VscClose />
           <span className="text-base leading-6 uppercase sm:text-2xl sm:px-6">
@@ -66,7 +79,7 @@ const NewMemory = () => {
             onClick={submitMemory}
             type="button"
             name="submit memory entry"
-            className="text-2xl bg-white border-0 sm:text-4xl"
+            className="text-2xl bg-transparent border-0 cursor-pointer sm:text-4xl"
           >
             <VscCheck />
           </button>
@@ -124,7 +137,7 @@ const NewMemory = () => {
           <div className="flex justify-between mx-6 border-[#EDEDED] border-b-2 py-4 border-solid border-0 items-center sm:mx-20 sm:order-last sm:justify-end sm:gap-x-10 sm:border-0 sm:p-0">
             <button
               type="button"
-              className="bg-white border-0"
+              className="bg-transparent border-0"
               onClick={() => setFavorite(!favorite)}
             >
               {favorite ? (
@@ -177,6 +190,23 @@ const NewMemory = () => {
             </p>
           </div>
         </form>
+        <div>
+          {error && (
+            <div className="absolute top-0 bottom-0 flex items-start justify-center w-full max-w-2xl min-h-full mx-auto bg-[#CCC] bg-opacity-75">
+              <div className="relative w-full px-4 py-6 mx-8 text-center bg-white max-w-max mt-60 rounded-2xl animate-wiggle">
+                <button
+                  type="button"
+                  className="absolute text-3xl bg-transparent border-0 cursor-pointer right-2 top-1"
+                  onClick={() => setError(null)}
+                >
+                  <VscClose />
+                </button>
+                <p className="mb-2 text-xl font-bold text-red-500 ">Required:</p>
+                <p className="text-lg font-medium">{error}</p>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
