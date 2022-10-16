@@ -34,6 +34,7 @@
     "no-shadow": "off",
     "no-unused-vars":"warn",
     "operator-linebreak":"off",
+    "consistent-return":"off",
     "indent":"off",
     "camelcase":"off",
     "no-param-reassign": [

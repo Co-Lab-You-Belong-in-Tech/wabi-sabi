@@ -14,6 +14,7 @@ const NewMemory = () => {
   const [description, setDescription] = useState("");
   const [favorite, setFavorite] = useState(false);
   const [isPublic, setIsPublic] = useState(false);
+  const prompt = "What are you grateful for today?";
 
   // keep track of the character count for the story
   const [storyCount, setStoryCount] = useState(0);
@@ -27,7 +28,7 @@ const NewMemory = () => {
   useEffect(() => {
     if (!selectedFile) {
       setPreview(undefined);
-      return false;
+      return;
     }
 
     const objectUrl = URL.createObjectURL(selectedFile);
@@ -40,20 +41,38 @@ const NewMemory = () => {
     setSelectedFile(e.target.files[0] || undefined);
   };
 
+  const submitMemory = () => {
+    console.log("submitting memory");
+    // prevent default behavior
+    // send the data to the backend
+    const formData = new FormData();
+    formData.append("api_v1_memory[title]", title);
+    formData.append("api_v1_memory[description]", description);
+    formData.append("api_v1_memory[favorite]", favorite);
+    formData.append("api_v1_memory[isPublic]", isPublic);
+    formData.append("api_v1_memory[image]", selectedFile);
+    formData.append("api_v1_memory[prompt]", prompt);
+  };
+
   return (
     <>
       <div className="h-full max-w-2xl pb-4 mx-auto bg-white">
-        <nav className="flex items-center justify-between w-full p-4">
+        <nav className="flex items-center justify-between w-full p-4 text-2xl sm:text-4xl">
           <VscClose />
           <span className="text-base leading-6 uppercase sm:text-2xl sm:px-6">
             {moment().format("ddd ll")}
           </span>
-          <button type="submit" form="memory-form" name="submit memory entry">
+          <button
+            onClick={submitMemory}
+            type="button"
+            name="submit memory entry"
+            className="text-2xl bg-white border-0 sm:text-4xl"
+          >
             <VscCheck />
           </button>
         </nav>
 
-        <form className="flex flex-col" id="memory-form">
+        <form className="flex flex-col">
           <div className="bg-[#EDEDED] h-80 sm:h-[427px] relative flex justify-center items-center">
             <label htmlFor="file" className="sr-only">
               Upload Image
@@ -111,14 +130,14 @@ const NewMemory = () => {
               {favorite ? (
                 <BsHeartFill className="text-2xl text-red-600 sm:text-3xl" />
               ) : (
-                <BsHeart className="text-2xl sm:text-4xl" />
+                <BsHeart className="text-2xl sm:text-3xl" />
               )}
             </button>
-            <div className="flex items-center gap-x-2">
-              <p className="text-base">Share with public</p>
+            <div className="flex gap-x-2">
+              <p className="text-xl">Share with public</p>
               <button
                 type="button"
-                className="relative w-4 h-4 bg-white border-black border-[0.5px]"
+                className="relative w-4 h-4 bg-white border-black border-[1px]"
                 onClick={() => setIsPublic(!isPublic)}
               >
                 {isPublic && (
@@ -129,7 +148,7 @@ const NewMemory = () => {
           </div>
 
           <div className="py-2 m-6 text-lg font-medium text-center bg-white sm:mx-20 shadow-box rounded-xl">
-            <p>What are you grateful for today?</p>
+            <p>{prompt}</p>
           </div>
 
           <div className="mx-6 sm:mx-20">
@@ -140,7 +159,7 @@ const NewMemory = () => {
               name="description"
               id="description"
               placeholder="Share your story.."
-              className="w-full mx-auto text-base min-h-[200px] max-h-max border-0 outline-none"
+              className="w-full mx-auto text-xl font-medium min-h-[200px] max-h-max border-0 outline-none"
               onChange={(e) => {
                 setStoryCount(e.target.value.length);
                 setDescription(e.target.value);
