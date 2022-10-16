@@ -13,7 +13,7 @@
     "sourceType": "module"
   },
   "extends": ["airbnb", "plugin:react/recommended", "prettier"],
-  "plugins": ["react", "prettier"],
+  "plugins": ["react", "eslint-plugin-prettier"],
   "rules": {
     "prettier/prettier":"warn",
     "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
