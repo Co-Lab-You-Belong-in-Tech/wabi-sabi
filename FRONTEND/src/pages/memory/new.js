@@ -16,7 +16,7 @@ const NewMemory = () => {
   const [isPublic, setIsPublic] = useState(false);
   const prompt = 'What are you grateful for today?';
 
-  // keep track of the character count for the story
+  // keep track of the character count for the story and handle errors
   const [storyCount, setStoryCount] = useState(0);
   const [error, setError] = useState('You need to meet 100 characters for your story.');
 
@@ -43,7 +43,6 @@ const NewMemory = () => {
   };
 
   const submitMemory = () => {
-    console.log('submitting memory');
     // prevent default behavior if some fields don't meet the requirements
     if (storyCount < 100) {
       setError('You need to meet 100 characters for your story.');
