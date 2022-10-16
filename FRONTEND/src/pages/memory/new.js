@@ -27,13 +27,13 @@ const NewMemory = () => {
   useEffect(() => {
     if (!selectedFile) {
       setPreview(undefined);
-      return;
+      return false;
     }
 
     const objectUrl = URL.createObjectURL(selectedFile);
     setPreview(objectUrl);
 
-    return () => { URL.revokeObjectURL(objectUrl) };
+    return () => URL.revokeObjectURL(objectUrl);
   }, [selectedFile]);
 
   const onSelectFile = (e) => {
@@ -48,8 +48,9 @@ const NewMemory = () => {
           <span className="text-base leading-6 uppercase sm:text-2xl sm:px-6">
             {moment().format("ddd ll")}
           </span>
-          <button type="submit" form="memory-form" />
-          <VscCheck />
+          <button type="submit" form="memory-form" name="submit memory entry">
+            <VscCheck />
+          </button>
         </nav>
 
         <form className="flex flex-col" id="memory-form">
@@ -58,6 +59,7 @@ const NewMemory = () => {
               Upload Image
             </label>
             <input
+              id="file"
               type="file"
               name="image"
               onChange={onSelectFile}

@@ -60,7 +60,7 @@ const SignInPage = () => {
     <>
       <nav className="hidden sm:block  drop-shadow-3xl font-roboto p-[15px]">
         <div>
-          <h1 className="text-gray-300 pl-20 text-left">WABI-SABI</h1>
+          <h1 className="pl-20 text-left text-gray-300">WABI-SABI</h1>
         </div>
       </nav>
       <main className="relative grid place-items-center bg-gray-100 w-full h-screen overflow-hidden text-[35px] text-gray-300 font-roboto">
@@ -75,7 +75,7 @@ const SignInPage = () => {
           </div>
           <form
             onSubmit={onSubmit}
-            className="flex flex-col gap-5 items-center"
+            className="flex flex-col items-center gap-5"
           >
             <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-[#cecece] w-[280px]  ">
               <VscMail style={{ fontSize: 22, color: "#D0D0D2" }} />
@@ -115,14 +115,14 @@ const SignInPage = () => {
                 )}
               </b>
             </button>
-            <a className="text-base underline tracking-[0.02em] text-[inherit] inline-block text-center">
+            <p className="text-base underline tracking-[0.02em] text-[inherit] inline-block text-center">
               Forgot Password
-            </a>
+            </p>
           </form>
           <hr className="hidden sm:block" />
           <a
             href="/account/register"
-            className="text-gray-300 font-bold text-xl text-center hidden sm:block"
+            className="hidden text-xl font-bold text-center text-gray-300 sm:block"
           >
             No account? Register now
           </a>

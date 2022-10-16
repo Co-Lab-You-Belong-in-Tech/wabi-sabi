@@ -20,6 +20,17 @@
     "react/react-in-jsx-scope": "off",
     "import/no-unresolved": "off",
     "react/jsx-props-no-spreading": "off",
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "required": {
+          "some": [
+            "nesting",
+            "id"
+          ]
+        }
+      }
+    ],
     "no-shadow": "off",
     "no-unused-vars":"warn",
     "operator-linebreak":"off",
@@ -38,6 +49,7 @@
   "ignorePatterns": [
     "dist/",
     "build/",
-    "pages/_app.js"
+    "src/pages/_app.js",
+    "src/store.js"
   ]
 }
