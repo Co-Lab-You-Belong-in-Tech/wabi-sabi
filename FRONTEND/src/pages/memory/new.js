@@ -18,7 +18,7 @@ const NewMemory = () => {
 
   // keep track of the character count for the story and handle errors
   const [storyCount, setStoryCount] = useState(0);
-  const [error, setError] = useState('You need to meet 100 characters for your story.');
+  const [error, setError] = useState(null);
 
   // add a reference to the actual file input field
   const uploadButton = useRef(null);
@@ -192,7 +192,7 @@ const NewMemory = () => {
         <div>
           {error && (
             <div className="absolute top-0 bottom-0 flex items-start justify-center w-full max-w-2xl min-h-full mx-auto bg-[#CCC] bg-opacity-75">
-              <div className="relative w-full px-4 py-6 mx-8 text-center bg-white max-w-max mt-60 rounded-2xl animate-wiggle">
+              <div className="relative w-full px-4 py-6 mx-8 text-center bg-white max-w-max mt-60 rounded-2xl animate-shake">
                 <button
                   type="button"
                   className="absolute text-3xl bg-transparent border-0 cursor-pointer right-2 top-1"
