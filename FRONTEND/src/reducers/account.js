@@ -1,4 +1,3 @@
-import { configureStore } from '@reduxjs/toolkit';
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,

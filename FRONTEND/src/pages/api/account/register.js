@@ -1,4 +1,4 @@
-import { API_URL } from '../../../config/index';
+import API_URL from '../../../config/index';
 
 export default async (request, response) => {
   if (request.method === 'POST') {
@@ -22,9 +22,8 @@ export default async (request, response) => {
 
       if (apiResponse.ok) {
         return response.status(201).json(data);
-      } else {
-        return response.status(400).json(data);
       }
+      return response.status(400).json(data);
     } catch (error) {
       return response.status(500).json(error);
     }

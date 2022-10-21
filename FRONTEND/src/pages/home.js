@@ -12,7 +12,6 @@ import { useRouter } from 'next/router';
 // Import Swiper styles
 import 'swiper/css';
 import { useSelector } from 'react-redux';
-import Header from '../components/Header';
 import AppLayout from '../components/Layouts/AppLayout';
 import AuthLayout from '../components/Layouts/AuthLayout';
 
