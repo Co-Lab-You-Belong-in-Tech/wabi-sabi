@@ -33,7 +33,10 @@
           "state"
         ]
       }
-    ]
+    ],
+    "react/prop-types":"off",
+    "react/button-has-type":"off",
+    "react/no-array-index-key":"off"
   },
   "ignorePatterns": [
     "dist/",

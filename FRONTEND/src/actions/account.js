@@ -34,7 +34,7 @@ export const register =
             password,
           },
         }),
-      }).then((dat) => console.log(dat.headers.get('Authorization')));
+      });
 
       const data = await response.json();
 
@@ -80,13 +80,19 @@ export const login =
           },
         }),
       });
+      const dataa = await response;
+      const token = dataa.headers.get('Authorization');
+      localStorage.setItem('token', token);
 
       const data = await response.json();
+
       if (response.ok) {
         toast.success(data.message);
 
         dispatch({ type: LOGIN_SUCCESS });
-        dispatch({ type: LOAD_USER_SUCCESS, payload: { user: data.user } });
+        // dispatch({ type: LOAD_USER_SUCCESS, payload: { user: data.user } });
+        dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
+
         // dispatch(load_user());
       } else {
         toast.error(data.error);
@@ -103,10 +109,13 @@ export const login =
 
 export const logout = () => async (dispatch) => {
   try {
+    const token = localStorage.getItem('token');
+    console.log(token);
     const response = await fetch(`${API_URL}/users/sign_out`, {
       method: 'DELETE',
       headers: {
         Accept: 'application/json',
+        Authorization: `Bearer ${token}`,
       },
     });
 

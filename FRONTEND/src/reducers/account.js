@@ -1,3 +1,4 @@
+import { configureStore } from '@reduxjs/toolkit';
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -10,7 +11,7 @@ import {
   LOAD_USER_FAIL,
   START_LOADING,
   STOP_LOADING,
-} from "../actions/types";
+} from '../actions/types';
 
 const initialState = {
   user: null,
@@ -59,7 +60,8 @@ const accountReducer = (state = initialState, action) => {
     case LOAD_USER_SUCCESS:
       return {
         ...state,
-        user: payload.user,
+        user: payload,
+        // user: payload.user,
       };
     case LOAD_USER_FAIL:
       return {
@@ -80,5 +82,7 @@ const accountReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+// const store = configureStore(reducer);
 
 export default accountReducer;
