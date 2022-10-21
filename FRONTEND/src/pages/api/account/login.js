@@ -1,5 +1,5 @@
 import cookie from 'cookie';
-import { API_URL } from '../../../config/index';
+import API_URL from '../../../config/index';
 
 export default async (request, response) => {
   if (request.method === 'POST') {

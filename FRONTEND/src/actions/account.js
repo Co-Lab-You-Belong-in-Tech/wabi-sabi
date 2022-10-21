@@ -11,7 +11,7 @@ import {
   STOP_LOADING,
   LOAD_USER_SUCCESS,
 } from './types';
-import { API_URL } from '../config';
+import API_URL from '../config';
 
 export const register =
   ({ name, email, password }) =>
