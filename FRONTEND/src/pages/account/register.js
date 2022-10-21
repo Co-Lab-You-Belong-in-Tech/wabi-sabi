@@ -1,12 +1,11 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
-import { register } from '../../actions/account';
 import { VscMail, VscLock } from 'react-icons/vsc';
 import { BsPerson } from 'react-icons/bs';
+import { register } from '../../actions/account';
 
 const SignUpPage = () => {
   const [formData, setFormData] = useState({
@@ -31,12 +30,10 @@ const SignUpPage = () => {
 
   // create function to handle input onChange
   const onChange = (event) => {
-    setFormData((prevState) => {
-      return {
-        ...prevState,
-        [event.target.name]: event.target.value,
-      };
-    });
+    setFormData((prevState) => ({
+      ...prevState,
+      [event.target.name]: event.target.value,
+    }));
   };
 
   const onSubmit = (event) => {

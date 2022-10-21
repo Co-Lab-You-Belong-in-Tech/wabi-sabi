@@ -5,7 +5,6 @@
 /* eslint-disable react/button-has-type */
 // /* eslint-disable react/button-has-type */
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../actions/account';
 

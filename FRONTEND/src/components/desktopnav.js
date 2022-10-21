@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { menuItems } from './menuItems';
 
-const DesktopNavbar = ({ showMe, setShowMe }) => {
+const DesktopNavbar = ({ setShowMe }) => {
   const isLoggedIn = useSelector((state) => state.account.isLoggedIn);
   const account = useSelector((state) => state.account);
 

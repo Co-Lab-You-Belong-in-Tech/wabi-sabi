@@ -4,8 +4,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Provider } from 'react-redux';
-import { useStore } from '../store';
 import { PersistGate } from 'redux-persist/integration/react';
+import { useStore } from '../store';
 
 function MyApp({ Component, pageProps }) {
   const store = useStore(pageProps.initialReduxState);

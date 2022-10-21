@@ -7,7 +7,6 @@ import {
   LOGIN_FAIL,
   LOGOUT_SUCCESS,
   LOGOUT_FAIL,
-  LOAD_USER_FAIL,
   START_LOADING,
   STOP_LOADING,
   LOAD_USER_SUCCESS,
@@ -44,7 +43,6 @@ export const register =
         dispatch({ type: REGISTER_SUCCESS });
       } else {
         toast.error(data.error);
-        console.log(data.errors);
 
         dispatch({ type: REGISTER_FAIL });
       }
@@ -110,7 +108,6 @@ export const login =
 export const logout = () => async (dispatch) => {
   try {
     const token = localStorage.getItem('token');
-    console.log(token);
     const response = await fetch(`${API_URL}/users/sign_out`, {
       method: 'DELETE',
       headers: {

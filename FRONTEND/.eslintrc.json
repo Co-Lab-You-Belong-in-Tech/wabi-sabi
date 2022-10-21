@@ -15,32 +15,26 @@
   "extends": ["airbnb", "plugin:react/recommended", "prettier"],
   "plugins": ["react", "prettier"],
   "rules": {
-    "prettier/prettier":"warn",
+    "prettier/prettier": "warn",
     "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
     "react/react-in-jsx-scope": "off",
     "import/no-unresolved": "off",
     "react/jsx-props-no-spreading": "off",
     "no-shadow": "off",
-    "no-unused-vars":"warn",
-    "operator-linebreak":"off",
-    "indent":"off",
-    "camelcase":"off",
+    "no-unused-vars": "warn",
+    "operator-linebreak": "off",
+    "indent": "off",
+    "camelcase": "off",
     "no-param-reassign": [
       "error",
       {
         "props": true,
-        "ignorePropertyModificationsFor": [
-          "state"
-        ]
+        "ignorePropertyModificationsFor": ["state"]
       }
     ],
-    "react/prop-types":"off",
-    "react/button-has-type":"off",
-    "react/no-array-index-key":"off"
+    "react/prop-types": "off",
+    "react/button-has-type": "off",
+    "react/no-array-index-key": "off"
   },
-  "ignorePatterns": [
-    "dist/",
-    "build/",
-    "pages/_app.js"
-  ]
+  "ignorePatterns": ["dist/", "build/", "pages/_app.js"]
 }

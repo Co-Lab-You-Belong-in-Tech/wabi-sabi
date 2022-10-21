@@ -1,5 +1,4 @@
 /* eslint-disable import/prefer-default-export */
-import React from 'react';
 // import { VscHome, VscCompass } from 'react-icons/vsc';
 // import { BsGrid } from 'react-icons/bs';
 import InActiveHome from '../../public/assets/Home.svg';
