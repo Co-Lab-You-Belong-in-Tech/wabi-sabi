@@ -1,5 +1,4 @@
 class Users::SessionsController < Devise::SessionsController
-  skip_before_action :verify_signed_out_user
   respond_to :json
 
   private
