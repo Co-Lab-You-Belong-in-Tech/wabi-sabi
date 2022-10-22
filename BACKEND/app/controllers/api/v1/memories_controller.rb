@@ -1,5 +1,5 @@
 class Api::V1::MemoriesController < ApplicationController
-  before_action :set_api_v1_memory, only: %i[ show update destroy ]
+  before_action :set_api_v1_memory, only: %i[show update destroy]
   before_action :authenticate_user!
 
   # GET /api/v1/memories
@@ -22,7 +22,6 @@ class Api::V1::MemoriesController < ApplicationController
     end
     render json: public_memories_data
   end
-
 
   # GET /api/v1/memories/1
   def show
@@ -60,13 +59,14 @@ class Api::V1::MemoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_api_v1_memory
-      @api_v1_memory = Api::V1::Memory.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def api_v1_memory_params
-      params.require(:api_v1_memory).permit(:prompt, :story, :public, :favorite, :image)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_api_v1_memory
+    @api_v1_memory = Api::V1::Memory.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def api_v1_memory_params
+    params.require(:api_v1_memory).permit(:prompt, :story, :public, :favorite, :image)
+  end
 end
