@@ -1,10 +1,14 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  respond_to :json
+  
+  include RackSessionFix
 
+  respond_to :json
   private
 
   def respond_with(resource, _opts = {})
-    resource.persisted? ? register_success : register_failed
+    register_success && return if resource.persisted?
+      
+    register_failed
   end
 
   def register_success
