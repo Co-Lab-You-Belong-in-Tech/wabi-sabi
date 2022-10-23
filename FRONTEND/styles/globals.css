@@ -34,6 +34,12 @@ body {
   background: linear-gradient(180deg, #37c467 0%, #f7f7f9 20.87%), #f7f7f9;
 }
 
+.bg-mobile-onboarding {
+  background-image: url('../public/assets/mobile-onboarding-page-bg.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .primary {
   background: linear-gradient(
       172.93deg,
