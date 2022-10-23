@@ -20,7 +20,7 @@ const SignUpPage = () => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.account.loading);
   const register_success = useSelector(
-    (state) => state.account.register_success
+    (state) => state.account.register_success,
   );
   const isLoggedIn = useSelector((state) => state.account.isLoggedIn);
   const router = useRouter();
@@ -74,7 +74,7 @@ const SignUpPage = () => {
                 Sign Up
               </h1>
             </div>
-            <div className=" items-center hidden sm:flex">
+            <div className="items-center hidden  sm:flex">
               <img src="/assets/Logo3.svg" alt="" width={89} height={94} />
               <h1 className=" text-4xl h-1/2  text-[inherit] tracking-[0.02em] font-bold font-inherit text-gray-300  text-center">
                 Create an account
@@ -86,12 +86,12 @@ const SignUpPage = () => {
           </div>
           <form
             onSubmit={onSubmit}
-            className="flex flex-col gap-5 items-center"
+            className="flex flex-col items-center gap-5"
           >
             <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-[#000] w-[280px]  ">
               <BsPerson style={{ fontSize: 22, color: '#000' }} />
               <input
-                className={`border-none bg-[transparent] box-border items-start justify-start `}
+                className="border-none bg-[transparent] box-border items-start justify-start "
                 type="text"
                 value={full_name}
                 name="full_name"
@@ -104,7 +104,7 @@ const SignUpPage = () => {
             <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-[#000] w-[280px]  ">
               <VscMail style={{ fontSize: 22, color: '#000' }} />
               <input
-                className={`border-none bg-[transparent] box-border items-start justify-start `}
+                className="border-none bg-[transparent] box-border items-start justify-start "
                 type="email"
                 value={email}
                 name="email"
@@ -116,7 +116,7 @@ const SignUpPage = () => {
             <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-[#000] w-[280px]  ">
               <VscLock style={{ fontSize: 22, color: '#000' }} />
               <input
-                className={`border-none bg-[transparent] box-border items-start justify-start `}
+                className="border-none bg-[transparent] box-border items-start justify-start "
                 type="password"
                 value={password}
                 name="password"
@@ -147,9 +147,9 @@ const SignUpPage = () => {
               <p className="text-2xl tracking-[0.02em] text-center">
                 <p className="text-left">&#8221;</p>
                 Sometimes you never know the value of a{' '}
-                <span className="underline font-semibold">moment</span> until it
+                <span className="font-semibold underline">moment</span> until it
                 becomes a{' '}
-                <span className="underline font-semibold">memory</span>.
+                <span className="font-semibold underline">memory</span>.
               </p>
             </div>
             <hr className="bg-[#373737] w-16 m-auto" />
@@ -159,7 +159,7 @@ const SignUpPage = () => {
           </div>
           <a
             href="/account/register"
-            className="text-gray-300 font-bold text-xl text-center hidden sm:block"
+            className="hidden text-xl font-bold text-center text-gray-300 sm:block"
           >
             No account? Register now
           </a>

@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 
 import { ThreeDots } from 'react-loader-spinner';
@@ -63,7 +62,7 @@ const SignInPage = () => {
           <img
             src="/assets/Logo.svg"
             alt="Logo"
-            className=" pl-20"
+            className="pl-20 "
             // height={63}
             width={144}
           />
@@ -72,7 +71,7 @@ const SignInPage = () => {
       <main className="relative grid place-items-center bg-gray-100 w-full h-screen overflow-hidden text-[35px] text-gray-300 font-roboto">
         <div className="flex flex-col gap-14">
           <div>
-            <div className="flex justify-center items-center">
+            <div className="flex items-center justify-center">
               <img src="/assets/Logo3.svg" alt="Logo" />
               <h1 className="text-4xl tracking-[0.02em] h-1/2 font-bold font-inherit text-gray-300  text-center">
                 Sign In
@@ -84,12 +83,12 @@ const SignInPage = () => {
           </div>
           <form
             onSubmit={onSubmit}
-            className="flex flex-col gap-5 items-center"
+            className="flex flex-col items-center gap-5"
           >
             <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-[#000] w-[280px]  ">
               <VscMail style={{ fontSize: 22, color: '#000' }} />
               <input
-                className={`border-none bg-[transparent] box-border items-start justify-start `}
+                className="border-none bg-[transparent] box-border items-start justify-start "
                 type="email"
                 name="email"
                 value={email}
@@ -101,7 +100,7 @@ const SignInPage = () => {
             <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-[#000] w-[280px]  ">
               <VscLock style={{ fontSize: 22, color: '#000' }} />
               <input
-                className={`border-none bg-[transparent] items-start justify-start  `}
+                className="border-none bg-[transparent] items-start justify-start  "
                 type="password"
                 value={password}
                 name="password"
@@ -124,9 +123,9 @@ const SignInPage = () => {
                 )}
               </b>
             </button>
-            <a className="text-base underline tracking-[0.02em] text-[inherit] inline-block text-center">
+            <p className="text-base underline tracking-[0.02em] text-[inherit] inline-block text-center">
               Forgot Password
-            </a>
+            </p>
           </form>
           <hr className="bg-[#CECECE] " />
           <div>
@@ -144,7 +143,7 @@ const SignInPage = () => {
           </div>
           <a
             href="/account/register"
-            className="text-gray-300 font-bold text-xl text-center hidden sm:block"
+            className="hidden text-xl font-bold text-center text-gray-300 sm:block"
           >
             No account? Register now
           </a>

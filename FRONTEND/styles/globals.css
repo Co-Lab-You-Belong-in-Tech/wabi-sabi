@@ -12,10 +12,12 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
   @apply leading-[normal] m-0;
+  background-color: #989898;
 }
 /* input {
   font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
