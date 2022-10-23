@@ -27,22 +27,6 @@ const questions = [
 
 const currentDate = moment().format('ll').split(',').join('');
 
-
-const breakpoints = {
-  0: {
-    slidesPerView: 1,
-  },
-  400: {
-    slidesPerView: 2,
-  },
-  700: {
-    slidesPerView: 3,
-  },
-  1000: {
-    enabled: false,
-  },
-};
-
 function LandingPage() {
   const router = useRouter();
 
