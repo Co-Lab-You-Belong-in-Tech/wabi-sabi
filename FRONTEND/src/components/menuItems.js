@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 // import { VscHome, VscCompass } from 'react-icons/vsc';
 // import { BsGrid } from 'react-icons/bs';
 import InActiveHome from '../../public/assets/Home.svg';
@@ -20,7 +19,7 @@ export const menuItems = [
     inactive: InActiveMemory,
     active: ActiveMemory,
     // title: <BsGrid style={{ width: '30', height: '30', color: '#666' }} />,
-    url: '/memory',
+    url: '/memories',
   },
   {
     inactive: InActiveCompas,
@@ -35,7 +34,7 @@ export const navItems = [
     inactive: InActiveMemory,
     active: ActiveMemory,
     // title: <BsGrid style={{ width: '30', height: '30', color: '#666' }} />,
-    url: '/memory',
+    url: '/memories',
   },
   {
     inactive: InActiveHome,
