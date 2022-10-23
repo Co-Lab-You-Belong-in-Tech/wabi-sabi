@@ -5,11 +5,12 @@ import { useSelector } from 'react-redux';
 
 function AuthLayout({ children }) {
   const { push } = useRouter();
-  const { isLoggedIn } = useSelector((state) => state.account);
+  // const { isLoggedIn } = useSelector((state) => state.account);
+  const isLoggedIn = true;
   return (
     <div>
       <div>
-        <main>{isLoggedIn ? children : push('/login')}</main>
+        <main>{isLoggedIn ? children : push('/account/login')}</main>
       </div>
     </div>
   );
