@@ -1,7 +1,7 @@
-import { Router, useRouter } from 'next/router';
-import React, { useContext } from 'react';
+import { useRouter } from 'next/router';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 function AuthLayout({ children }) {
   const { push } = useRouter();

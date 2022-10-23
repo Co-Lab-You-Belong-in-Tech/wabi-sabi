@@ -22,7 +22,7 @@ module.exports = {
       },
       boxShadow: {
         '3xl': '0px 8px 24px rgba(0, 0, 0, 0.15)',
-        'box': '0px 8px 24px rgba(0, 0, 0, 0.15)',
+        box: '0px 8px 24px rgba(0, 0, 0, 0.15)',
       },
       borderRadius: {
         '4xl': '0px 0px 15px 15px',

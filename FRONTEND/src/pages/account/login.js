@@ -26,7 +26,7 @@ const SignInPage = () => {
 
   useEffect(() => {
     dispatch(reset_register_success());
-  }, []);
+  }, [dispatch]);
 
   // create function to handle input onChange
   const onChange = (e) => {

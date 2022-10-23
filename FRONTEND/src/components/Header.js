@@ -28,7 +28,7 @@ export default function Header() {
       <div>
         <div className="relative z-10 flex justify-end w-full px-5 py-4 mx-auto sm:hidden max-w-7xl">
           <button
-            type='button'
+            type="button"
             onClick={() => setShowMe((prev) => !prev)}
             className="relative w-[35px] h-[35px] bg-profile rounded-full text-center border-0 cursor-pointer"
           >
@@ -40,11 +40,7 @@ export default function Header() {
               style={{ display: showMe ? 'block' : 'none' }}
             />
           </button>
-          {/* i dey come oo, i dey test */}
-          {/* tailwind sets border style to solid by deault. why this one be like this, lmao I don't know  */}
-          {/* i said the span should be in the button na, when I put it there it wasn't showing */}
         </div>
-        {/* lets use top, margin-top will cause layout shift  */}
         <div className="px-5">
           <div className="relative w-full mx-auto max-w-7xl">
             <div
@@ -54,18 +50,17 @@ export default function Header() {
               }}
             >
               <div className="flex gap-[14px] pb-4 p-5  items-center ">
-                <button type='button' className="w-[27px] h-[27px] bg-profile rounded-full text-center border-0 cursor-pointer">
+                <button type="button" className="w-[27px] h-[27px] bg-profile rounded-full text-center border-0 cursor-pointer">
                   <h2 className=" text-[15px] tracking-[0.02em] font-bold text-white align-middle">
                     {isLoggedIn && account.user.name.substring(0, 1)}
                   </h2>
                 </button>
                 <p>{isLoggedIn && account.user.name}</p>
               </div>
-              {/* <hr className="h-full p-0 bg-[#CECECE] mb-[18px]" /> */}
               <div className="border-b-[#CECECE] border-b-[0.5px] border-solid border-l-0 border-r-0 border-t-0  mb-[18px]" />
               <div className="pb-4 pl-5 ">
                 <button
-                  type='button'
+                  type="button"
                   onClick={handleLogout}
                   className="font-bold text-black text-2xl mb-[15px] no-underline  cursor-pointer"
                 >

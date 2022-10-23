@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 
 // Import Swiper styles
 import 'swiper/css';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import AppLayout from '../components/Layouts/AppLayout';
 
 const questions = [
@@ -22,7 +22,7 @@ const questions = [
   {
     question: 'What makes you smile today?',
     id: 3,
-  }
+  },
 ];
 
 const currentDate = moment().format('ll').split(',').join('');
@@ -31,7 +31,7 @@ function LandingPage() {
   const router = useRouter();
 
   // const isLoggedIn = useSelector((state) => state.account.isLoggedIn);
-  const isLoggedIn = true
+  const isLoggedIn = true;
   useEffect(() => {
     if (isLoggedIn === false) {
       router.push('/account/login');
@@ -52,12 +52,12 @@ function LandingPage() {
     setDomWidth(pageRef.current.offsetWidth);
   };
   useEffect(() => {
-    window.addEventListener("resize", handleResize)
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize)
-    }
-  }, [pageRef.current]);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <AppLayout>
@@ -67,7 +67,7 @@ function LandingPage() {
             Choose a question to start creating a memory.
           </p>
         </div>
-        <div className='mx-16 md:max-w-max'>
+        <div className="mx-16 md:max-w-max">
           <Swiper
             className="mySwiper h-[355px] !overflow-visible"
             slidesPerView="auto"
@@ -92,7 +92,7 @@ function LandingPage() {
       </main>
     </AppLayout>
   );
-};
+}
 
 export default LandingPage;
 
@@ -108,7 +108,7 @@ function Slide({
       <strong className="tracking-wide inline-block w-[181px]">
         {question}
       </strong>
-      <div className='absolute flex items-center bottom-5 gap-x-4'>
+      <div className="absolute flex items-center bottom-5 gap-x-4">
         <div className=" bg-white w-[84px] h-1" />
         <div className="text-base tracking-wide uppercase">
           {currentDate}

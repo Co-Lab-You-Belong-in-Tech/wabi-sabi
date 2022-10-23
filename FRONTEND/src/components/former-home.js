@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 
 function Home() {
-
   return (
     <>
       <nav className="navigation hidden sm:flex justify-between pl-[153px] pr-[156px] drop-shadow-3xl font-roboto  align-text-bottom p-[10px]">
@@ -100,6 +99,6 @@ function Home() {
       </main>
     </>
   );
-};
+}
 
 export default Home;

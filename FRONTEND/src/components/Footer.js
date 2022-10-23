@@ -28,7 +28,7 @@ export default function Footer() {
           }}
         >
           <div className="flex gap-[14px] pb-4 p-5 items-center ">
-            <button type='button' className="w-[27px] h-[27px] bg-profile rounded-full text-center border-0 cursor-pointer">
+            <button type="button" className="w-[27px] h-[27px] bg-profile rounded-full text-center border-0 cursor-pointer">
               <h2 className=" text-[15px] tracking-[0.02em] font-bold text-white align-middle">
                 {isLoggedIn && account.user.name.substring(0, 1)}
               </h2>
@@ -39,7 +39,7 @@ export default function Footer() {
           <div className="border-b-[#CECECE] border-b-[0.5px] border-solid border-l-0 border-r-0 border-t-0  mb-[18px]" />
           <div className="pb-4 pl-5 ">
             <button
-              type='button'
+              type="button"
               onClick={handleLogout}
               className="font-bold text-black text-2xl mb-[15px] no-underline "
             >

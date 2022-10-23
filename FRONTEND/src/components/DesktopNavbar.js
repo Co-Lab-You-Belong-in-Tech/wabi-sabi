@@ -39,10 +39,6 @@ const DesktopNavbar = ({ setShowMe }) => {
           {isLoggedIn && account.user.name.substring(0, 1)}
         </span>
       </button>
-      {/* <span
-        className="absolute bottom-[-10px] right-[25px] hidden w-0 h-0 duration-700 transition-max border-x-[13px] border-solid border-x-[transparent] border-b-[transparent] border-t-[17px] border-t-primary"
-        style={{ display: showMe ? 'block' : 'none' }}
-      /> */}
     </nav>
   );
 };
