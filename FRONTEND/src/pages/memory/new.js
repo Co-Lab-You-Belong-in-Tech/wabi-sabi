@@ -69,7 +69,7 @@ const NewMemory = () => {
   return (
     <>
       <div className="relative max-w-2xl min-h-screen pb-4 mx-auto bg-white">
-        <nav className="flex items-center justify-between w-full p-4 text-2xl sm:text-4xl">
+        <nav className="flex items-center justify-between w-full p-4 text-2xl sm:text-5xl">
           <VscClose />
           <span className="text-base leading-6 uppercase sm:text-2xl sm:px-6">
             {moment().format('ddd ll')}
@@ -78,7 +78,7 @@ const NewMemory = () => {
             onClick={submitMemory}
             type="button"
             name="submit memory entry"
-            className="text-2xl bg-transparent border-0 cursor-pointer sm:text-4xl"
+            className="text-2xl bg-transparent border-0 cursor-pointer sm:text-5xl"
           >
             <VscCheck />
           </button>
@@ -113,7 +113,7 @@ const NewMemory = () => {
               type="button"
               onClick={clickUploadButton}
             >
-              <VscAdd className="text-4xl text-white sm:text-6xl" />
+              <VscAdd className="text-5xl text-white sm:text-6xl" />
             </button>
           </div>
 
@@ -126,7 +126,7 @@ const NewMemory = () => {
               type="text"
               name="title"
               placeholder="Title"
-              className="text-2xl font-bold text-center border-0 sm:text-4xl placeholder:text-2xl sm:placeholder:text-4xl placeholder:ml-[45%] placeholder:mr-[45%] placeholder:tracking-wider w-full "
+              className="text-2xl font-bold text-center border-0 sm:text-5xl placeholder:text-2xl sm:placeholder:text-5xl placeholder:ml-[45%] placeholder:mr-[45%] placeholder:tracking-wider w-full "
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
@@ -153,7 +153,7 @@ const NewMemory = () => {
                 onClick={() => setIsPublic(!isPublic)}
               >
                 {isPublic && (
-                  <VscCheck className="absolute bottom-[-2px] text-4xl text-green-500 left-[-6px]" />
+                  <VscCheck className="absolute bottom-[-2px] text-5xl text-green-500 left-[-6px]" />
                 )}
               </button>
             </div>

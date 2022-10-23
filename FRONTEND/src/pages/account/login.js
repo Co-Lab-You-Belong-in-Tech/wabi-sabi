@@ -73,7 +73,7 @@ const SignInPage = () => {
           <div>
             <div className="flex items-center justify-center">
               <img src="/assets/Logo3.svg" alt="Logo" />
-              <h1 className="text-4xl tracking-[0.02em] h-1/2 font-bold font-inherit text-gray-300  text-center">
+              <h1 className="text-5xl tracking-[0.02em] h-1/2 font-bold font-inherit text-gray-300  text-center">
                 Sign In
               </h1>
             </div>
@@ -113,7 +113,7 @@ const SignInPage = () => {
 
             <button
               type="submit"
-              className="cursor-pointer border-0 text-white p-2.5  rounded-[15px] bg-green-200 w-[280px] "
+              className="cursor-pointer border-0 text-white p-2.5  rounded-[15px] bg-primary w-[280px] "
             >
               <b className=" tracking-[0.02em] inline-block text-white text-center font-bold text-3xl ">
                 {loading ? (
@@ -131,7 +131,9 @@ const SignInPage = () => {
           <div>
             <div className="w-ful max-w-[285px] mx-autoflex flex-col justify-center items-center">
               <p className="text-2xl tracking-[0.02em] text-center">
-                <span className="font-semibold underline">Memory</span> ... is
+                <span className="font-semibold underline">Memory</span>
+                {' '}
+                ... is
                 the diary that we all carry about with us.
               </p>
               <p className="text-right">&#8221;</p>
