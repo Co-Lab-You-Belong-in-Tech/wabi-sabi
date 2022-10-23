@@ -1,8 +1,6 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/button-has-type */
 import React from 'react';
 import Image from 'next/image';
+import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { menuItems } from './menuItems';
@@ -22,9 +20,9 @@ const DesktopNavbar = ({ setShowMe }) => {
       className="flex flex-row gap-[16px] items-center font-roboto"
       style={{ gap: '16px' }}
     >
-      <ul className="ml-auto flex gap-4 list-none items-center">
+      <ul className="flex items-center gap-4 ml-auto list-none">
         {menuItems.map((menu, index) => (
-          <li className="menu-items border-0 list-none" key={index}>
+          <li className="list-none border-0 menu-items" key={index}>
             <a href={menu.url}>
               <Image
                 src={router.pathname === menu.url ? menu.active : menu.inactive}
@@ -42,7 +40,7 @@ const DesktopNavbar = ({ setShowMe }) => {
         </span>
       </button>
       {/* <span
-        className="absolute bottom-[-10px] right-[25px] hidden w-0 h-0 duration-700 transition-max border-x-[13px] border-solid border-x-[transparent] border-b-[transparent] border-t-[17px] border-t-green-200"
+        className="absolute bottom-[-10px] right-[25px] hidden w-0 h-0 duration-700 transition-max border-x-[13px] border-solid border-x-[transparent] border-b-[transparent] border-t-[17px] border-t-primary"
         style={{ display: showMe ? 'block' : 'none' }}
       /> */}
     </nav>
@@ -50,3 +48,7 @@ const DesktopNavbar = ({ setShowMe }) => {
 };
 
 export default DesktopNavbar;
+
+DesktopNavbar.propTypes = {
+  setShowMe: PropTypes.func.isRequired,
+};

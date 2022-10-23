@@ -8,9 +8,9 @@ const MobileNavbar = () => {
 
   return (
     <nav className="flex flex-row gap-[16px] items-center font-roboto relative ">
-      <ul className="flex gap-5 items-center flex-grow justify-between px-4 sm:px-12">
+      <ul className="flex items-center justify-between flex-grow gap-5 px-4 sm:px-12">
         {navItems.map((menu, index) => (
-          <li className="menu-items border-0 list-none" key={index}>
+          <li className="list-none border-0 menu-items" key={index}>
             <a href={menu.url}>
               <Image
                 src={router.pathname === menu.url ? menu.active : menu.inactive}
