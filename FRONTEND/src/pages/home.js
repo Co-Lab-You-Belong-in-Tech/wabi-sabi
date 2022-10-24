@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import moment from 'moment/moment';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -51,6 +51,11 @@ function LandingPage() {
   const handleResize = () => {
     setDomWidth(pageRef.current.offsetWidth);
   };
+  
+  useLayoutEffect(() => {
+    handleResize();
+  }, []);
+  
   useEffect(() => {
     window.addEventListener('resize', handleResize);
 
