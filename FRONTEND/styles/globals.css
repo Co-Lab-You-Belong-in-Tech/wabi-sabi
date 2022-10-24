@@ -40,6 +40,13 @@ body {
   background-size: cover;
 }
 
+.bg-desktop-onboarding {
+  background-image: url('../public/assets/dk-onboarding-page-bg.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+}
+
 .primary {
   background: linear-gradient(
       172.93deg,
