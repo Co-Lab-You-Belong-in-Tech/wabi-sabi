@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import moment from 'moment/moment';
+import DesktopHeader from '../components/DesktopHeader';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/pagination';
@@ -66,6 +67,7 @@ function LandingPage() {
 
   return (
     <AppLayout>
+      <DesktopHeader />
       <main className="flex flex-col items-center justify-center w-full h-screen overflow-hidden text-4xl text-center text-white bg-white font-roboto gap-y-16" ref={pageRef}>
         <div className="hidden p-2 px-6 text-2xl text-black bg-white shadow-3xl md:block w-fit rounded-2xl">
           <p className="tracking-[0.02em] leading-5">
