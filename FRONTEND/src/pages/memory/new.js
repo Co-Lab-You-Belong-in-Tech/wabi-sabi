@@ -11,7 +11,7 @@ const NewMemory = () => {
 
   // state variables for the memory entry
   const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  const [story, setStory] = useState('');
   const [favorite, setFavorite] = useState(false);
   const [isPublic, setIsPublic] = useState(false);
   const prompt = 'What are you grateful for today?';
@@ -59,7 +59,7 @@ const NewMemory = () => {
     // send the data to the backend
     const formData = new FormData();
     formData.append('api_v1_memory[title]', title);
-    formData.append('api_v1_memory[description]', description);
+    formData.append('api_v1_memory[story]', story);
     formData.append('api_v1_memory[favorite]', favorite);
     formData.append('api_v1_memory[isPublic]', isPublic);
     formData.append('api_v1_memory[image]', selectedFile);
@@ -67,7 +67,7 @@ const NewMemory = () => {
   };
 
   return (
-    <>
+    <main className='bg-[#F7F7F9]'>
       <div className="relative max-w-2xl min-h-screen pb-4 mx-auto bg-white">
         <nav className="flex items-center justify-between w-full p-4 text-2xl sm:text-5xl">
           <VscClose />
@@ -126,7 +126,7 @@ const NewMemory = () => {
               type="text"
               name="title"
               placeholder="Title"
-              className="text-2xl font-bold text-center border-0 sm:text-5xl placeholder:text-2xl sm:placeholder:text-5xl placeholder:ml-[45%] placeholder:mr-[45%] placeholder:tracking-wider w-full "
+              className="text-2xl font-bold text-center border-0 sm:text-5xl placeholder:text-2xl sm:placeholder:text-5xl placeholder:ml-[45%] placeholder:mr-[45%] placeholder:tracking-wider w-full placeholder:text-[#CECECE]"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
@@ -136,7 +136,6 @@ const NewMemory = () => {
           <div className="flex justify-between mx-6 border-[#EDEDED] border-b-2 py-4 border-solid border-0 items-center sm:mx-20 sm:order-last sm:justify-end sm:gap-x-10 sm:border-0 sm:p-0">
             <button
               type="button"
-              className="bg-transparent border-0"
               onClick={() => setFavorite(!favorite)}
             >
               {favorite ? (
@@ -145,7 +144,7 @@ const NewMemory = () => {
                 <BsHeart className="text-2xl sm:text-3xl" />
               )}
             </button>
-            <div className="flex gap-x-2">
+            <div className="flex items-center gap-x-2">
               <p className="text-xl">Share with public</p>
               <button
                 type="button"
@@ -159,27 +158,27 @@ const NewMemory = () => {
             </div>
           </div>
 
-          <div className="py-2 m-6 text-lg font-medium text-center bg-white sm:mx-20 shadow-box rounded-xl">
+          <div className="px-5 py-2 m-6 text-lg font-medium bg-white sm:mx-20 shadow-box rounded-xl">
             <p>{prompt}</p>
           </div>
 
           <div className="mx-6 sm:mx-20">
             <label htmlFor="description" className="sr-only">
-              Description
+              Story
             </label>
             <textarea
-              name="description"
-              id="description"
+              name="story"
+              id="story"
               placeholder="Share your story.."
-              className="w-full mx-auto text-xl font-medium min-h-[200px] max-h-max border-0 outline-none"
+              className="w-full mx-auto text-xl font-medium min-h-[200px] max-h-max border-0 outline-none placeholder:text-base px-5"
               onChange={(e) => {
                 setStoryCount(e.target.value.length);
-                setDescription(e.target.value);
+                setStory(e.target.value);
               }}
-              value={description}
+              value={story}
               required
             />
-            <p className="text-base font-medium">
+            <p className="text-lg font-semibold">
               <span
                 className={storyCount < 100 ? 'text-red-500' : 'text-green-500'}
               >
@@ -207,7 +206,7 @@ const NewMemory = () => {
           )}
         </div>
       </div>
-    </>
+    </main>
   );
 };
 
