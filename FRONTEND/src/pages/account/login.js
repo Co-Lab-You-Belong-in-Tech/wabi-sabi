@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {ImQuotesRight} from 'react-icons/im'
 import { ThreeDots } from 'react-loader-spinner';
 import Link from 'next/link';
+import Image from 'next/image';
 import { toast } from 'react-toastify';
 import DesktopHeader from '../../components/DesktopHeader';
 
@@ -59,19 +60,20 @@ const SignInPage = () => {
 
   return (
     <>
-      <main className="flex flex-col justify-around w-full h-screen px-12 pt-16 bg-white">
+      <DesktopHeader />
+      <main className="flex flex-col items-center justify-around w-full max-w-md min-h-screen px-12 pt-20 mx-auto bg-white">
         <form
           onSubmit={onSubmit}
-          className="flex flex-col items-center max-w-xs gap-5"
+          className="flex flex-col items-center w-full max-w-xs gap-4"
         >
-          <div className='self-start'>
-            <div className="flex items-center">
-              <img src="/assets/Logo3.svg" alt="Logo" />
+          <div>
+            <div className="flex items-center justify-center">
+              <Image src="/assets/Logo3.svg" alt="Logo" height={90} width={80} />
               <h1 className="text-5xl tracking-[0.02em] font-bold text-center">
                 Sign In
               </h1>
             </div>
-            <p className="text-2xl text-gray-300 text-center hidden sm:block mt-[27px]">
+            <p className="hidden text-xl text-center sm:block">
               Log in with your email address to explore your memories.
             </p>
           </div>
@@ -113,7 +115,7 @@ const SignInPage = () => {
               )}
             </span>
           </button>
-          <p className="text-base underline tracking-[0.02em] text-[inherit] inline-block text-center">
+          <p className="text-base underline tracking-[0.02em] text-[inherit] inline-block text-center mb-2">
             Forgot Password
           </p>
         </form>
@@ -126,7 +128,7 @@ const SignInPage = () => {
         </div>
         <div>
           <div className="flex flex-col items-end justify-center w-full">
-            <p className="text-2xl tracking-[0.02em] text-center">
+            <p className="text-xl tracking-[0.02em] text-center">
               <span className="font-semibold underline">Memory</span>
               {' '}
               ... is
@@ -134,8 +136,8 @@ const SignInPage = () => {
             </p>
             <p className="text-3xl"><ImQuotesRight/></p>
           </div>
-          <hr className="bg-[#373737] w-16 mx-auto my-4" />
-          <p className="text-[16px] text-center text-[#373737] mt-4">
+          <hr className="bg-[#373737] w-16 mx-auto my-4 h-0.5" />
+          <p className="text-[16px] text-center">
             OSCAR WILDE
           </p>
         </div>

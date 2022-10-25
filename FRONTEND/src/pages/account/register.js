@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ThreeDots } from 'react-loader-spinner';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
@@ -8,6 +9,8 @@ import { VscMail, VscLock } from 'react-icons/vsc';
 import { ImQuotesLeft } from 'react-icons/im'
 import { BsPerson } from 'react-icons/bs';
 import { register } from '../../actions/account';
+import DesktopHeader from '../../components/DesktopHeader';
+
 
 const SignUpPage = () => {
   const [formData, setFormData] = useState({
@@ -61,23 +64,24 @@ const SignUpPage = () => {
 
   return (
     <>
-      <main className="flex flex-col justify-around w-full h-screen px-12 pt-16 bg-white">
+      <DesktopHeader />
+      <main className="flex flex-col items-center justify-around w-full max-w-md min-h-screen px-12 pt-20 mx-auto bg-white">
         <form
           onSubmit={onSubmit}
-          className="flex flex-col items-center max-w-xs gap-5"
+          className="flex flex-col items-center w-full max-w-xs gap-4"
         >
-          <div className='self-start'>
-            <div className="flex items-center">
-              <img src="/assets/Logo3.svg" alt="Logo" />
+          <div>
+            <div className="flex items-center justify-center">
+              <Image src="/assets/Logo3.svg" alt="Logo" height={90} width={80} />
               <h1 className="text-5xl tracking-[0.02em] font-bold text-center">
                 Sign Up
               </h1>
             </div>
-            <p className="text-2xl text-gray-300 text-center hidden sm:block mt-[27px]">
+            <p className="hidden text-xl text-center sm:block">
               Log in with your email address to explore your memories.
             </p>
           </div>
-          <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-black w-full">
+          <div className="flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-black w-full">
             <BsPerson className='text-2xl' />
             <input
               className="border-none bg-[transparent] box-border items-start justify-start "
@@ -141,12 +145,12 @@ const SignUpPage = () => {
         <div>
           <div className="flex flex-col items-start justify-center w-full">
             <p className="text-3xl"><ImQuotesLeft /></p>
-            <p className="text-2xl tracking-[0.02em] text-center">
+            <p className="text-xl tracking-[0.02em] text-center">
               Sometimes you never know the value of a <span className="font-semibold underline">moment</span> until it becomes a <span className="font-semibold underline">memory</span>.
             </p>
           </div>
-          <hr className="bg-[#373737] w-16 mx-auto my-4" />
-          <p className="text-[16px] text-center text-[#373737]">
+          <hr className="bg-[#373737] w-16 mx-auto my-4 h-0.5" />
+          <p className="text-[16px] text-center">
             DR. SEUSS
           </p>
         </div>

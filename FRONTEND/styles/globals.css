@@ -14,10 +14,6 @@ html {
   box-sizing: border-box;
 }
 
-body {
-  @apply leading-[normal] m-0;
-  background-color: #989898;
-}
 /* input {
   font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
   font-style: normal;
