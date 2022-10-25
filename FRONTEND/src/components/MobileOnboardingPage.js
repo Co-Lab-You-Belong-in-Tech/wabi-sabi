@@ -9,7 +9,7 @@ function MobileOnboardingPage() {
         alt="Logo"
       />
       <div className="flex flex-col items-center w-full pt-20 pb-10 bg-mobile-onboarding">
-        <section className="text-black w-[263px] lg:self-start flex flex-col gap-5">
+        <section className="text-black w-[263px] flex flex-col gap-5">
           <article className="flex items-center gap-5">
             <img
               className="w-[68px] h-[64px]"
