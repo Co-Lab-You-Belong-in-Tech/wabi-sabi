@@ -1,7 +1,6 @@
-import React from 'react'
-import Image from 'next/image'
-import PropTypes from 'prop-types'
-
+import React from 'react';
+import Image from 'next/image';
+import PropTypes from 'prop-types';
 
 function DesktopHeader({ children }) {
   return (
@@ -9,11 +8,11 @@ function DesktopHeader({ children }) {
       <Image src="/assets/Logo.svg" alt="Logo" width={144} height={63} />
       {children}
     </header>
-  )
+  );
 }
 
-export default DesktopHeader
+export default DesktopHeader;
 
 DesktopHeader.propTypes = {
   children: PropTypes.node,
-}
+};

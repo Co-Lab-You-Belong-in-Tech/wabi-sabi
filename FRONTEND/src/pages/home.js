@@ -1,11 +1,14 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import React, {
+ useState, useEffect, useRef, useLayoutEffect,
+} from 'react';
+import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 // import { useSelector } from 'react-redux';
 import moment from 'moment/moment';
-import DesktopHeader from '../components/DesktopHeader';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from "swiper";
+import { Pagination } from 'swiper';
+import DesktopHeader from '../components/DesktopHeader';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -114,6 +117,7 @@ function Slide({
 }) {
   return (
     <button
+      type="button"
       onClick={() => handleClick(index)}
       className={`h-full rounded-[20px] transition-opacity duration-300 ease-out relative p-5 w-60  ${activeIndex === index ? 'bg-home-card opacity-60' : 'bg-home-card'
         }`}
@@ -130,3 +134,10 @@ function Slide({
     </button>
   );
 }
+
+Slide.propTypes = {
+  question: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  activeIndex: PropTypes.number.isRequired,
+  index: PropTypes.number.isRequired,
+};

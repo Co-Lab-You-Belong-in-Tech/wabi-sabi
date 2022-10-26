@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import moment from 'moment/moment';
-import DesktopHeader from '../../components/desktopHeader';
 import { VscClose, VscCheck, VscAdd } from 'react-icons/vsc';
 import { BsHeartFill, BsHeart } from 'react-icons/bs';
+import DesktopHeader from '../../components/desktopHeader';
 
 const NewMemory = () => {
   // handle image preview
@@ -68,9 +68,9 @@ const NewMemory = () => {
   };
 
   return (
-    <div className='relative'>
+    <div className="relative">
       <DesktopHeader />
-      <main className='bg-[#F7F7F9] pt-20'>
+      <main className="bg-[#F7F7F9] pt-20">
         <div className="relative max-w-2xl min-h-screen pb-4 mx-auto bg-white">
           <nav className="flex items-center justify-between w-full p-4 text-2xl sm:text-5xl">
             <VscClose />

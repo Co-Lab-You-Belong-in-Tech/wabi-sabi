@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import {ImQuotesRight} from 'react-icons/im'
+import { ImQuotesRight } from 'react-icons/im';
 import { ThreeDots } from 'react-loader-spinner';
 import Link from 'next/link';
 import Image from 'next/image';
 import { toast } from 'react-toastify';
-import DesktopHeader from '../../components/DesktopHeader';
 
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { VscMail, VscLock } from 'react-icons/vsc';
+import DesktopHeader from '../../components/DesktopHeader';
 import { login, reset_register_success } from '../../actions/account';
 
 const SignInPage = () => {
@@ -78,7 +78,7 @@ const SignInPage = () => {
             </p>
           </div>
           <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-black w-full">
-            <VscMail className='text-2xl' />
+            <VscMail className="text-2xl" />
             <input
               className="border-none bg-[transparent] box-border items-start justify-start "
               type="email"
@@ -90,7 +90,7 @@ const SignInPage = () => {
             />
           </div>
           <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-black w-full">
-            <VscLock className='text-2xl' />
+            <VscLock className="text-2xl" />
             <input
               className="border-none bg-[transparent] items-start justify-start  "
               type="password"
@@ -109,7 +109,7 @@ const SignInPage = () => {
           >
             <span className="tracking-[0.02em] text-white text-center font-bold text-3xl flex justify-center">
               {loading ? (
-                <ThreeDots color='#fff' height={27}/>
+                <ThreeDots color="#fff" height={27} />
               ) : (
                 'Log In'
               )}
@@ -120,11 +120,11 @@ const SignInPage = () => {
           </p>
         </form>
         <div className="border-[#CECECE] border-t border-b w-full text-lg font-bold flex justify-center py-2 underline">
-        <Link
-          href="/account/register"
-        >
-          No account? Register now
-        </Link>
+          <Link
+            href="/account/register"
+          >
+            No account? Register now
+          </Link>
         </div>
         <div>
           <div className="flex flex-col items-end justify-center w-full">
@@ -134,7 +134,7 @@ const SignInPage = () => {
               ... is
               the diary that we all carry about with us.
             </p>
-            <p className="text-3xl"><ImQuotesRight/></p>
+            <p className="text-3xl"><ImQuotesRight /></p>
           </div>
           <hr className="bg-[#373737] w-16 mx-auto my-4 h-0.5" />
           <p className="text-[16px] text-center">

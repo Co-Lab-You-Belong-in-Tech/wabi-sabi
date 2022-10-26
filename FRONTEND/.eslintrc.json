@@ -19,6 +19,7 @@
     "react/react-in-jsx-scope": "off",
     "import/no-unresolved": "off",
     "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off",
     "jsx-a11y/label-has-associated-control": [
       "error",
       {
@@ -42,10 +43,7 @@
         "props": true,
         "ignorePropertyModificationsFor": ["state"]
       }
-    ],
-    "react/prop-types": "off",
-    "react/button-has-type": "off",
-    "react/no-array-index-key": "off"
+    ]
   },
-  "ignorePatterns": ["dist/", "build/", "pages/_app.js"]
+  "ignorePatterns": ["dist/", "build/", "src/pages/_app.js"]
 }

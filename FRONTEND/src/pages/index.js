@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import React, {
+ useState, useEffect, useRef, useLayoutEffect,
+} from 'react';
 import MobileOnboardingPage from '../components/MobileOnboardingPage';
 import DesktopOnboardingPage from '../components/DesktopOnboardingPage';
 
@@ -15,7 +17,7 @@ function Onboarding() {
       setIsMobile(false);
     }
   }, [domWidth]);
-  
+
   const handleResize = () => {
     setDomWidth(pageRef.current.offsetWidth);
   };

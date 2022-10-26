@@ -6,11 +6,10 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { VscMail, VscLock } from 'react-icons/vsc';
-import { ImQuotesLeft } from 'react-icons/im'
+import { ImQuotesLeft } from 'react-icons/im';
 import { BsPerson } from 'react-icons/bs';
 import { register } from '../../actions/account';
 import DesktopHeader from '../../components/DesktopHeader';
-
 
 const SignUpPage = () => {
   const [formData, setFormData] = useState({
@@ -82,7 +81,7 @@ const SignUpPage = () => {
             </p>
           </div>
           <div className="flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-black w-full">
-            <BsPerson className='text-2xl' />
+            <BsPerson className="text-2xl" />
             <input
               className="border-none bg-[transparent] box-border items-start justify-start "
               type="text"
@@ -94,7 +93,7 @@ const SignUpPage = () => {
             />
           </div>
           <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-black w-full">
-            <VscMail className='text-2xl' />
+            <VscMail className="text-2xl" />
             <input
               className="border-none bg-[transparent] box-border items-start justify-start "
               type="email"
@@ -106,7 +105,7 @@ const SignUpPage = () => {
             />
           </div>
           <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-black w-full">
-            <VscLock className='text-2xl' />
+            <VscLock className="text-2xl" />
             <input
               className="border-none bg-[transparent] items-start justify-start  "
               type="password"
@@ -125,7 +124,7 @@ const SignUpPage = () => {
           >
             <span className="tracking-[0.02em] text-white text-center font-bold text-3xl flex justify-center">
               {loading ? (
-                <ThreeDots color='#fff' height={27} />
+                <ThreeDots color="#fff" height={27} />
               ) : (
                 'Create your account'
               )}
@@ -146,7 +145,14 @@ const SignUpPage = () => {
           <div className="flex flex-col items-start justify-center w-full">
             <p className="text-3xl"><ImQuotesLeft /></p>
             <p className="text-xl tracking-[0.02em] text-center">
-              Sometimes you never know the value of a <span className="font-semibold underline">moment</span> until it becomes a <span className="font-semibold underline">memory</span>.
+              Sometimes you never know the value of a
+              {' '}
+              <span className="font-semibold underline">moment</span>
+              {' '}
+              until it becomes a
+              {' '}
+              <span className="font-semibold underline">memory</span>
+              .
             </p>
           </div>
           <hr className="bg-[#373737] w-16 mx-auto my-4 h-0.5" />
