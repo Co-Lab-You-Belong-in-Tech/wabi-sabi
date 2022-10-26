@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import { useRouter } from 'next/router';
+// import { useSelector } from 'react-redux';
 import moment from 'moment/moment';
 import DesktopHeader from '../components/DesktopHeader';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css/pagination';
-import { useRouter } from 'next/router';
-
+import { Pagination } from "swiper";
 // Import Swiper styles
 import 'swiper/css';
-// import { useSelector } from 'react-redux';
+import 'swiper/css/pagination';
+
 import AppLayout from '../components/Layouts/AppLayout';
 
 const questions = [
@@ -52,11 +53,11 @@ function LandingPage() {
   const handleResize = () => {
     setDomWidth(pageRef.current.offsetWidth);
   };
-  
+
   useLayoutEffect(() => {
     handleResize();
   }, []);
-  
+
   useEffect(() => {
     window.addEventListener('resize', handleResize);
 
@@ -69,9 +70,9 @@ function LandingPage() {
     <AppLayout>
       <DesktopHeader />
       <main className="flex flex-col items-center justify-center w-full h-screen overflow-hidden text-4xl text-center text-white bg-white font-roboto gap-y-16" ref={pageRef}>
-        <div className="hidden p-2 px-6 text-2xl text-black bg-white shadow-3xl md:block w-fit rounded-2xl">
+        <div className="p-2 px-6 text-2xl text-black bg-white shadow-3xl w-fit rounded-2xl">
           <p className="tracking-[0.02em] leading-5">
-            Choose a question to start creating a memory.
+            Choose a question to create a memory.
           </p>
         </div>
         <div className="mx-16 md:max-w-max">
@@ -80,6 +81,11 @@ function LandingPage() {
             slidesPerView="auto"
             spaceBetween={36}
             centeredSlides={domWidth < 900}
+            pagination={{
+              clickable: true,
+              enabled: true,
+            }}
+            modules={[Pagination]}
           >
             {questions.map((item) => (
               <SwiperSlide
