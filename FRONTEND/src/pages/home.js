@@ -75,7 +75,7 @@ function LandingPage() {
       <main className="flex flex-col items-center justify-center w-full h-screen overflow-hidden text-4xl text-center text-white bg-white font-roboto gap-y-16" ref={pageRef}>
         <div className="p-2 px-6 text-2xl text-black bg-white shadow-3xl w-fit rounded-2xl">
           <p className="tracking-[0.02em] leading-5">
-            Choose a question to create a memory.
+            Pick a card to create a memory.
           </p>
         </div>
         <div className="mx-16 md:max-w-max">
