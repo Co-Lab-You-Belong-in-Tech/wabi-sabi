@@ -17,7 +17,7 @@ export default function Header() {
     <div className="relative z-20">
       <div className="hidden sm:block bg-white px-5 drop-shadow-3xl w-full relative z-10  p-[10px]">
         <div className="relative w-full mx-auto max-w-7xl">
-          <div className="relative z-10 flex-row justify-between hidden sm:flex font-roboto ">
+          <div className="relative z-10 flex-row justify-between hidden sm:flex">
             <Link href="/" className="logo">
               <img src="/assets/wabi-sabi-logo.svg" alt="Logo" height={63} width={144} />
             </Link>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 function MobileOnboardingPage() {
   return (
-    <main className="flex flex-col items-center justify-end w-full h-screen gap-12 overflow-hidden text-base text-black bg-gray-100 isolate font-roboto">
+    <main className="flex flex-col items-center justify-end w-full h-screen gap-12 overflow-hidden text-base text-black bg-gray-100 isolate">
       <img
         src="/assets/wabi-sabi-logo.svg"
         alt="Logo"

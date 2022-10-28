@@ -7,9 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        montserrat: 'Montserrat',
         roboto: ['Roboto', 'sans-serif'],
-        ANLP: 'Avenir Next LT Pro',
       },
       colors: {
         white: '#fff',

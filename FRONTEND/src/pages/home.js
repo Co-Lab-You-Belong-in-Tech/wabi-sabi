@@ -72,7 +72,7 @@ function LandingPage() {
   return (
     <AppLayout>
       <DesktopHeader />
-      <main className="flex flex-col items-center justify-center w-full h-screen overflow-hidden text-4xl text-center text-white bg-white font-roboto gap-y-16" ref={pageRef}>
+      <main className="flex flex-col items-center justify-center w-full h-screen overflow-hidden text-4xl text-center text-white bg-white gap-y-16" ref={pageRef}>
         <div className="p-2 px-6 text-2xl text-black bg-white shadow-3xl w-fit rounded-2xl">
           <p className="tracking-[0.02em] leading-5">
             Pick a card to create a memory.

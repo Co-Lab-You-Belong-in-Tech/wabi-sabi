@@ -17,7 +17,7 @@ function DesktopOnboardingPage() {
         </nav>
       </DesktopHeader>
 
-      <main className="flex flex-col items-center justify-end w-full h-screen text-base text-black bg-white font-roboto z-1">
+      <main className="flex flex-col items-center justify-end w-full h-screen text-base text-black bg-white z-1">
         <div className="relative flex items-end justify-center w-full gap-x-20 h-2/3 bg-desktop-onboarding">
           <img
             src="/assets/dk-onboarding-page-tree.svg"

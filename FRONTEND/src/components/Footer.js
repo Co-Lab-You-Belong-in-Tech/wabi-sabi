@@ -15,7 +15,7 @@ export default function Footer() {
     <div className="fixed bottom-0 left-0 z-20 w-full">
       <div className="bg-white px-5 sm:hidden drop-shadow-3xl w-full relative z-10  p-[10px]">
         <div className="relative w-full mx-auto max-w-7xl">
-          <div className="relative z-10 flex-row justify-between sm:flex font-roboto">
+          <div className="relative z-10 flex-row justify-between sm:flex ">
             <MobileNavbar />
           </div>
         </div>

@@ -17,7 +17,7 @@
 
 //   return (
 //     <nav
-//       className="flex flex-row gap-[16px] items-center font-roboto"
+//       className="flex flex-row gap-[16px] items-center "
 //       style={{ gap: '16px' }}
 //     >
 //       <ul className="flex items-center gap-4 ml-auto list-none">
