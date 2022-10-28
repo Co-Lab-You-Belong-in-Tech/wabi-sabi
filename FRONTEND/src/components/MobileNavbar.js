@@ -7,12 +7,14 @@ const MobileNavbar = () => {
   const router = useRouter();
 
   return (
-    <nav className="flex flex-row gap-[16px] items-center font-roboto relative ">
+    <nav className="flex flex-row gap-[16px] items-center">
       <ul className="flex items-center justify-between flex-grow gap-5 px-4 sm:px-12">
-        {navItems.map((menu, index) => (
-          <li className="list-none border-0 menu-items" key={index}>
+        {navItems.map((menu) => (
+          <li className="menu-items" key={menu.url}>
             <a href={menu.url}>
               <Image
+                height={28}
+                width={28}
                 src={router.pathname === menu.url ? menu.active : menu.inactive}
               />
             </a>

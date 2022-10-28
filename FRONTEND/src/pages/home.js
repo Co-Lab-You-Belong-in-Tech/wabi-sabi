@@ -138,6 +138,6 @@ function Slide({
 Slide.propTypes = {
   question: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
-  activeIndex: PropTypes.number.isRequired,
+  activeIndex: PropTypes.number,
   index: PropTypes.number.isRequired,
 };

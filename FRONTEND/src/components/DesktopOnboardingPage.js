@@ -29,7 +29,7 @@ function DesktopOnboardingPage() {
               <img
                 className="w-[68px] h-[64px]"
                 alt="Landscape"
-                src="/assets/Group 79.svg"
+                src="/assets/mountain-icon.svg"
               />
               <div className="flex flex-col gap-1">
                 <h3 className="text-2xl font-bold">Relive Memories</h3>
@@ -43,7 +43,7 @@ function DesktopOnboardingPage() {
               <img
                 className="w-[68px] h-[64px]"
                 alt="Camera"
-                src="/assets/Group 78.svg"
+                src="/assets/shutter-icon.svg"
               />
               <div className="flex flex-col gap-1">
                 <h3 className="text-2xl font-bold">Storytelling</h3>
@@ -57,7 +57,7 @@ function DesktopOnboardingPage() {
               <img
                 className="w-[68px] h-[64px]"
                 alt="Handshake Heart"
-                src="/assets/Group 77.svg"
+                src="/assets/heart-hand-icon.svg"
               />
               <div className="flex flex-col gap-1">
                 <h3 className="text-2xl font-bold">Discover Memories</h3>

@@ -19,7 +19,7 @@ export default function Header() {
         <div className="relative w-full mx-auto max-w-7xl">
           <div className="relative z-10 flex-row justify-between hidden sm:flex font-roboto ">
             <Link href="/" className="logo">
-              <img src="/assets/Logo.svg" alt="Logo" height={63} width={144} />
+              <img src="/assets/wabi-sabi-logo.svg" alt="Logo" height={63} width={144} />
             </Link>
             <DesktopNavbar setShowMe={setShowMe} />
           </div>

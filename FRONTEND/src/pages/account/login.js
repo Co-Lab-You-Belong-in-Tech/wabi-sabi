@@ -68,7 +68,7 @@ const SignInPage = () => {
         >
           <div>
             <div className="flex items-center justify-center">
-              <Image src="/assets/Logo3.svg" alt="Logo" height={90} width={80} />
+              <Image src="/assets/auth-page-logo.svg" alt="Logo" height={90} width={80} />
               <h1 className="text-5xl tracking-[0.02em] font-bold text-center">
                 Sign In
               </h1>
