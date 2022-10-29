@@ -31,14 +31,14 @@ const DesktopNavbar = ({ setShowMe }) => {
           </li>
         ))}
       </ul>
-      <button
+      {/* <button
         onClick={toggle}
         className="w-[35px] h-[35px] bg-profile rounded-full text-center border-0 cursor-pointer"
       >
         <span className=" text-[15px] tracking-[0.02em] font-bold text-white align-middle">
           {isLoggedIn && account.user.name.substring(0, 1)}
         </span>
-      </button>
+      </button> */}
     </nav>
   );
 };

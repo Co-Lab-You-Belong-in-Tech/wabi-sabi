@@ -10,6 +10,9 @@ import { useRouter } from 'next/router';
 import 'swiper/css';
 // import { useSelector } from 'react-redux';
 import AppLayout from '../components/Layouts/AppLayout';
+import DesktopHeader from '../components/desktopHeader';
+import DesktopNavbar from '../components/DesktopNavbar';
+import Profile from '../components/Profile';
 
 const questions = [
   {
@@ -52,11 +55,11 @@ function LandingPage() {
   const handleResize = () => {
     setDomWidth(pageRef.current.offsetWidth);
   };
-  
+
   useLayoutEffect(() => {
     handleResize();
   }, []);
-  
+
   useEffect(() => {
     window.addEventListener('resize', handleResize);
 
@@ -67,8 +70,17 @@ function LandingPage() {
 
   return (
     <AppLayout>
-      <DesktopHeader />
-      <main className="flex flex-col items-center justify-center w-full h-screen overflow-hidden text-4xl text-center text-white bg-white font-roboto gap-y-16" ref={pageRef}>
+      <DesktopHeader>
+        <div className="flex ">
+          <DesktopNavbar />
+          <Profile />
+        </div>
+      </DesktopHeader>
+      <Profile />
+      <main
+        className="flex flex-col items-center justify-center w-full h-screen overflow-hidden text-4xl text-center text-white bg-white font-roboto gap-y-16"
+        ref={pageRef}
+      >
         <div className="hidden p-2 px-6 text-2xl text-black bg-white shadow-3xl md:block w-fit rounded-2xl">
           <p className="tracking-[0.02em] leading-5">
             Choose a question to start creating a memory.
@@ -103,23 +115,20 @@ function LandingPage() {
 
 export default LandingPage;
 
-function Slide({
-  question, handleClick, activeIndex, index,
-}) {
+function Slide({ question, handleClick, activeIndex, index }) {
   return (
     <button
       onClick={() => handleClick(index)}
-      className={`h-full rounded-[20px] transition-opacity duration-300 ease-out relative p-5 w-60  ${activeIndex === index ? 'bg-home-card opacity-60' : 'bg-home-card'
-        }`}
+      className={`h-full rounded-[20px] transition-opacity duration-300 ease-out relative p-5 w-60  ${
+        activeIndex === index ? 'bg-home-card opacity-60' : 'bg-home-card'
+      }`}
     >
       <strong className="tracking-wide inline-block w-[181px]">
         {question}
       </strong>
       <div className="absolute flex items-center bottom-5 gap-x-4">
         <div className=" bg-white w-[84px] h-1" />
-        <div className="text-base tracking-wide uppercase">
-          {currentDate}
-        </div>
+        <div className="text-base tracking-wide uppercase">{currentDate}</div>
       </div>
     </button>
   );

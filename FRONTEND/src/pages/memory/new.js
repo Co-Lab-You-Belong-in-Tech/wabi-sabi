@@ -4,6 +4,8 @@ import moment from 'moment/moment';
 import DesktopHeader from '../../components/desktopHeader';
 import { VscClose, VscCheck, VscAdd } from 'react-icons/vsc';
 import { BsHeartFill, BsHeart } from 'react-icons/bs';
+import DesktopNavbar from '../../components/DesktopNavbar';
+import Profile from '../../components/Profile';
 
 const NewMemory = () => {
   // handle image preview
@@ -68,9 +70,15 @@ const NewMemory = () => {
   };
 
   return (
-    <div className='relative'>
-      <DesktopHeader />
-      <main className='bg-[#F7F7F9] pt-20'>
+    <div className="relative">
+      <DesktopHeader>
+        <div className="flex ">
+          <DesktopNavbar />
+          <Profile />
+        </div>
+      </DesktopHeader>
+
+      <main className="bg-[#F7F7F9] pt-20">
         <div className="relative max-w-2xl min-h-screen pb-4 mx-auto bg-white">
           <nav className="flex items-center justify-between w-full p-4 text-2xl sm:text-5xl">
             <VscClose />
@@ -137,10 +145,7 @@ const NewMemory = () => {
             </div>
 
             <div className="flex justify-between mx-6 border-[#EDEDED] border-b-2 py-4 border-solid border-0 items-center sm:mx-20 sm:order-last sm:justify-end sm:gap-x-10 sm:border-0 sm:p-0">
-              <button
-                type="button"
-                onClick={() => setFavorite(!favorite)}
-              >
+              <button type="button" onClick={() => setFavorite(!favorite)}>
                 {favorite ? (
                   <BsHeartFill className="text-2xl text-red-600 sm:text-3xl" />
                 ) : (
@@ -183,7 +188,9 @@ const NewMemory = () => {
               />
               <p className="text-lg font-semibold">
                 <span
-                  className={storyCount < 100 ? 'text-red-500' : 'text-green-500'}
+                  className={
+                    storyCount < 100 ? 'text-red-500' : 'text-green-500'
+                  }
                 >
                   {storyCount}
                 </span>
@@ -201,7 +208,9 @@ const NewMemory = () => {
                 >
                   <VscClose />
                 </button>
-                <p className="mb-2 text-xl font-bold text-red-500 ">Required:</p>
+                <p className="mb-2 text-xl font-bold text-red-500 ">
+                  Required:
+                </p>
                 <p className="text-lg font-medium">{error}</p>
               </div>
             </div>
@@ -209,7 +218,6 @@ const NewMemory = () => {
         </div>
       </main>
     </div>
-
   );
 };
 
