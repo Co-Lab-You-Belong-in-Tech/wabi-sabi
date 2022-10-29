@@ -37,6 +37,6 @@ function DesktopHeader({ renderSide }) {
 
 export default DesktopHeader;
 
-DesktopHeader.propTypes = {
-  children: PropTypes.node,
-};
+// DesktopHeader.propTypes = {
+//   children: PropTypes.node,
+// };

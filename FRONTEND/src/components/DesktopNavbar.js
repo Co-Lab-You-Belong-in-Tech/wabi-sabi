@@ -6,12 +6,12 @@ import { useRouter } from 'next/router';
 import { menuItems } from './menuItems';
 
 const DesktopNavbar = ({ setShowMe }) => {
-  const isLoggedIn = useSelector((state) => state.account.isLoggedIn);
-  const account = useSelector((state) => state.account);
+  // const isLoggedIn = useSelector((state) => state.account.isLoggedIn);
+  // const account = useSelector((state) => state.account);
 
-  function toggle() {
-    setShowMe((prev) => !prev);
-  }
+  // function toggle() {
+  //   setShowMe((prev) => !prev);
+  // }
 
   const router = useRouter();
 
