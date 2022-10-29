@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import moment from 'moment/moment';
-import DesktopHeader from '../../components/desktopHeader';
+
 import { VscClose, VscCheck, VscAdd } from 'react-icons/vsc';
 import { BsHeartFill, BsHeart } from 'react-icons/bs';
-import DesktopNavbar from '../../components/DesktopNavbar';
-import Profile from '../../components/Profile';
+
 import AppLayout from '../../components/Layouts/AppLayout';
 
 const NewMemory = () => {

@@ -9,7 +9,7 @@ import { VscMail, VscLock } from 'react-icons/vsc';
 import { ImQuotesLeft } from 'react-icons/im';
 import { BsPerson } from 'react-icons/bs';
 import { register } from '../../actions/account';
-import DesktopHeader from '../../components/DesktopHeader';
+
 import AppLayout from '../../components/Layouts/AppLayout';
 
 const SignUpPage = () => {

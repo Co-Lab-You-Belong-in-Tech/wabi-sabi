@@ -9,9 +9,6 @@ import { useRouter } from 'next/router';
 import 'swiper/css';
 // import { useSelector } from 'react-redux';
 import AppLayout from '../components/Layouts/AppLayout';
-import DesktopHeader from '../components/desktopHeader';
-import DesktopNavbar from '../components/DesktopNavbar';
-import Profile from '../components/Profile';
 
 const questions = [
   {
