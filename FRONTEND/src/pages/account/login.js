@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import {ImQuotesRight} from 'react-icons/im'
+import { ImQuotesRight } from 'react-icons/im';
 import { ThreeDots } from 'react-loader-spinner';
 import Link from 'next/link';
 import Image from 'next/image';
 import { toast } from 'react-toastify';
-import DesktopHeader from '../../components/DesktopHeader';
 
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { VscMail, VscLock } from 'react-icons/vsc';
 import { login, reset_register_success } from '../../actions/account';
+import AppLayout from '../../components/Layouts/AppLayout';
 
 const SignInPage = () => {
   // load states from redux
@@ -59,8 +59,7 @@ const SignInPage = () => {
   }
 
   return (
-    <>
-      <DesktopHeader />
+    <AppLayout renderSide={false}>
       <main className="flex flex-col items-center justify-around w-full max-w-md min-h-screen px-12 pt-20 mx-auto bg-white">
         <form
           onSubmit={onSubmit}
@@ -68,7 +67,12 @@ const SignInPage = () => {
         >
           <div>
             <div className="flex items-center justify-center">
-              <Image src="/assets/Logo3.svg" alt="Logo" height={90} width={80} />
+              <Image
+                src="/assets/Logo3.svg"
+                alt="Logo"
+                height={90}
+                width={80}
+              />
               <h1 className="text-5xl tracking-[0.02em] font-bold text-center">
                 Sign In
               </h1>
@@ -78,7 +82,7 @@ const SignInPage = () => {
             </p>
           </div>
           <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-black w-full">
-            <VscMail className='text-2xl' />
+            <VscMail className="text-2xl" />
             <input
               className="border-none bg-[transparent] box-border items-start justify-start "
               type="email"
@@ -90,7 +94,7 @@ const SignInPage = () => {
             />
           </div>
           <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-black w-full">
-            <VscLock className='text-2xl' />
+            <VscLock className="text-2xl" />
             <input
               className="border-none bg-[transparent] items-start justify-start  "
               type="password"
@@ -108,11 +112,7 @@ const SignInPage = () => {
             className="cursor-pointer text-white p-2.5 rounded-[15px] bg-primary min-w-full max-w-xs"
           >
             <span className="tracking-[0.02em] text-white text-center font-bold text-3xl flex justify-center">
-              {loading ? (
-                <ThreeDots color='#fff' height={27}/>
-              ) : (
-                'Log In'
-              )}
+              {loading ? <ThreeDots color="#fff" height={27} /> : 'Log In'}
             </span>
           </button>
           <p className="text-base underline tracking-[0.02em] text-[inherit] inline-block text-center mb-2">
@@ -120,29 +120,23 @@ const SignInPage = () => {
           </p>
         </form>
         <div className="border-[#CECECE] border-t border-b w-full text-lg font-bold flex justify-center py-2 underline">
-        <Link
-          href="/account/register"
-        >
-          No account? Register now
-        </Link>
+          <Link href="/account/register">No account? Register now</Link>
         </div>
         <div>
           <div className="flex flex-col items-end justify-center w-full">
             <p className="text-xl tracking-[0.02em] text-center">
-              <span className="font-semibold underline">Memory</span>
-              {' '}
-              ... is
-              the diary that we all carry about with us.
+              <span className="font-semibold underline">Memory</span> ... is the
+              diary that we all carry about with us.
             </p>
-            <p className="text-3xl"><ImQuotesRight/></p>
+            <p className="text-3xl">
+              <ImQuotesRight />
+            </p>
           </div>
           <hr className="bg-[#373737] w-16 mx-auto my-4 h-0.5" />
-          <p className="text-[16px] text-center">
-            OSCAR WILDE
-          </p>
+          <p className="text-[16px] text-center">OSCAR WILDE</p>
         </div>
       </main>
-    </>
+    </AppLayout>
   );
 };
 

@@ -10,7 +10,7 @@ import { ImQuotesLeft } from 'react-icons/im'
 import { BsPerson } from 'react-icons/bs';
 import { register } from '../../actions/account';
 import DesktopHeader from '../../components/DesktopHeader';
-
+import AppLayout from '../../components/Layouts/AppLayout';
 
 const SignUpPage = () => {
   const [formData, setFormData] = useState({
@@ -63,8 +63,7 @@ const SignUpPage = () => {
   }
 
   return (
-    <>
-      <DesktopHeader />
+    <AppLayout renderSide={false}>
       <main className="flex flex-col items-center justify-around w-full max-w-md min-h-screen px-12 pt-20 mx-auto bg-white">
         <form
           onSubmit={onSubmit}
@@ -155,7 +154,7 @@ const SignUpPage = () => {
           </p>
         </div>
       </main>
-    </>
+    </AppLayout>
   );
 };
 

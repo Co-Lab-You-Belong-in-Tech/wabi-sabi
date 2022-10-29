@@ -25,7 +25,11 @@ const DesktopNavbar = ({ setShowMe }) => {
           <li className="list-none border-0 menu-items" key={index}>
             <a href={menu.url}>
               <Image
-                src={router.pathname === menu.url ? menu.active : menu.inactive}
+                src={
+                  router.pathname.includes(menu.url)
+                    ? menu.active
+                    : menu.inactive
+                }
               />
             </a>
           </li>
