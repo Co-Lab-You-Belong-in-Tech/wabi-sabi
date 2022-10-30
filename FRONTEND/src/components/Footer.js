@@ -28,7 +28,10 @@ export default function Footer() {
           }}
         >
           <div className="flex gap-[14px] pb-4 p-5 items-center ">
-            <button type="button" className="w-[27px] h-[27px] bg-profile rounded-full text-center border-0 cursor-pointer">
+            <button
+              type="button"
+              className="w-[27px] h-[27px] bg-profile rounded-full text-center border-0 cursor-pointer"
+            >
               <h2 className=" text-[15px] tracking-[0.02em] font-bold text-white align-middle">
                 {isLoggedIn && account.user.name.substring(0, 1)}
               </h2>

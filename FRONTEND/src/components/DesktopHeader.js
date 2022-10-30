@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import PropTypes from 'prop-types';
+
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import DesktopNavbar from './DesktopNavbar';

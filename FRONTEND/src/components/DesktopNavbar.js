@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
-import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+// import PropTypes from 'prop-types';
+
 import { useRouter } from 'next/router';
 import { menuItems } from './menuItems';
 
-const DesktopNavbar = ({ setShowMe }) => {
+const DesktopNavbar = () => {
   // const isLoggedIn = useSelector((state) => state.account.isLoggedIn);
   // const account = useSelector((state) => state.account);
 
@@ -49,6 +49,6 @@ const DesktopNavbar = ({ setShowMe }) => {
 
 export default DesktopNavbar;
 
-DesktopNavbar.propTypes = {
-  setShowMe: PropTypes.func.isRequired,
-};
+// DesktopNavbar.propTypes = {
+//   setShowMe: PropTypes.func.isRequired,
+// };

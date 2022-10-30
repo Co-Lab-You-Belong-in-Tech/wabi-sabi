@@ -15,7 +15,7 @@ function Onboarding() {
       setIsMobile(false);
     }
   }, [domWidth]);
-  
+
   const handleResize = () => {
     setDomWidth(pageRef.current.offsetWidth);
   };

@@ -12,31 +12,34 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "extends": ["airbnb", "plugin:react/recommended", "plugin:react-hooks/recommended"],
+  "extends": [
+    "airbnb",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "prettier"
+  ],
   "plugins": ["react", "prettier"],
   "rules": {
     "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
     "react/react-in-jsx-scope": "off",
     "import/no-unresolved": "off",
     "react/jsx-props-no-spreading": "off",
-    "prettier/prettier": "error",
+
+    "prettier/prettier": "warn",
     "jsx-a11y/label-has-associated-control": [
       "error",
       {
         "required": {
-          "some": [
-            "nesting",
-            "id"
-          ]
+          "some": ["nesting", "id"]
         }
       }
     ],
     "no-shadow": "off",
     "no-unused-vars": "warn",
     "operator-linebreak": "off",
-    "consistent-return":"off",
-    "indent":"off",
-    "camelcase":"off",
+    "consistent-return": "off",
+    "indent": "off",
+    "camelcase": "off",
     "no-param-reassign": [
       "error",
       {
@@ -46,7 +49,8 @@
     ],
     "react/prop-types": "off",
     "react/button-has-type": "off",
-    "react/no-array-index-key": "off"
+    "react/no-array-index-key": "off",
+    "react/default-props-match-prop-types": "off"
   },
   "ignorePatterns": ["dist/", "build/", "pages/_app.js"]
 }
