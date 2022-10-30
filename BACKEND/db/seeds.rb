@@ -5,3 +5,41 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+two_months_ago = Date.today - 90
+
+last_month = Date.today - 1.month
+
+today = Date.today
+
+user = User.create(
+    name: Faker::Name.name ,
+    email: Faker::Internet.email,
+    password: "password",
+    password_confirmation: "password"
+  )
+10.times do
+    Api::V1::Memory.create(
+      prompt: Faker::Lorem.sentence,
+      story: Faker::Lorem.paragraph,
+      title: Faker::Lorem.sentence,
+      public: Faker::Boolean.boolean,
+      favorite: Faker::Boolean.boolean,
+      user: user,
+      created_at: Faker::Date.between(from: last_month, to: today)
+    )
+end
+
+10.times do
+    Api::V1::Memory.create(
+      prompt: Faker::Lorem.sentence,
+      story: Faker::Lorem.paragraph,
+      title: Faker::Lorem.sentence,
+      public: Faker::Boolean.boolean,
+      favorite: Faker::Boolean.boolean,
+      user: user,
+      created_at: Faker::Date.between(from: two_months_ago, to: last_month)
+    )
+end
+
+puts "Seeded #{Api::V1::Memory.count} memories"

@@ -13,6 +13,19 @@ class Api::V1::MemoriesController < ApplicationController
     render json: memories_data
   end
 
+  def sort_memories_by_month
+    @api_v1_memories = Api::V1::Memory.includes(:user).where(user: current_user).order(created_at: :desc)
+    memories_data = {}
+    @api_v1_memories.each do |memory|
+      date = memory.created_at.strftime("%B %Y")
+      memories_data[date] = [] unless memories_data[date]
+      memories_data[date] << Api::V1::MemorySerializer.new(memory).serializable_hash[:data][:attributes]
+    end
+
+    render json: memories_data
+  end
+
+
   # GET /api/v1/memories/public
   def public_memories
     @api_v1_memories = Api::V1::Memory.includes(:user).where(public: true).order(created_at: :desc)
@@ -67,6 +80,6 @@ class Api::V1::MemoriesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def api_v1_memory_params
-    params.require(:api_v1_memory).permit(:prompt, :story, :public, :favorite, :image)
+    params.require(:api_v1_memory).permit(:prompt, :story, :title, :public, :favorite, :image)
   end
 end
