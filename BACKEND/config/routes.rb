@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :memories do
         collection do
-          get :public
+          get :public, to: 'memories#public_memories'
         end
       end
     end
