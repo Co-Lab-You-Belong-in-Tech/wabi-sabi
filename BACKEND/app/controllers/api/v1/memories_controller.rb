@@ -4,31 +4,25 @@ class Api::V1::MemoriesController < ApplicationController
 
   # GET /api/v1/memories
   def index
-    @api_v1_memories = Api::V1::Memory.includes(:user).where(user: current_user).order(created_at: :desc)
-    memories_data = []
-    @api_v1_memories.each do |memory|
-      memories_data << Api::V1::MemorySerializer.new(memory).serializable_hash[:data][:attributes]
-    end
-
-    render json: memories_data
-  end
-
-  def sort_memories_by_month
-    @api_v1_memories = Api::V1::Memory.includes(:user).where(user: current_user).order(created_at: :desc)
+    @api_v1_memories = Api::V1::Memory.includes(:image_attachment).where(user: current_user).order(created_at: :desc)
     memories_data = {}
     @api_v1_memories.each do |memory|
-      date = memory.created_at.strftime("%B %Y")
+      date = memory.created_at.strftime("%Y %B")
       memories_data[date] = [] unless memories_data[date]
       memories_data[date] << Api::V1::MemorySerializer.new(memory).serializable_hash[:data][:attributes]
     end
 
-    render json: memories_data
+    data = []
+    memories_data.each do |key, value|
+      data << {month: key, memories: value}
+    end
+    render json: data
   end
 
 
   # GET /api/v1/memories/public
   def public_memories
-    @api_v1_memories = Api::V1::Memory.includes(:user).where(public: true).order(created_at: :desc)
+    @api_v1_memories = Api::V1::Memory.includes(:image_attachment).where(public: true).order(created_at: :desc)
     public_memories_data = []
     @api_v1_memories.each do |memory|
       public_memories_data << Api::V1::MemorySerializer.new(memory).serializable_hash[:data][:attributes]
