@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_11_194532) do
   create_table "api_v1_memories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "prompt"
     t.text "story"
+    t.string "title"
     t.boolean "public"
     t.boolean "favorite"
     t.uuid "user_id", null: false
