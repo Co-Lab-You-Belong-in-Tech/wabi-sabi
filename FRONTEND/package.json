@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "@redux-devtools/extension": "^3.2.3",
+    "@reduxjs/toolkit": "^1.8.6",
     "cookie": "^0.5.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "localstorage-slim": "^2.3.0",
     "moment": "^2.29.4",
     "next": "12.3.1",
     "next-auth": "^4.14.0",
