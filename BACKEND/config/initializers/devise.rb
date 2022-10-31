@@ -25,6 +25,7 @@ Devise.setup do |config|
       ['POST', %r{^/users/sign_in$}],
       ['POST', %r{^/users$}],
     ]
+    jwt.expiration_time = 30.day.to_i
   end
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
