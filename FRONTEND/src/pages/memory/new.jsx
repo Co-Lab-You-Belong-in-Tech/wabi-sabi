@@ -101,14 +101,23 @@ const NewMemory = () => {
                 className="hidden"
               />
               {preview && (
-                <Image
-                  src={preview}
-                  className="absolute"
-                  layout="fill"
-                  objectFit="cover"
-                  quality={100}
-                  alt="memory media"
-                />
+                <>
+                  <Image
+                    src={preview}
+                    className="absolute"
+                    layout="fill"
+                    objectFit="contain"
+                    quality={100}
+                    alt="memory media"
+                  />
+                  <button
+                    type="button"
+                    className="absolute p-1 bg-white rounded-md bottom-2 right-2"
+                    onClick={() => setSelectedFile(null)}
+                  >
+                    Change photo
+                  </button>
+                </>
               )}
               <button
                 id="upload-icon"
@@ -137,10 +146,7 @@ const NewMemory = () => {
             </div>
 
             <div className="flex justify-between mx-6 border-[#EDEDED] border-b-2 py-4 border-solid border-0 items-center sm:mx-20 sm:order-last sm:justify-end sm:gap-x-10 sm:border-0 sm:p-0">
-              <button
-                type="button"
-                onClick={() => setFavorite(!favorite)}
-              >
+              <button type="button" onClick={() => setFavorite(!favorite)}>
                 {favorite ? (
                   <BsHeartFill className="text-2xl text-red-600 sm:text-3xl" />
                 ) : (
@@ -182,9 +188,7 @@ const NewMemory = () => {
                 required
               />
               <p className="text-lg font-semibold">
-                <span
-                  className={storyCount < 100 ? 'text-red-500' : 'text-green-500'}
-                >
+                <span className={storyCount < 100 ? 'text-red-500' : 'text-green-500'}>
                   {storyCount}
                 </span>
                 /100
@@ -209,7 +213,6 @@ const NewMemory = () => {
         </div>
       </main>
     </div>
-
   );
 };
 
