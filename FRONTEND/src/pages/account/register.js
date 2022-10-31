@@ -12,7 +12,7 @@ import { register } from '../../actions/account';
 
 import AppLayout from '../../components/Layouts/AppLayout';
 
-const SignUpPage = () => {
+function SignUpPage() {
   const [formData, setFormData] = useState({
     full_name: '',
     email: '',
@@ -159,6 +159,6 @@ const SignUpPage = () => {
       </main>
     </AppLayout>
   );
-};
+}
 
 export default SignUpPage;

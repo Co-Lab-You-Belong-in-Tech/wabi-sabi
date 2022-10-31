@@ -11,7 +11,7 @@ import { VscMail, VscLock } from 'react-icons/vsc';
 import { login, reset_register_success } from '../../actions/account';
 import AppLayout from '../../components/Layouts/AppLayout';
 
-const SignInPage = () => {
+function SignInPage() {
   // load states from redux
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.account.loading);
@@ -138,6 +138,6 @@ const SignInPage = () => {
       </main>
     </AppLayout>
   );
-};
+}
 
 export default SignInPage;

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { menuItems } from './menuItems';
 
-const DesktopNavbar = () => {
+function DesktopNavbar() {
   // const isLoggedIn = useSelector((state) => state.account.isLoggedIn);
   // const account = useSelector((state) => state.account);
 
@@ -45,7 +45,7 @@ const DesktopNavbar = () => {
       </button> */}
     </nav>
   );
-};
+}
 
 export default DesktopNavbar;
 
