@@ -1,16 +1,9 @@
 {
   "env": {
     "browser": true,
+    "node": true,
     "es6": true,
     "jest": true
-  },
-  "parser": "@babel/eslint-parser",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 2018,
-    "sourceType": "module"
   },
   "extends": [
     "airbnb",
@@ -18,6 +11,13 @@
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended"
   ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
   "plugins": ["react", "prettier"],
   "rules": {
     "prettier/prettier": "error",
@@ -50,7 +50,8 @@
     "react/prop-types": "off",
     "react/button-has-type": "off",
     "react/no-array-index-key": "off",
-    "react/default-props-match-prop-types": "off"
+    "react/default-props-match-prop-types": "off",
+    "jsx-a11y/click-events-have-key-events": "off"
   },
   "ignorePatterns": ["dist/", "build/", "pages/_app.js"]
 }

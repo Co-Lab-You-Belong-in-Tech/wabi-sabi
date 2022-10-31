@@ -1,12 +1,11 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
-import data from '../../components/data/data';
 import { BsArrowLeft } from 'react-icons/bs';
+import data from '../../components/data/data';
 import AppLayout from '../../components/Layouts/AppLayout';
-import DesktopHeader from '../../components/desktopHeader';
-import DesktopNavbar from '../../components/DesktopNavbar';
-import Profile from '../../components/Profile';
 
 function memory({ name, date, image, title, caption, story, id }) {
   const { back } = useRouter();
@@ -60,10 +59,10 @@ function memory({ name, date, image, title, caption, story, id }) {
 
 export default memory;
 
-export function getStaticProps({ query, params }) {
+export function getStaticProps({ params }) {
   const { memoryId } = params;
 
-  const memoryData = data.find((_memory) => _memory.id == memoryId);
+  const memoryData = data.find((_memory) => _memory.id.toString() === memoryId);
 
   return {
     props: { ...memoryData },

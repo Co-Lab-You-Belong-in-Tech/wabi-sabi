@@ -7,7 +7,7 @@ import { BsHeartFill, BsHeart } from 'react-icons/bs';
 
 import AppLayout from '../../components/Layouts/AppLayout';
 
-const NewMemory = () => {
+function NewMemory() {
   // handle image preview
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState();
@@ -214,6 +214,6 @@ const NewMemory = () => {
       </div>
     </AppLayout>
   );
-};
+}
 
 export default NewMemory;
