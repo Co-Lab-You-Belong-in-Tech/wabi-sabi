@@ -9,10 +9,14 @@ function DesktopOnboardingPage() {
       <DesktopHeader>
         <nav className="flex items-center gap-x-2">
           <Link href="/account/register">
-            <p className='text-xl font-bold px-3 py-[10px] cursor-pointer'>Sign up</p>
+            <p className="text-xl font-bold px-3 py-[10px] cursor-pointer">
+              Sign up
+            </p>
           </Link>
           <Link href="/account/login">
-            <p className='text-xl font-bold px-3 py-[10px] cursor-pointer'>Log in</p>
+            <p className="text-xl font-bold px-3 py-[10px] cursor-pointer">
+              Log in
+            </p>
           </Link>
         </nav>
       </DesktopHeader>
@@ -66,9 +70,8 @@ function DesktopOnboardingPage() {
                 </p>
               </div>
             </article>
-          
           </section>
-          <section className='flex self-start h-full pt-12'>
+          <section className="flex self-start h-full pt-12">
             <span>
               <Image
                 src="/assets/dk-onboarding-page-card-1.svg"
@@ -77,7 +80,7 @@ function DesktopOnboardingPage() {
                 height={285}
               />
             </span>
-            <span className='self-center'>
+            <span className="self-center">
               <Image
                 src="/assets/dk-onboarding-page-card-2.svg"
                 alt="Have easy access to all your memories in one place!"
@@ -85,7 +88,7 @@ function DesktopOnboardingPage() {
                 height={285}
               />
             </span>
-            <span className='self-end'>
+            <span className="self-end">
               <Image
                 src="/assets/dk-onboarding-page-card-3.svg"
                 alt="See what memories are shared by others!"

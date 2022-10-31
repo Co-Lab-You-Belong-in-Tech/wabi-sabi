@@ -4,10 +4,7 @@ import Link from 'next/link';
 function MobileOnboardingPage() {
   return (
     <main className="flex flex-col items-center justify-end w-full h-screen gap-12 overflow-hidden text-base text-black bg-gray-100 isolate font-roboto">
-      <img
-        src="/assets/Logo.svg"
-        alt="Logo"
-      />
+      <img src="/assets/Logo.svg" alt="Logo" />
       <div className="flex flex-col items-center w-full pt-20 pb-10 bg-mobile-onboarding">
         <section className="text-black w-[263px] flex flex-col gap-5">
           <article className="flex items-center gap-5">
@@ -63,7 +60,10 @@ function MobileOnboardingPage() {
             </Link>
 
             <Link href="account/login">
-              <p className="text-lg tracking-[0.02em] text-center text-black underline"> Sign in to existing account</p>
+              <p className="text-lg tracking-[0.02em] text-center text-black underline">
+                {' '}
+                Sign in to existing account
+              </p>
             </Link>
           </div>
         </section>

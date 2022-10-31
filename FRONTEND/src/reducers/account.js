@@ -1,3 +1,4 @@
+/* eslint-disable default-param-last */
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
