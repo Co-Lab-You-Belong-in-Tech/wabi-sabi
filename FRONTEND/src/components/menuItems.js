@@ -1,6 +1,5 @@
 import InActiveCompas from '../../public/assets/Compass.svg';
 import ActiveCompas from '../../public/assets/CompassColored.svg';
-// you need to rename these files o, would do
 
 export const menuItems = [
   {
@@ -18,7 +17,7 @@ export const menuItems = [
   {
     inactive: InActiveCompas,
     active: ActiveCompas,
-    // title: <VscCompass style={{ width: '30', height: '30', color: '#666' }} />,
+
     url: '/discover',
   },
 ];
@@ -39,7 +38,7 @@ export const navItems = [
   {
     inactive: InActiveCompas,
     active: ActiveCompas,
-    // title: <VscCompass style={{ width: '30', height: '30', color: '#666' }} />,
+
     url: '/discover',
   },
 ];
