@@ -11,15 +11,15 @@ export default function Profile() {
     dispatch(logout());
   };
   return (
-    <div>
-      <div className="relative z-10 flex justify-end w-full px-5 py-4 mx-auto  max-w-7xl">
+    <>
+      <div className="relative z-10 w-max">
         <button
           type="button"
           onClick={() => setShowMe((prev) => !prev)}
           className="relative w-[35px] h-[35px] bg-profile rounded-full text-center border-0 cursor-pointer"
         >
           <span className=" text-[15px] tracking-[0.02em] -translate-x-1/2 font-bold text-white align-middle">
-            {isLoggedIn && account.user.name.substring(0, 1)}
+            {/* {isLoggedIn && account.user.name.substring(0, 1)} */}U
           </span>
           <span
             className="absolute top-[110%] left-1/2 -translate-x-1/2 w-0 h-0 duration-700 border-solid border-[13px] border-black/0 border-t-green-500"
@@ -27,10 +27,10 @@ export default function Profile() {
           />
         </button>
       </div>
-      <div className="px-5">
-        <div className="relative w-full mx-auto max-w-7xl">
+      <div className={`z-10 px-5 absolute top-16 ${showMe ? 'block' : 'hidden'}`}>
+        <div className="relative md:w-[270px] w-[144px]">
           <div
-            className="absolute right-0 overflow-hidden text-2xl text-black duration-500 bg-white shadow-3xl rounded-4xl w-max max-h-0 transition-max top-3"
+            className="absolute right-0 w-full overflow-hidden text-2xl text-black duration-500 bg-white shadow-3xl rounded-4xl max-h-0 transition-max top-3"
             style={{
               maxHeight: showMe ? '400px' : '0px',
             }}
@@ -51,7 +51,7 @@ export default function Profile() {
               <button
                 type="button"
                 onClick={handleLogout}
-                className="font-bold text-black text-2xl mb-[15px] no-underline  cursor-pointer"
+                className="text-2xl font-bold text-black no-underline cursor-pointer"
               >
                 Sign Out
               </button>
@@ -59,6 +59,6 @@ export default function Profile() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
