@@ -1,7 +1,8 @@
-import storage from '../store/localStore';
+import LocalStore from '../store/localStore';
 
 export const signin = async (baseURL, email, password) => {
-  const response = await fetch(`${baseURL}/users/sign_in`,
+  const response = await fetch(
+`${baseURL}/users/sign_in`,
     {
       method: 'POST',
       body: JSON.stringify({
@@ -13,18 +14,20 @@ export const signin = async (baseURL, email, password) => {
       headers: {
         'Content-Type': 'application/json',
       },
-    });
+    },
+);
   const result = await response.json();
   const token = response.headers.get('Authorization');
   if (token) {
-    storage.save('token', token);
-    storage.save('name', result.name);
+    LocalStore.save('token', token);
+    LocalStore.save('name', result.name);
   }
   return result;
 };
 
 export const signup = async (baseURL, name, email, password, confirmation) => {
-  const response = await fetch(`${baseURL}/users`,
+  const response = await fetch(
+`${baseURL}/users`,
     {
       method: 'POST',
       body: JSON.stringify({
@@ -38,12 +41,13 @@ export const signup = async (baseURL, name, email, password, confirmation) => {
       headers: {
         'Content-Type': 'application/json',
       },
-    });
+    },
+);
   const result = await response.json();
   const token = response.headers.get('Authorization');
   if (token) {
-    storage.save('token', token);
-    storage.save('name', result.name);
+    LocalStore.save('token', token);
+    LocalStore.save('name', result.name);
   }
   return result;
 };
