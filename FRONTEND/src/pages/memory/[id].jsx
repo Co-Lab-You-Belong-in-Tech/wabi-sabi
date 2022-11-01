@@ -3,74 +3,72 @@ import Image from 'next/image';
 import moment from 'moment/moment';
 import { VscArrowLeft, VscCheck, VscAdd } from 'react-icons/vsc';
 import { BsHeartFill, BsHeart } from 'react-icons/bs';
-import DesktopHeader from '../../components/desktopHeader';
-
+import AppLayout from '../../components/Layouts/AppLayout';
 
 export default function ViewMemory() {
   const [selectedFile, setSelectedFile] = useState();
-const [preview, setPreview] = useState();
+  const [preview, setPreview] = useState();
 
-// state variables for the memory entry
-const [title, setTitle] = useState('');
-const [story, setStory] = useState('');
-const [favorite, setFavorite] = useState(false);
-const [isPublic, setIsPublic] = useState(false);
-const prompt = 'What are you grateful for today?';
+  // state variables for the memory entry
+  const [title, setTitle] = useState('');
+  const [story, setStory] = useState('');
+  const [favorite, setFavorite] = useState(false);
+  const [isPublic, setIsPublic] = useState(false);
+  const prompt = 'What are you grateful for today?';
 
-// keep track of the character count for the story and handle errors
-const [storyCount, setStoryCount] = useState(0);
-const [error, setError] = useState(null);
+  // keep track of the character count for the story and handle errors
+  const [storyCount, setStoryCount] = useState(0);
+  const [error, setError] = useState(null);
 
-// add a reference to the actual file input field
-const uploadButton = useRef(null);
-const clickUploadButton = () => {
-  uploadButton.current.click();
-};
+  // add a reference to the actual file input field
+  const uploadButton = useRef(null);
+  const clickUploadButton = () => {
+    uploadButton.current.click();
+  };
 
-useEffect(() => {
-  if (!selectedFile) {
-    setPreview(undefined);
-    return;
-  }
+  useEffect(() => {
+    if (!selectedFile) {
+      setPreview(undefined);
+      return;
+    }
 
-  const objectUrl = URL.createObjectURL(selectedFile);
-  setPreview(objectUrl);
+    const objectUrl = URL.createObjectURL(selectedFile);
+    setPreview(objectUrl);
 
-  return () => URL.revokeObjectURL(objectUrl);
-}, [selectedFile]);
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
 
-const onSelectFile = (e) => {
-  setSelectedFile(e.target.files[0] || undefined);
-};
+  const onSelectFile = (e) => {
+    setSelectedFile(e.target.files[0] || undefined);
+  };
 
-const submitMemory = () => {
-  // prevent default behavior if some fields don't meet the requirements
-  if (storyCount < 100) {
-    setError('You need to meet 100 characters for your story.');
-    return;
-  }
-  if (!title) {
-    setError('You need to add a title for your memory.');
-    return;
-  }
-  if (!selectedFile) {
-    setError('You need to add an image for your memory.');
-    return;
-  }
-  // send the data to the backend
-  const formData = new FormData();
-  formData.append('api_v1_memory[title]', title);
-  formData.append('api_v1_memory[story]', story);
-  formData.append('api_v1_memory[favorite]', favorite);
-  formData.append('api_v1_memory[isPublic]', isPublic);
-  formData.append('api_v1_memory[image]', selectedFile);
-  formData.append('api_v1_memory[prompt]', prompt);
-};
+  const submitMemory = () => {
+    // prevent default behavior if some fields don't meet the requirements
+    if (storyCount < 100) {
+      setError('You need to meet 100 characters for your story.');
+      return;
+    }
+    if (!title) {
+      setError('You need to add a title for your memory.');
+      return;
+    }
+    if (!selectedFile) {
+      setError('You need to add an image for your memory.');
+      return;
+    }
+    // send the data to the backend
+    const formData = new FormData();
+    formData.append('api_v1_memory[title]', title);
+    formData.append('api_v1_memory[story]', story);
+    formData.append('api_v1_memory[favorite]', favorite);
+    formData.append('api_v1_memory[isPublic]', isPublic);
+    formData.append('api_v1_memory[image]', selectedFile);
+    formData.append('api_v1_memory[prompt]', prompt);
+  };
 
   return (
-    <>
-      <DesktopHeader />
-      <main>
+    <AppLayout>
+      <main className="bg-[#F7F7F9]">
         <div className="relative max-w-2xl min-h-screen pb-4 mx-auto bg-white">
           <nav className="flex items-center justify-between w-full p-4 text-2xl sm:text-5xl">
             <VscArrowLeft />
@@ -213,6 +211,6 @@ const submitMemory = () => {
         </div>
         ;
       </main>
-    </>
+    </AppLayout>
   );
 }
