@@ -1,4 +1,4 @@
-import storage from "../store/localStore";
+import storage from '../store/localStore';
 
 export const signin = async (baseURL, email, password) => {
   const response = await fetch(`${baseURL}/users/sign_in`,

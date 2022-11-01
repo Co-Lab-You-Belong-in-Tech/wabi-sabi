@@ -18,7 +18,7 @@ function initStore(initialState) {
   return createStore(
     persistedReducer,
     initialState,
-    composeWithDevTools(applyMiddleware(thunkMiddleware))
+    composeWithDevTools(applyMiddleware(thunkMiddleware)),
   );
 }
 
@@ -49,7 +49,7 @@ export function useStore(initialState) {
   const store = useMemo(() => initializeStore(initialState), [initialState]);
   const persistor = useMemo(
     () => persistStore(initializeStore(initialState)),
-    [initialState]
+    [initialState],
   );
   return { store, persistor };
 }

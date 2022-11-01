@@ -8,7 +8,7 @@ class StoreData {
   }
 
   save = (key, data) => {
-    ls.set(key, data, {ttl: 2505600}); // expires after 4 weeks / 28 days
+    ls.set(key, data, { ttl: 2505600 }); // expires after 4 weeks / 28 days
   }
 
   remove = (key) => {

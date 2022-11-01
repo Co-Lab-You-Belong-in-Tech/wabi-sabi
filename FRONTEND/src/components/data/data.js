@@ -3,7 +3,8 @@ import clouds from '../../../public/assets/clouds.png';
 import dog from '../../../public/assets/dog.png';
 import dish from '../../../public/assets/dish.png';
 
-const currentDate = moment().format('MMM D').split(',').join('').toUpperCase();
+const currentDate = moment().format('MMM D').split(',').join('')
+.toUpperCase();
 
 const data = [
   {
