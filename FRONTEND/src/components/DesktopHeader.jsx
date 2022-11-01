@@ -3,14 +3,18 @@ import Image from 'next/image';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
-import DesktopNavbar from './DesktopNavbar';
 import Profile from './Profile';
 
 export default function DesktopHeader({ renderSide }) {
   const isLoggedIn = useSelector((state) => state.account.isLoggedIn);
   return (
     <header className="md:flex items-center justify-between w-full bg-white h-[72px] px-36 drop-shadow-3xl sticky top-0 hidden z-20">
-      <Image src="/assets/Logo.svg" alt="Logo" width={144} height={63} />
+      <Image
+        src="/assets/wabi-sabi-logo.svg"
+        alt="Logo"
+        width={144}
+        height={63}
+      />
       {renderSide &&
         (isLoggedIn ? (
           <div className="flex ">
@@ -38,3 +42,23 @@ export default function DesktopHeader({ renderSide }) {
 DesktopHeader.propTypes = {
   renderSide: PropTypes.bool.isRequired,
 };
+
+function DesktopNavbar() {
+  return (
+    <nav className="flex flex-row items-center font-roboto">
+      <ul className="flex items-center gap-4 ml-auto list-none">
+        {navItems.map((menu, index) => (
+          <li className="list-none border-0 menu-items" key={index}>
+            <Link href={menu.url}>
+              <Image
+                src={router.pathname === menu.url ? menu.active : menu.inactive}
+                height={28}
+                width={28}
+              />
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}

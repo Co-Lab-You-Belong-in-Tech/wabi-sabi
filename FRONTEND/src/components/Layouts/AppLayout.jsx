@@ -13,11 +13,11 @@ function AppLayout({ children, renderSide }) {
   );
 }
 
+export default AppLayout;
+
 AppLayout.defaultProps = {
   renderSide: true,
 };
-
-export default AppLayout;
 
 AppLayout.propTypes = {
   children: PropTypes.node.isRequired,

@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { navItems } from './menuItems';
+import navItems from './navItems';
 
 const MobileNavbar = () => {
   const router = useRouter();
