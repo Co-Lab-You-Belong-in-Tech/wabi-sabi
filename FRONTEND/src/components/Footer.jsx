@@ -1,25 +1,37 @@
-import React, { useState } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { logout } from '../actions/account';
-import MobileNavbar from './MobileNavbar';
+import React from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import navItems from './navItems';
+
 
 export default function Footer() {
-  // const [showMe, setShowMe] = useState(false);
-  // const isLoggedIn = useSelector((state) => state.account.isLoggedIn);
-  // const account = useSelector((state) => state.account);
-  // const dispatch = useDispatch();
-  // const handleLogout = () => {
-  //   dispatch(logout());
-  // };
   return (
     <div className="fixed bottom-0 left-0 z-20 w-full">
-      <div className="bg-white px-5 sm:hidden drop-shadow-3xl w-full relative z-10  p-[10px]">
-        <div className="relative w-full mx-auto max-w-7xl">
-          <div className="relative z-10 flex-row justify-between sm:flex ">
-            <MobileNavbar />
-          </div>
-        </div>
+      <div className="w-full px-5 pt-2 pb-5 bg-white sm:hidden drop-shadow-3xl">
+        <MobileNavbar />
       </div>
     </div>
   );
 }
+
+
+function MobileNavbar() {
+  const router = useRouter();
+
+  return (
+    <nav className="flex flex-row gap-[16px] items-center">
+      <ul className="flex items-center justify-between flex-grow gap-5 px-4 sm:px-12">
+        {navItems.map((menu) => (
+          <li className="menu-items" key={menu.url}>
+            <Link href={menu.url}>
+              <img
+                src={router.pathname === menu.url ? menu.active : menu.inactive}
+                className="h-9 w-9"
+              />
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+};
