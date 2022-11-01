@@ -71,7 +71,7 @@ function NewMemory() {
     <AppLayout>
       <div className="relative">
         <main className="bg-[#F7F7F9]">
-          <div className="relative max-w-2xl min-h-screen pb-4 mx-auto bg-white">
+          <div className="relative max-w-[621px] min-h-screen pb-4 mx-auto bg-white">
             <nav className="flex items-center justify-between w-full p-4 text-2xl sm:text-5xl">
               <VscClose />
               <span className="text-base leading-6 uppercase sm:text-2xl sm:px-6">
@@ -101,14 +101,23 @@ function NewMemory() {
                   className="hidden"
                 />
                 {preview && (
-                  <Image
-                    src={preview}
-                    className="absolute"
-                    layout="fill"
-                    objectFit="cover"
-                    quality={100}
-                    alt="memory media"
-                  />
+                  <>
+                    <Image
+                      src={preview}
+                      className="absolute"
+                      layout="fill"
+                      objectFit="contain"
+                      quality={100}
+                      alt="memory media"
+                    />
+                    <button
+                      type="button"
+                      className="absolute bg-white rounded-md bottom-2 right-2 p-0.5"
+                      onClick={() => setSelectedFile(null)}
+                    >
+                      Change photo
+                    </button>
+                  </>
                 )}
                 <button
                   id="upload-icon"
@@ -158,7 +167,7 @@ function NewMemory() {
                 </div>
               </div>
 
-              <div className="px-5 py-2 m-6 text-lg font-medium bg-white sm:mx-20 shadow-box rounded-xl">
+              <div className="px-5 py-2 m-6 text-lg font-semibold bg-white sm:mx-20 shadow-box rounded-xl">
                 <p>{prompt}</p>
               </div>
 
@@ -179,11 +188,7 @@ function NewMemory() {
                   required
                 />
                 <p className="text-lg font-semibold">
-                  <span
-                    className={
-                      storyCount < 100 ? 'text-red-500' : 'text-green-500'
-                    }
-                  >
+                  <span className={storyCount < 100 ? 'text-red-500' : 'text-green-500'}>
                     {storyCount}
                   </span>
                   /100
@@ -200,9 +205,7 @@ function NewMemory() {
                   >
                     <VscClose />
                   </button>
-                  <p className="mb-2 text-xl font-bold text-red-500 ">
-                    Required:
-                  </p>
+                  <p className="mb-2 text-xl font-bold text-red-500 ">Required:</p>
                   <p className="text-lg font-medium">{error}</p>
                 </div>
               </div>
