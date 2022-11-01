@@ -13,29 +13,20 @@ export default function DesktopHeader({ renderSide }) {
 
   return (
     <header className="md:flex items-center justify-between w-full bg-white h-[72px] px-36 drop-shadow-3xl fixed top-0 hidden z-20">
-      <Image
-        src="/assets/wabi-sabi-logo.svg"
-        alt="Logo"
-        width={144}
-        height={63}
-      />
+      <Image src="/assets/wabi-sabi-logo.svg" alt="Logo" width={144} height={63} />
       {renderSide &&
         (isLoggedIn ? (
-          <div className="relative flex justify-end item-center">
+          <div className="relative flex items-center justify-end">
             <DesktopNavbar />
             <Profile />
           </div>
         ) : (
           <nav className="flex flex-row items-center gap-x-2">
             <Link href="/account/register">
-              <p className="text-xl font-bold px-3 py-[10px] cursor-pointer">
-                Sign up
-              </p>
+              <p className="text-xl font-bold px-3 py-[10px] cursor-pointer">Sign up</p>
             </Link>
             <Link href="/account/login">
-              <p className="text-xl font-bold px-3 py-[10px] cursor-pointer">
-                Log in
-              </p>
+              <p className="text-xl font-bold px-3 py-[10px] cursor-pointer">Log in</p>
             </Link>
           </nav>
         ))}
@@ -48,16 +39,20 @@ DesktopHeader.propTypes = {
 };
 
 function DesktopNavbar() {
-  const router = useRouter()
+  const router = useRouter();
   return (
     <nav className="flex items-center mr-6">
-      <ul className="flex items-center gap-6 ml-auto list-none">
-        {navItems.map((menu, index) => (
-          <li className="list-none border-0 menu-items" key={index}>
+      <ul className="flex items-end gap-6 ml-auto list-none">
+        {navItems.map((menu) => (
+          <li
+            className={`list-none relative h-9 flex items-center cursor-pointer border-0 menu-items ${
+              menu.url === '/home' && 'order-first'
+            }`}
+            key={menu.url}
+          >
             <Link href={menu.url}>
-              <img
-                src={router.pathname === menu.url ? menu.active : menu.inactive}
-                className="h-9 w-9"
+              <img src={router.pathname === menu.url ? menu.active : menu.inactive}
+                className="object-cover"
               />
             </Link>
           </li>
