@@ -58,8 +58,9 @@ input::placeholder {
   color: #37C367;
   opacity: 1;
   background: #fff !important;
-  border: 2px solid #37C367;
+  border: 1px solid #37C367;
   margin: 0 6px !important;
+  opacity: 1 !important;
 }
 
 .swiper-pagination-bullet-active {
