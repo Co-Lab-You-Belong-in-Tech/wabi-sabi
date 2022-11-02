@@ -25,7 +25,7 @@ function MobileNavbar() {
           <li className="menu-items" key={menu.url}>
             <Link href={menu.url}>
               <img
-                src={router.pathname === menu.url ? menu.active : menu.inactive}
+                src={checkUrlMatch(menu.activeUrls, router.pathname) ? menu.active : menu.inactive}
                 className="h-9 w-9"
               />
             </Link>
@@ -35,3 +35,12 @@ function MobileNavbar() {
     </nav>
   );
 };
+
+function checkUrlMatch(array, pathname) {
+  for (let i = 0; i < array.length; i += 1) {
+    if (pathname.indexOf(array[i]) !== -1) {
+      return true;
+    }
+  }
+  return false;
+}

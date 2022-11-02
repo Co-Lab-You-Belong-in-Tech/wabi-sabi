@@ -40,6 +40,7 @@ DesktopHeader.propTypes = {
 
 function DesktopNavbar() {
   const router = useRouter();
+  console.log(router.pathname)
   return (
     <nav className="flex items-center mr-6">
       <ul className="flex items-end gap-6 ml-auto list-none">

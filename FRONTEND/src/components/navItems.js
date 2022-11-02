@@ -3,7 +3,7 @@ const navItems = [
     inactive: '/assets/inactive-memories-icon.svg',
     active: '/assets/active-memories-icon.svg',
     url: '/memories',
-    activeUrls: ['/memories', '/memory'],
+    activeUrls: ['/memories', '/memory/[id]'],
   },
   {
     inactive: '/assets/inactive-home-icon.svg',

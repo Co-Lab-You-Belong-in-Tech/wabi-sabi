@@ -129,6 +129,7 @@ export default function ViewMemory() {
                   objectFit="contain"
                   quality={100}
                   alt="memory media"
+                  priority
                 />
               )}
               {editMode && (

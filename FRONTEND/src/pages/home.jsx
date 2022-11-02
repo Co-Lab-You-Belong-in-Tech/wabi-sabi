@@ -12,6 +12,7 @@ import 'swiper/css/pagination';
 
 import AppLayout from '../components/Layouts/AppLayout';
 import Profile from '../components/Profile';
+import Link from 'next/link';
 
 const questions = [
   {
@@ -74,13 +75,12 @@ function LandingPage() {
         ref={pageRef}
       >
         <div className="fixed px-2 right-8 top-4 md:hidden">
-          <div className='relative'><Profile /></div>
-          
+          <div className="relative">
+            <Profile />
+          </div>
         </div>
         <div className="p-2 px-6 text-2xl text-black bg-white shadow-3xl w-fit rounded-2xl">
-          <p className="tracking-[0.02em] leading-5 font-medium">
-            Pick a card to create a memory.
-          </p>
+          <p className="tracking-[0.02em] leading-5">Pick a card to create a memory.</p>
         </div>
         <div className="mx-16 md:max-w-max">
           <Swiper
@@ -118,19 +118,20 @@ export default LandingPage;
 
 function Slide({ question, handleClick, activeIndex, index }) {
   return (
-    <button
-      type="button"
-      onClick={() => handleClick(index)}
-      className={`h-full rounded-[20px] transition-opacity duration-300 ease-out relative p-5 w-60  ${
-        activeIndex === index ? 'bg-home-card opacity-60' : 'bg-home-card'
-      }`}
-    >
-      <strong className="tracking-wide inline-block w-[181px]">{question}</strong>
-      <div className="absolute flex items-center bottom-5 gap-x-4">
-        <div className=" bg-white w-[84px] h-1" />
-        <div className="text-base tracking-wide uppercase">{currentDate}</div>
-      </div>
-    </button>
+    <Link href="memory/new">
+      <button
+        type="button"
+        className={`h-full rounded-[20px] transition-opacity duration-300 ease-out relative p-5 w-60  ${
+          activeIndex === index ? 'bg-home-card opacity-60' : 'bg-home-card'
+        }`}
+      >
+        <strong className="tracking-wide inline-block w-[181px]">{question}</strong>
+        <div className="absolute flex items-center bottom-5 gap-x-4">
+          <div className=" bg-white w-[84px] h-1" />
+          <div className="text-base tracking-wide uppercase">{currentDate}</div>
+        </div>
+      </button>
+    </Link>
   );
 }
 

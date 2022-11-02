@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import moment from 'moment/moment';
+import { useRouter } from 'next/router';
 import { VscClose, VscCheck, VscAdd } from 'react-icons/vsc';
 import { BsHeartFill, BsHeart } from 'react-icons/bs';
 import AppLayout from '../../components/Layouts/AppLayout';
@@ -67,13 +68,17 @@ function NewMemory() {
     formData.append('api_v1_memory[prompt]', prompt);
   };
 
+  const { back } = useRouter();
+
   return (
     <AppLayout>
       <div className="relative">
         <main className="bg-[#F7F7F9] md:pt-20 pb-14 md:pb-0">
           <div className="relative max-w-[621px] min-h-screen pb-4 mx-auto bg-white">
             <nav className="flex items-center justify-between w-full p-4 text-2xl sm:text-5xl">
-              <VscClose />
+              <button type="button" onClick={back}>
+                <VscClose />
+              </button>
               <span className="text-base leading-6 uppercase sm:text-2xl sm:px-6">
                 {moment().format('ddd ll')}
               </span>
@@ -167,7 +172,7 @@ function NewMemory() {
                 </div>
               </div>
 
-              <div className="px-5 py-2 m-6 text-lg font-semibold bg-white sm:mx-20 shadow-box rounded-xl">
+              <div className="px-5 py-2 m-6 text-lg font-medium bg-white sm:mx-20 shadow-box rounded-xl">
                 <p>{prompt}</p>
               </div>
 
