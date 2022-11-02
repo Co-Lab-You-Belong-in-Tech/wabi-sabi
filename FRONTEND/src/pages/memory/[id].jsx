@@ -5,20 +5,20 @@ import { VscArrowLeft, VscCheck, VscAdd, VscClose } from 'react-icons/vsc';
 import { BsHeartFill, BsHeart, BsGlobe } from 'react-icons/bs';
 import { GrLock } from 'react-icons/gr';
 import AppLayout from '../../components/Layouts/AppLayout';
+import { memory } from '../../components/data/memories';
 
 export default function ViewMemory() {
   const [editMode, setEditMode] = useState(false);
   const [changedFiles, setChangedFiles] = useState({
-    title: '',
-    story: '',
+    title: memory.title,
+    story: memory.story,
   });
   const [selectedFile, setSelectedFile] = useState();
-  const [preview, setPreview] = useState();
+  const [preview, setPreview] = useState(memory.image_url);
 
   // state variables for the memory entry
-  const [favorite, setFavorite] = useState(false);
-  const [isPublic, setIsPublic] = useState(false);
-  const prompt = 'What are you grateful for today?';
+  const [favorite, setFavorite] = useState(memory.favorite);
+  const [isPublic, setIsPublic] = useState(memory.public);
 
   // keep track of the character count for the story and handle errors
   const [storyCount, setStoryCount] = useState(0);
@@ -31,6 +31,9 @@ export default function ViewMemory() {
   };
 
   useEffect(() => {
+    if (preview) {
+      return;
+    }
     if (!selectedFile) {
       setPreview(undefined);
       return;
@@ -81,7 +84,7 @@ export default function ViewMemory() {
 
   return (
     <AppLayout>
-      <main className="bg-[#F7F7F9] pt-20">
+      <main className="bg-[#F7F7F9] md:pt-20 pb-14 md:pb-0">
         <div className="relative max-w-2xl min-h-screen pb-4 mx-auto bg-white">
           <nav className="flex items-center justify-between w-full p-4 text-2xl sm:text-5xl">
             <VscArrowLeft />
@@ -133,7 +136,10 @@ export default function ViewMemory() {
                   <button
                     type="button"
                     className="absolute p-1 bg-white rounded-md bottom-2 right-2"
-                    onClick={() => setSelectedFile(null)}
+                    onClick={() => {
+                      setSelectedFile(null);
+                      setPreview(null);
+                    }}
                   >
                     Change photo
                   </button>
@@ -198,7 +204,7 @@ export default function ViewMemory() {
             </div>
 
             <div className="px-5 py-2 m-6 text-lg font-medium bg-white sm:mx-20 shadow-box rounded-xl">
-              <p>{prompt}</p>
+              <p>{memory.prompt}</p>
             </div>
 
             <div className="mx-6 sm:mx-20">

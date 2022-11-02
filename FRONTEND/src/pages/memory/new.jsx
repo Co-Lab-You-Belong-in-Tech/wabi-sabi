@@ -70,7 +70,7 @@ function NewMemory() {
   return (
     <AppLayout>
       <div className="relative">
-        <main className="bg-[#F7F7F9] pt-20">
+        <main className="bg-[#F7F7F9] md:pt-20 pb-14 md:pb-0">
           <div className="relative max-w-[621px] min-h-screen pb-4 mx-auto bg-white">
             <nav className="flex items-center justify-between w-full p-4 text-2xl sm:text-5xl">
               <VscClose />

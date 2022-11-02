@@ -15,7 +15,7 @@ const navItems = [
     inactive: '/assets/inactive-public.svg',
     active: '/assets/active-public.svg',
     url: '/discover',
-    activeUrls: ['/discover', '/discover'],
+    activeUrls: ['/discover'],
   },
 ];
 

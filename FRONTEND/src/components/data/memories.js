@@ -197,3 +197,14 @@ const data = [
 ];
 
 export default data;
+
+export const memory = {
+  id: '45b8e245-5f57-466b-b535-292f06d5b4e5',
+  prompt: 'What is the highlight of your day?',
+  title: 'Trying out photography',
+  story: 'As I was walking to the dance studio, I took a picture of the sky. It reminded me of cotton candy. I was not feeling very motivated to go to dance class but this little moment made my day! I should take more sky photos haha',
+  image_url: '/assets/clouds.png',
+  public: false,
+  favorite: true,
+  created_at: '2022-08-06T00:00:00.000Z',
+};

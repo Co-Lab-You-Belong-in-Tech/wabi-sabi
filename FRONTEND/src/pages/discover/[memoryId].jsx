@@ -10,7 +10,7 @@ function Memory({ name, date, image, title, prompt, story, id }) {
   const { back } = useRouter();
   return (
     <AppLayout>
-      <section className="bg-[#F7F7F9] pt-20">
+      <section className="bg-[#F7F7F9] md:pt-20">
         <div className="bg-white w-full max-w-[621px] mx-auto h-full min-h-screen">
           <header className="flex items-center justify-between gap-5 pb-2 p-7">
             <button type="button" onClick={back}>
