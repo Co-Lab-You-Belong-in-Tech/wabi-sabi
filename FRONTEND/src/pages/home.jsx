@@ -1,6 +1,4 @@
-import React, {
- useState, useEffect, useRef, useLayoutEffect,
-} from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 // import { useSelector } from 'react-redux';
@@ -13,6 +11,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 import AppLayout from '../components/Layouts/AppLayout';
+import Profile from '../components/Profile';
 
 const questions = [
   {
@@ -74,8 +73,12 @@ function LandingPage() {
         className="flex flex-col items-center justify-center w-full h-screen pt-20 overflow-hidden text-4xl text-center text-white bg-white gap-y-16 pb-28"
         ref={pageRef}
       >
+        <div className="fixed px-2 right-8 top-4 md:hidden">
+          <div className='relative'><Profile /></div>
+          
+        </div>
         <div className="p-2 px-6 text-2xl text-black bg-white shadow-3xl w-fit rounded-2xl">
-          <p className="tracking-[0.02em] leading-5 font-semibold">
+          <p className="tracking-[0.02em] leading-5 font-medium">
             Pick a card to create a memory.
           </p>
         </div>
@@ -122,9 +125,7 @@ function Slide({ question, handleClick, activeIndex, index }) {
         activeIndex === index ? 'bg-home-card opacity-60' : 'bg-home-card'
       }`}
     >
-      <strong className="tracking-wide inline-block w-[181px]">
-        {question}
-      </strong>
+      <strong className="tracking-wide inline-block w-[181px]">{question}</strong>
       <div className="absolute flex items-center bottom-5 gap-x-4">
         <div className=" bg-white w-[84px] h-1" />
         <div className="text-base tracking-wide uppercase">{currentDate}</div>

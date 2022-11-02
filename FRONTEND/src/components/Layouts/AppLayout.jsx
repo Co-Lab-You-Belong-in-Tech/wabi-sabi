@@ -5,7 +5,7 @@ import DesktopHeader from '../desktopHeader';
 
 function AppLayout({ children, renderSide }) {
   return (
-    <div>
+    <div className='font-roboto'>
       <DesktopHeader renderSide={renderSide} />
       {children}
       <Footer />

@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { BsHeartFill, BsHeart } from 'react-icons/bs';
 import data from '../components/data/memories';
-import AppLayout from '../components/Layouts/AppLayout'
+import AppLayout from '../components/Layouts/AppLayout';
+import Profile from '../components/Profile';
 
 const length = 20;
 
@@ -12,9 +13,23 @@ export default function Memories() {
   const [showFavorites, setShowFavorites] = useState(false);
   return (
     <AppLayout>
-      {/* the mobile header would stay here */}
-      <main className="pt-20 bg-[#F7F7F9]">
-        <div className="max-w-6xl min-h-screen px-3 pb-4 mx-auto bg-white">
+      <main className="grid gap-8 px-3 bg-white pt-7 md:pt-20 pb-28">
+        <div className="relative flex items-center justify-between px-2 md:hidden">
+          <button type="button" onClick={() => setShowFavorites(!showFavorites)}>
+            {showFavorites ? (
+              <BsHeartFill className="text-2xl text-red-600 sm:text-3xl" />
+            ) : (
+              <BsHeart className="text-2xl sm:text-3xl" />
+            )}
+          </button>
+          <p>
+            <span className="mr-4 font-bold">{showFavorites ? 'FAVORITES' : 'MEMORIES'}</span>{' '}
+            {length}
+          </p>
+          <Profile />
+        </div>
+
+        <div className="w-full max-w-6xl min-h-screen mx-auto">
           <div className="justify-between hidden w-1/2 py-5 pr-10 ml-auto md:flex">
             <p>
               <span className="mr-4 font-bold">{showFavorites ? 'FAVORITES' : 'MEMORIES'}</span>{' '}
@@ -29,10 +44,10 @@ export default function Memories() {
             </button>
           </div>
 
-          <section>
+          <section className='flex flex-col gap-y-10'>
             {data.map((object) => (
               <div key={object.month}>
-                <h2 className="mt-10 mb-5 text-2xl font-bold">{object.month}</h2>
+                <h2 className="mb-5 text-2xl font-bold ">{object.month}</h2>
                 <ImageGallery image_array={object.memories} />
               </div>
             ))}

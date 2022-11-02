@@ -4,14 +4,21 @@ import moment from 'moment/moment';
 import Link from 'next/link';
 import data from '../../components/data/data';
 import AppLayout from '../../components/Layouts/AppLayout';
+import Profile from '../../components/Profile';
 
 export default function DiscoverPage() {
   return (
     <AppLayout>
       <main className="grid gap-8 px-5 pt-7 pb-28 md:pt-20">
-        <h2 className="px-5 py-2 text-base font-bold tracking-wide text-center md:text-4xl">
-          DISCOVER
-        </h2>
+        <div className='relative grid items-center grid-cols-3 justify-items-center'>
+          <h1 className="col-start-2 text-lg font-bold tracking-wide md:text-4xl">
+            DISCOVER
+          </h1>
+          <span className='md:hidden justify-self-end'>
+            <Profile />
+          </span>
+        </div>
+
         <section className="grid gap-12">
           {data.map((memory) => (
             <div
@@ -24,8 +31,7 @@ export default function DiscoverPage() {
                     <motion.p layout layoutId={`memory-name-${memory.id}`} className="font-bold">
                       {memory.name}
                     </motion.p>
-                    <p>{moment(memory.date).format('MMM D').split(',').join('').toUpperCase()
-}</p>
+                    <p>{moment(memory.date).format('MMM D').split(',').join('').toUpperCase()}</p>
                   </header>
                   <motion.img
                     src={memory.image.src}
