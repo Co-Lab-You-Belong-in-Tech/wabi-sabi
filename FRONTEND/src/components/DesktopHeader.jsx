@@ -51,7 +51,9 @@ function DesktopNavbar() {
             key={menu.url}
           >
             <Link href={menu.url}>
-              <img src={router.pathname === menu.url ? menu.active : menu.inactive}
+              <img
+                src={checkUrlMatch(menu.activeUrls, router.pathname) ? menu.active : menu.inactive}
+                alt={menu.url}
                 className="object-contain"
               />
             </Link>
@@ -60,4 +62,13 @@ function DesktopNavbar() {
       </ul>
     </nav>
   );
+}
+
+function checkUrlMatch(array, pathname) {
+  for (let i = 0; i < array.length; i += 1) {
+    if (pathname.indexOf(array[i]) !== -1) {
+      return true;
+    }
+  }
+  return false;
 }
