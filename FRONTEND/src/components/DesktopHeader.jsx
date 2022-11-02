@@ -45,14 +45,14 @@ function DesktopNavbar() {
       <ul className="flex items-end gap-6 ml-auto list-none">
         {navItems.map((menu) => (
           <li
-            className={`list-none relative h-9 flex items-center cursor-pointer border-0 menu-items ${
+            className={`list-none relative h-5 flex items-center cursor-pointer border-0 menu-items ${
               menu.url === '/home' && 'order-first'
             }`}
             key={menu.url}
           >
             <Link href={menu.url}>
               <img src={router.pathname === menu.url ? menu.active : menu.inactive}
-                className="object-cover"
+                className="object-contain"
               />
             </Link>
           </li>

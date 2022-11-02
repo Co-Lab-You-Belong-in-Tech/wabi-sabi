@@ -71,11 +71,11 @@ function LandingPage() {
   return (
     <AppLayout renderSide>
       <main
-        className="flex flex-col items-center justify-center w-full h-screen overflow-hidden text-4xl text-center text-white bg-white font-roboto gap-y-16"
+        className="flex flex-col items-center justify-center w-full h-screen pt-20 overflow-hidden text-4xl text-center text-white bg-white gap-y-16 pb-28"
         ref={pageRef}
       >
-        <div className="hidden p-2 px-6 text-2xl text-black bg-white shadow-3xl md:block w-fit rounded-2xl">
-          <p className="tracking-[0.02em] leading-5">
+        <div className="p-2 px-6 text-2xl text-black bg-white shadow-3xl w-fit rounded-2xl">
+          <p className="tracking-[0.02em] leading-5 font-semibold">
             Pick a card to create a memory.
           </p>
         </div>

@@ -1,17 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import moment from 'moment/moment';
-import { VscArrowLeft, VscCheck, VscAdd } from 'react-icons/vsc';
-import { BsHeartFill, BsHeart } from 'react-icons/bs';
+import { VscArrowLeft, VscCheck, VscAdd, VscClose } from 'react-icons/vsc';
+import { BsHeartFill, BsHeart, BsGlobe } from 'react-icons/bs';
+import { GrLock } from 'react-icons/gr';
 import AppLayout from '../../components/Layouts/AppLayout';
 
 export default function ViewMemory() {
+  const [editMode, setEditMode] = useState(false);
+  const [changedFiles, setChangedFiles] = useState({
+    title: '',
+    story: '',
+  });
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState();
 
   // state variables for the memory entry
-  const [title, setTitle] = useState('');
-  const [story, setStory] = useState('');
   const [favorite, setFavorite] = useState(false);
   const [isPublic, setIsPublic] = useState(false);
   const prompt = 'What are you grateful for today?';
@@ -42,6 +46,12 @@ export default function ViewMemory() {
     setSelectedFile(e.target.files[0] || undefined);
   };
 
+  const handleChanges = (e) => {
+    const { name, value } = e.target;
+    setChangedFiles({ ...changedFiles, [name]: value });
+  };
+
+  const { title, story } = changedFiles;
   const submitMemory = () => {
     // prevent default behavior if some fields don't meet the requirements
     if (storyCount < 100) {
@@ -58,31 +68,41 @@ export default function ViewMemory() {
     }
     // send the data to the backend
     const formData = new FormData();
-    formData.append('api_v1_memory[title]', title);
-    formData.append('api_v1_memory[story]', story);
     formData.append('api_v1_memory[favorite]', favorite);
     formData.append('api_v1_memory[isPublic]', isPublic);
-    formData.append('api_v1_memory[image]', selectedFile);
-    formData.append('api_v1_memory[prompt]', prompt);
+    if (selectedFile) {
+      formData.append('api_v1_memory[image]', selectedFile);
+    }
+    // changedFiles is an object with the changed fields (title and/or story)
+    for (const [key, value] of Object.entries(changedFiles)) {
+      formData.append(`api_v1_memory[${key}]`, value);
+    }
   };
 
   return (
     <AppLayout>
-      <main className="bg-[#F7F7F9]">
+      <main className="bg-[#F7F7F9] pt-20">
         <div className="relative max-w-2xl min-h-screen pb-4 mx-auto bg-white">
           <nav className="flex items-center justify-between w-full p-4 text-2xl sm:text-5xl">
             <VscArrowLeft />
             <span className="text-base leading-6 uppercase sm:text-2xl sm:px-6">
               {moment().format('ddd ll')}
             </span>
-            <button
-              onClick={submitMemory}
-              type="button"
-              name="submit memory entry"
-              className="text-2xl bg-transparent border-0 cursor-pointer sm:text-5xl"
-            >
-              <VscCheck />
-            </button>
+            {editMode && (
+              <button
+                onClick={submitMemory}
+                type="button"
+                name="submit memory entry"
+                className="text-2xl bg-transparent border-0 cursor-pointer sm:text-5xl"
+              >
+                <VscCheck />
+              </button>
+            )}
+            {!editMode && (
+              <button type="button" onClick={() => setEditMode(true)}>
+                <p className="text-base font-semibold leading-6 sm:text-2xl">EDIT</p>
+              </button>
+            )}
           </nav>
 
           <form className="flex flex-col">
@@ -99,15 +119,17 @@ export default function ViewMemory() {
                 className="hidden"
               />
               {preview && (
+                <Image
+                  src={preview}
+                  className="absolute"
+                  layout="fill"
+                  objectFit="contain"
+                  quality={100}
+                  alt="memory media"
+                />
+              )}
+              {editMode && (
                 <>
-                  <Image
-                    src={preview}
-                    className="absolute"
-                    layout="fill"
-                    objectFit="contain"
-                    quality={100}
-                    alt="memory media"
-                  />
                   <button
                     type="button"
                     className="absolute p-1 bg-white rounded-md bottom-2 right-2"
@@ -138,31 +160,41 @@ export default function ViewMemory() {
                 placeholder="Title"
                 className="text-2xl font-bold text-center border-0 sm:text-5xl placeholder:text-2xl sm:placeholder:text-5xl placeholder:ml-[45%] placeholder:mr-[45%] placeholder:tracking-wider w-full placeholder:text-[#CECECE]"
                 value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={handleChanges}
                 required
+                readOnly={!editMode}
               />
             </div>
 
             <div className="flex justify-between mx-6 border-[#EDEDED] border-b-2 py-4 border-solid border-0 items-center sm:mx-20 sm:order-last sm:justify-end sm:gap-x-10 sm:border-0 sm:p-0">
-              <button type="button" onClick={() => setFavorite(!favorite)}>
+              <button type="button" onClick={() => setFavorite(!favorite)} disabled={!editMode}>
                 {favorite ? (
                   <BsHeartFill className="text-2xl text-red-600 sm:text-3xl" />
                 ) : (
                   <BsHeart className="text-2xl sm:text-3xl" />
                 )}
               </button>
-              <div className="flex items-center gap-x-2">
-                <p className="text-xl">Share with public</p>
-                <button
-                  type="button"
-                  className="relative w-4 h-4 bg-white border-black border-[1px]"
-                  onClick={() => setIsPublic(!isPublic)}
-                >
-                  {isPublic && (
-                    <VscCheck className="absolute bottom-[-2px] text-5xl text-green-500 left-[-6px]" />
-                  )}
-                </button>
-              </div>
+              {editMode && (
+                <div className="flex items-center gap-x-2">
+                  <p className="text-xl">Share with public</p>
+                  <button
+                    type="button"
+                    className="relative w-4 h-4 bg-white border-black border-[1px]"
+                    onClick={() => setIsPublic(!isPublic)}
+                    disabled={!editMode}
+                  >
+                    {isPublic && (
+                      <VscCheck className="absolute bottom-[-2px] text-5xl text-green-500 left-[-6px]" />
+                    )}
+                  </button>
+                </div>
+              )}
+              {!editMode &&
+                (isPublic ? (
+                  <BsGlobe className="text-2xl sm:text-3xl" />
+                ) : (
+                  <GrLock className="text-2xl sm:text-3xl" />
+                ))}
             </div>
 
             <div className="px-5 py-2 m-6 text-lg font-medium bg-white sm:mx-20 shadow-box rounded-xl">
@@ -180,17 +212,20 @@ export default function ViewMemory() {
                 className="w-full mx-auto text-xl font-medium min-h-[200px] max-h-max border-0 outline-none placeholder:text-base px-5"
                 onChange={(e) => {
                   setStoryCount(e.target.value.length);
-                  setStory(e.target.value);
+                  handleChanges(e);
                 }}
                 value={story}
                 required
+                readOnly={!editMode}
               />
-              <p className="text-lg font-semibold">
-                <span className={storyCount < 100 ? 'text-red-500' : 'text-green-500'}>
-                  {storyCount}
-                </span>
-                /100
-              </p>
+              {editMode && (
+                <p className="text-lg font-semibold">
+                  <span className={storyCount < 100 ? 'text-red-500' : 'text-green-500'}>
+                    {storyCount}
+                  </span>
+                  /100
+                </p>
+              )}
             </div>
           </form>
           {error && (
