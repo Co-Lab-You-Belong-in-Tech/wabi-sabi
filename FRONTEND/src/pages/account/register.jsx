@@ -63,8 +63,8 @@ export default function SignUpPage() {
   }
 
   return (
-    <AppLayout renderSide={false}>
-      <main className="flex flex-col items-center justify-center w-full max-w-md min-h-screen px-12 mx-auto bg-white md:pt-20 gap-y-9 pb-14 md:pb-0">
+    <AppLayout renderSide={false} renderNav={false}>
+      <main className="flex flex-col items-center justify-center w-full max-w-md min-h-screen px-12 mx-auto bg-white md:pt-20 gap-y-9">
         <form
           onSubmit={onSubmit}
           className="flex flex-col items-center w-full max-w-xs gap-4"

@@ -59,7 +59,7 @@ function SignInPage() {
   }
 
   return (
-    <AppLayout renderSide={false}>
+    <AppLayout renderSide={false} renderNav={false}>
       <main className="flex flex-col items-center justify-center w-full max-w-md min-h-screen px-12 mx-auto bg-white md:pt-20 pb-14 md:pb-0 gap-y-9">
         <form
           onSubmit={onSubmit}
