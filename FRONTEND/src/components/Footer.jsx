@@ -3,17 +3,23 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import navItems from './navItems';
 
-
-export default function Footer() {
+export default function Footer({ renderNav }) {
   return (
-    <div className="fixed bottom-0 left-0 z-20 w-full">
-      <div className="w-full px-5 pt-2 pb-5 bg-white sm:hidden drop-shadow-3xl">
-        <MobileNavbar />
-      </div>
-    </div>
+    <>
+      {renderNav && (
+        <div className="fixed bottom-0 left-0 z-20 w-full">
+          <div className="w-full px-5 pt-2 pb-5 bg-white md:hidden drop-shadow-3xl">
+            <MobileNavbar />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
+Footer.propTypes = {
+  renderNav: PropTypes.bool.isRequired,
+};
 
 function MobileNavbar() {
   const router = useRouter();
@@ -34,7 +40,7 @@ function MobileNavbar() {
       </ul>
     </nav>
   );
-};
+}
 
 function checkUrlMatch(array, pathname) {
   for (let i = 0; i < array.length; i += 1) {
