@@ -1,22 +1,10 @@
 import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
-import DesktopHeader from './DesktopHeader';
+import AppLayout from './Layouts/AppLayout';
 
 function DesktopOnboardingPage() {
   return (
-    <>
-      <DesktopHeader>
-        <nav className="flex items-center gap-x-2">
-          <Link href="/account/register">
-            <p className="text-xl font-bold px-3 py-[10px] cursor-pointer">Sign up</p>
-          </Link>
-          <Link href="/account/login">
-            <p className="text-xl font-bold px-3 py-[10px] cursor-pointer">Log in</p>
-          </Link>
-        </nav>
-      </DesktopHeader>
-
+    <AppLayout>
       <main className="flex flex-col items-center justify-end w-full h-screen text-base text-black bg-white z-1">
         <div className="relative flex items-end justify-center w-full gap-x-20 h-2/3 bg-desktop-onboarding">
           <img
@@ -95,7 +83,7 @@ function DesktopOnboardingPage() {
           </section>
         </div>
       </main>
-    </>
+    </AppLayout>
   );
 }
 

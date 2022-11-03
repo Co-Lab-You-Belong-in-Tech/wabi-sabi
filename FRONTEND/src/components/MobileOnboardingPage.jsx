@@ -1,15 +1,19 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function MobileOnboardingPage() {
   return (
-    <main className="flex flex-col items-center justify-end w-full h-screen gap-12 overflow-hidden text-base text-black bg-gray-100 isolate">
-      <img
+    <main className="flex flex-col items-center justify-around w-full min-h-screen gap-12 overflow-hidden text-base text-black bg-white">
+      <Image
         src="/assets/wabi-sabi-logo.svg"
         alt="Logo"
+        priority
+        width={300}
+        height={180}
       />
       <div className="flex flex-col items-center w-full pt-20 pb-10 bg-mobile-onboarding">
-        <section className="text-black w-[263px] flex flex-col gap-5">
+        <section className="flex flex-col w-4/5 max-w-lg gap-5 mx-auto text-black">
           <article className="flex items-center gap-5">
             <img
               className="w-[68px] h-[64px]"
@@ -18,7 +22,7 @@ export default function MobileOnboardingPage() {
             />
             <div className="flex flex-col gap-1">
               <h3 className="text-2xl font-bold">Relive Memories</h3>
-              <p className="text-base">
+              <p className="text-xl">
                 Walk down memory lane and create a habit of creating new
                 memories
               </p>
@@ -32,7 +36,7 @@ export default function MobileOnboardingPage() {
             />
             <div className="flex flex-col gap-1">
               <h3 className="text-2xl font-bold">Storytelling</h3>
-              <p className="text-base">
+              <p className="text-xl">
                 Share your authentic stories to real memories that matter the
                 most
               </p>
@@ -46,7 +50,7 @@ export default function MobileOnboardingPage() {
             />
             <div className="flex flex-col gap-1">
               <h3 className="text-2xl font-bold">Discover Memories</h3>
-              <p className="text-base">
+              <p className="text-xl">
                 View and be inspired by the stories of other people
               </p>
             </div>
