@@ -83,8 +83,8 @@ export default function ViewMemory() {
   };
 
   return (
-    <AppLayout>
-      <main className="bg-[#F7F7F9] md:pt-20 pb-14 md:pb-0">
+    <AppLayout renderNav={false}>
+      <main className="bg-[#F7F7F9] md:pt-20">
         <div className="relative max-w-2xl min-h-screen pb-4 mx-auto bg-white">
           <nav className="flex items-center justify-between w-full p-4 text-2xl sm:text-5xl">
             <VscArrowLeft />
