@@ -10,14 +10,14 @@ import {
   LOAD_USER_SUCCESS,
   LOAD_USER_FAIL,
   START_LOADING,
-  STOP_LOADING
+  STOP_LOADING,
 } from '../actions/types';
 
 const initialState = {
   user: null,
   isLoggedIn: false,
   loading: false,
-  register_success: false
+  register_success: false,
 };
 
 const accountReducer = (state = initialState, action) => {
@@ -26,57 +26,57 @@ const accountReducer = (state = initialState, action) => {
     case REGISTER_SUCCESS:
       return {
         ...state,
-        register_success: true
+        register_success: true,
       };
     case REGISTER_FAIL:
       return {
-        ...state
+        ...state,
       };
     case RESET_REGISTER_SUCCESS:
       return {
         ...state,
-        register_success: false
+        register_success: false,
       };
     case LOGIN_SUCCESS:
       return {
         ...state,
-        isLoggedIn: true
+        isLoggedIn: true,
       };
     case LOGIN_FAIL:
       return {
         ...state,
-        isLoggedIn: false
+        isLoggedIn: false,
       };
     case LOGOUT_SUCCESS:
       return {
         ...state,
         isLoggedIn: false,
-        user: null
+        user: null,
       };
     case LOGOUT_FAIL:
       return {
-        ...state
+        ...state,
       };
     case LOAD_USER_SUCCESS:
       return {
         ...state,
-        user: payload
+        user: payload,
         // user: payload.user,
       };
     case LOAD_USER_FAIL:
       return {
         ...state,
-        user: null
+        user: null,
       };
     case START_LOADING:
       return {
         ...state,
-        loading: true
+        loading: true,
       };
     case STOP_LOADING:
       return {
         ...state,
-        loading: false
+        loading: false,
       };
     default:
       return state;

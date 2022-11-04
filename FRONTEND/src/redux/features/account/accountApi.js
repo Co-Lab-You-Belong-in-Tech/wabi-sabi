@@ -6,12 +6,12 @@ export const login = async (API_URL, email, password) => {
     body: JSON.stringify({
       user: {
         email,
-        password
-      }
+        password,
+      },
     }),
     headers: {
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   });
   const result = await response.json();
   const token = response.headers.get('Authorization');
@@ -29,12 +29,12 @@ export const register = async (API_URL, name, email, password) => {
         name,
         email,
         password,
-        password_confirmation: password
-      }
+        password_confirmation: password,
+      },
     }),
     headers: {
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   });
   const result = await response.json();
   const token = response.headers.get('Authorization');
@@ -50,8 +50,8 @@ export const logout = async (API_URL) => {
     method: 'DELETE',
     headers: {
       Accept: 'application/json',
-      Authorization: token
-    }
+      Authorization: token,
+    },
   });
   const result = await response.json();
   if (response.ok) {

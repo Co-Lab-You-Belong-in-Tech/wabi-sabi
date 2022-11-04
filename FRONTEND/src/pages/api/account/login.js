@@ -9,14 +9,14 @@ export default async (request, response) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Accept: 'application/json'
+          Accept: 'application/json',
         },
         body: JSON.stringify({
           user: {
             email,
-            password
-          }
-        })
+            password,
+          },
+        }),
       });
 
       const data = await apiResponse.json();
@@ -28,23 +28,23 @@ export default async (request, response) => {
             secure: process.env.NODE_ENV === 'production',
             maxAge: 60 * 60,
             sameSite: 'strict',
-            path: '/api/'
+            path: '/api/',
           }),
           cookie.serialize('refresh', data.refresh, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
             maxAge: 60 * 60 * 24 * 2,
             sameSite: 'strict',
-            path: '/api/'
-          })
+            path: '/api/',
+          }),
         ]);
 
         return response.status(apiResponse.status).json({
-          success: 'Logged in successfully'
+          success: 'Logged in successfully',
         });
       }
       return response.status(apiResponse.status).json({
-        error: 'Invalid username or password'
+        error: 'Invalid username or password',
       });
     } catch (error) {
       return response.status(500).json(error);

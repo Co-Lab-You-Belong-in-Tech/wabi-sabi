@@ -9,13 +9,12 @@ import {
   LOGOUT_FAIL,
   START_LOADING,
   STOP_LOADING,
-  LOAD_USER_SUCCESS
+  LOAD_USER_SUCCESS,
 } from './types';
 import API_URL from '../config';
 
 export const register =
-  ({ name, email, password }) =>
-  async (dispatch) => {
+  ({ name, email, password }) => async (dispatch) => {
     dispatch({ type: START_LOADING });
 
     try {
@@ -24,15 +23,15 @@ export const register =
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          Authorization: ''
+          Authorization: '',
         },
         body: JSON.stringify({
           user: {
             name,
             email,
-            password
-          }
-        })
+            password,
+          },
+        }),
       });
 
       const data = await response.json();
@@ -60,8 +59,7 @@ export const reset_register_success = () => (dispatch) => {
 };
 
 export const login =
-  ({ email, password }) =>
-  async (dispatch) => {
+  ({ email, password }) => async (dispatch) => {
     dispatch({ type: START_LOADING });
 
     try {
@@ -69,14 +67,14 @@ export const login =
         method: 'POST',
         headers: {
           Accept: 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           user: {
             email,
-            password
-          }
-        })
+            password,
+          },
+        }),
       });
       const dataa = await response;
       const token = dataa.headers.get('Authorization');
@@ -112,8 +110,8 @@ export const logout = () => async (dispatch) => {
       method: 'DELETE',
       headers: {
         Accept: 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     if (response.ok) {

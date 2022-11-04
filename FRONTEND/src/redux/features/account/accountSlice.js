@@ -26,7 +26,7 @@ export const accountSlice = createSlice({
   initialState: {
     name: null,
     isLoggedIn: false,
-    loading: false
+    loading: false,
   },
   reducers: {},
   extraReducers: {
@@ -77,8 +77,8 @@ export const accountSlice = createSlice({
       state.loading = false;
       const message = 'Something went wrong';
       toast.error(message);
-    }
-  }
+    },
+  },
 });
 
 export default accountSlice.reducer;

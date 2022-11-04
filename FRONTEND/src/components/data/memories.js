@@ -10,7 +10,7 @@ const data = [
         image_url: '/assets/demo/1.png',
         public: false,
         favorite: true,
-        created_at: '2022-10-24T00:00:00.000Z'
+        created_at: '2022-10-24T00:00:00.000Z',
       },
       {
         id: '3cddee98-5964-4d09-b738-2a9c4143b014',
@@ -20,7 +20,7 @@ const data = [
         image_url: '/assets/demo/2.png',
         public: false,
         favorite: false,
-        created_at: '2022-10-19T00:00:00.000Z'
+        created_at: '2022-10-19T00:00:00.000Z',
       },
       {
         id: '53535fab-7956-4d07-9f73-debd4eb3687b',
@@ -30,7 +30,7 @@ const data = [
         image_url: '/assets/demo/3.png',
         public: true,
         favorite: true,
-        created_at: '2022-10-19T00:00:00.000Z'
+        created_at: '2022-10-19T00:00:00.000Z',
       },
       {
         id: 'efe4c01b-548e-4f18-9fe1-ac7ea548be82',
@@ -40,7 +40,7 @@ const data = [
         image_url: '/assets/demo/4.png',
         public: false,
         favorite: false,
-        created_at: '2022-10-14T00:00:00.000Z'
+        created_at: '2022-10-14T00:00:00.000Z',
       },
       {
         id: 'fac21a18-c603-4021-b3ac-88f15db53178',
@@ -50,7 +50,7 @@ const data = [
         image_url: '/assets/demo/5.png',
         public: true,
         favorite: true,
-        created_at: '2022-10-09T00:00:00.000Z'
+        created_at: '2022-10-09T00:00:00.000Z',
       },
       {
         id: 'eec7c1cc-1725-428a-b68a-5abbe848a9bc',
@@ -60,7 +60,7 @@ const data = [
         image_url: '/assets/demo/6.png',
         public: false,
         favorite: true,
-        created_at: '2022-10-08T00:00:00.000Z'
+        created_at: '2022-10-08T00:00:00.000Z',
       },
       {
         id: '45c3041f-babc-4763-b904-e6243ba59741',
@@ -70,7 +70,7 @@ const data = [
         image_url: '/assets/demo/7.png',
         public: false,
         favorite: false,
-        created_at: '2022-10-05T00:00:00.000Z'
+        created_at: '2022-10-05T00:00:00.000Z',
       },
       {
         id: '48c43349-fb46-4f3b-ba53-06988335b541',
@@ -80,9 +80,9 @@ const data = [
         image_url: '/assets/demo/8.png',
         public: true,
         favorite: false,
-        created_at: '2022-10-01T00:00:00.000Z'
-      }
-    ]
+        created_at: '2022-10-01T00:00:00.000Z',
+      },
+    ],
   },
   {
     month: '2022 September',
@@ -95,7 +95,7 @@ const data = [
         image_url: '/assets/demo/9.png',
         public: false,
         favorite: true,
-        created_at: '2022-09-18T00:00:00.000Z'
+        created_at: '2022-09-18T00:00:00.000Z',
       },
       {
         id: '37f6e7b9-5f1a-4405-8934-efd5b2fb814c',
@@ -105,7 +105,7 @@ const data = [
         image_url: '/assets/demo/10.png',
         public: true,
         favorite: false,
-        created_at: '2022-09-15T00:00:00.000Z'
+        created_at: '2022-09-15T00:00:00.000Z',
       },
       {
         id: '9f9b6b34-c7b9-468c-bd68-3ee2b2ff9ee9',
@@ -115,7 +115,7 @@ const data = [
         image_url: '/assets/demo/11.png',
         public: false,
         favorite: false,
-        created_at: '2022-09-15T00:00:00.000Z'
+        created_at: '2022-09-15T00:00:00.000Z',
       },
       {
         id: '98e0d3c9-5d26-40c2-803c-a8507c9c726d',
@@ -125,7 +125,7 @@ const data = [
         image_url: '/assets/demo/12.png',
         public: false,
         favorite: true,
-        created_at: '2022-09-13T00:00:00.000Z'
+        created_at: '2022-09-13T00:00:00.000Z',
       },
       {
         id: 'ba03e0b4-bc80-4ee4-abce-1219f5e6066c',
@@ -135,9 +135,9 @@ const data = [
         image_url: '/assets/demo/13.png',
         public: true,
         favorite: true,
-        created_at: '2022-09-05T00:00:00.000Z'
-      }
-    ]
+        created_at: '2022-09-05T00:00:00.000Z',
+      },
+    ],
   },
   {
     month: '2022 August',
@@ -150,7 +150,7 @@ const data = [
         image_url: '/assets/demo/14.png',
         public: false,
         favorite: false,
-        created_at: '2022-08-15T00:00:00.000Z'
+        created_at: '2022-08-15T00:00:00.000Z',
       },
       {
         id: '8896bcd3-95eb-42ff-841e-9f95f420fb18',
@@ -160,7 +160,7 @@ const data = [
         image_url: '/assets/demo/15.png',
         public: true,
         favorite: true,
-        created_at: '2022-08-13T00:00:00.000Z'
+        created_at: '2022-08-13T00:00:00.000Z',
       },
       {
         id: '6988f997-bf59-467b-b433-1525dc4943aa',
@@ -170,7 +170,7 @@ const data = [
         image_url: '/assets/demo/16.png',
         public: true,
         favorite: true,
-        created_at: '2022-08-11T00:00:00.000Z'
+        created_at: '2022-08-11T00:00:00.000Z',
       },
       {
         id: '3e46b5c8-215b-4363-9529-7340b91a7815',
@@ -180,7 +180,7 @@ const data = [
         image_url: '/assets/demo/17.png',
         public: true,
         favorite: true,
-        created_at: '2022-08-09T00:00:00.000Z'
+        created_at: '2022-08-09T00:00:00.000Z',
       },
       {
         id: '45b8e245-5f57-466b-b535-292f06d5b4e5',
@@ -190,10 +190,10 @@ const data = [
         image_url: '/assets/demo/18.png',
         public: false,
         favorite: true,
-        created_at: '2022-08-06T00:00:00.000Z'
-      }
-    ]
-  }
+        created_at: '2022-08-06T00:00:00.000Z',
+      },
+    ],
+  },
 ];
 
 export default data;
@@ -207,5 +207,5 @@ export const memory = {
   image_url: '/assets/clouds.png',
   public: false,
   favorite: true,
-  created_at: '2022-08-06T00:00:00.000Z'
+  created_at: '2022-08-06T00:00:00.000Z',
 };

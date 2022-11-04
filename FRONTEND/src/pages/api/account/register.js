@@ -8,14 +8,14 @@ export default async (request, response) => {
         method: 'POST',
         headers: {
           Accept: 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           full_name,
 
           email,
-          password
-        })
+          password,
+        }),
       });
 
       const data = await apiResponse.json();
