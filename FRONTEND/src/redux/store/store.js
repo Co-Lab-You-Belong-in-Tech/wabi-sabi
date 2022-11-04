@@ -1,10 +1,11 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import createWebStorage from "redux-persist/lib/storage/createWebStorage";
-import { persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
+import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
+import {
+ persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER,
+} from 'redux-persist';
 import accountReducer from '../features/account/accountSlice';
 
-const createNoopStorage = () => {
-  return {
+const createNoopStorage = () => ({
     getItem(_key) {
       return Promise.resolve(null);
     },
@@ -14,8 +15,7 @@ const createNoopStorage = () => {
     removeItem(_key) {
       return Promise.resolve();
     },
-  };
-};
+  });
 
 const storage = typeof window !== 'undefined' ? createWebStorage('local') : createNoopStorage();
 
@@ -33,8 +33,7 @@ const persistedReducer = persistReducer(persistConfig, reducer);
 
 const store = configureStore({
   reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },

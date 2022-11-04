@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { login, register, logout } from './accountApi';
 import { toast } from 'react-toastify';
+import { login, register, logout } from './accountApi';
 
-const API_URL = 'http://localhost:3000'
+const API_URL = 'http://localhost:3000';
 
 export const loginAccount = createAsyncThunk('users/login', async (args) => {
   const { email, password } = args;
@@ -37,7 +37,7 @@ export const accountSlice = createSlice({
       state.loading = false;
       state.isLoggedIn = true;
       const { user } = action.payload;
-      state.name = user.name.split(' ')[0];
+      state.name = user.name;
       const { message } = action.payload;
       toast.success(message);
     },
@@ -53,7 +53,7 @@ export const accountSlice = createSlice({
       state.loading = false;
       state.isLoggedIn = true;
       const { user } = action.payload;
-      state.name = user.name.split(' ')[0];
+      state.name = user.name;
       const { message } = action.payload;
       toast.success(message);
     },

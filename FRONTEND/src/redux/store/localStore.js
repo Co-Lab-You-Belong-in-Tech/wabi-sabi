@@ -11,7 +11,7 @@ class LocalStore {
     ls.remove(key);
   }
 
-  static get(key) { return ls.get(key, {decrypt: true}); }
+  static get(key) { return ls.get(key, { decrypt: true }); }
 }
 
 export default LocalStore;

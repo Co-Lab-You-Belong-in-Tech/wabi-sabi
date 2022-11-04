@@ -52,7 +52,7 @@ export default function Profile() {
                   {isLoggedIn && account.name[0]}
                 </h2>
               </button>
-              <p className="text-2xl font-bold capitalize">{isLoggedIn && account.name}</p>
+              <p className="text-2xl font-bold capitalize">{isLoggedIn && account.name.split(' ')[0]}</p>
             </div>
             <div className="border-b-[#CECECE] border-b-[0.5px] border-solid border-l-0 border-r-0 border-t-0  mb-[18px]" />
             <div className="flex">
