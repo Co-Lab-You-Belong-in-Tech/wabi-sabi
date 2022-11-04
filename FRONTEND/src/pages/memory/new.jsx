@@ -16,7 +16,7 @@ function NewMemory() {
   const [story, setStory] = useState('');
   const [favorite, setFavorite] = useState(false);
   const [isPublic, setIsPublic] = useState(false);
-  const prompt = 'What are you grateful for today?';
+  const prompt = 'What\'s one thing you are grateful for today?';
 
   // keep track of the character count for the story and handle errors
   const [storyCount, setStoryCount] = useState(0);

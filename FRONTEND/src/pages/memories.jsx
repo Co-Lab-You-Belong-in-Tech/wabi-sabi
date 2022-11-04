@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
 import { BsHeartFill, BsHeart } from 'react-icons/bs';
 import data from '../components/data/memories';
 import AppLayout from '../components/Layouts/AppLayout';
 import Profile from '../components/Profile';
 
-const length = 20;
-
 export default function Memories() {
+  const flat_data = data.map((item) => item.memories).flat();
   const [showFavorites, setShowFavorites] = useState(false);
+  const { length } = flat_data.filter((item) => {
+    if (showFavorites) {
+      return item.favorite;
+    }
+      return item;
+  });
+
   return (
     <AppLayout>
       <main className="grid gap-8 px-3 bg-white pt-7 md:pt-20 pb-28">
@@ -23,7 +28,8 @@ export default function Memories() {
             )}
           </button>
           <p>
-            <span className="mr-4 font-bold">{showFavorites ? 'FAVORITES' : 'MEMORIES'}</span>{' '}
+            <span className="mr-4 font-bold">{showFavorites ? 'FAVORITES' : 'MEMORIES'}</span>
+            {' '}
             {length}
           </p>
           <Profile />
@@ -32,7 +38,8 @@ export default function Memories() {
         <div className="w-full max-w-6xl min-h-screen mx-auto">
           <div className="justify-between hidden w-1/2 py-5 pr-10 ml-auto md:flex">
             <p>
-              <span className="mr-4 font-bold">{showFavorites ? 'FAVORITES' : 'MEMORIES'}</span>{' '}
+              <span className="mr-4 font-bold">{showFavorites ? 'FAVORITES' : 'MEMORIES'}</span>
+              {' '}
               {length}
             </p>
             <button type="button" onClick={() => setShowFavorites(!showFavorites)}>
@@ -44,11 +51,11 @@ export default function Memories() {
             </button>
           </div>
 
-          <section className='flex flex-col gap-y-10'>
+          <section className="flex flex-col gap-y-10">
             {data.map((object) => (
               <div key={object.month}>
                 <h2 className="mb-5 text-2xl font-bold ">{object.month}</h2>
-                <ImageGallery image_array={object.memories} />
+                <ImageGallery image_array={object.memories} show_favorites={showFavorites} />
               </div>
             ))}
           </section>
@@ -58,17 +65,18 @@ export default function Memories() {
   );
 }
 
-function ImageGallery({ image_array }) {
+function ImageGallery({ image_array, show_favorites }) {
   return (
     <div className="grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-5">
-      {image_array.map((image) => (
-        <ImageCard
-          key={image.id}
-          image_url={image.image_url}
-          favorite={image.favorite}
-          id={image.id}
-        />
-      ))}
+      {image_array.map((image) => {
+        if (show_favorites) {
+          if (image.favorite) {
+            return <ImageCard key={image.id} {...image} />;
+          }
+        } else {
+          return <ImageCard key={image.id} {...image} />;
+        }
+      })}
     </div>
   );
 }
@@ -79,10 +87,11 @@ function ImageCard({ image_url, favorite, id }) {
       <div className="relative h-24 md:h-40">
         <Image
           src={image_url}
-          objectFit="fill"
+          objectFit="cover"
           layout="fill"
           alt="test"
           className="w-full rounded-md"
+          priority
         />
         <div className="absolute top-0 left-0 z-10 p-2">
           {favorite && <BsHeartFill className="text-xl text-red-600" />}
