@@ -120,6 +120,7 @@ function Slide({ question, handleClick, activeIndex, index }) {
   return (
     <Link href="memory/new">
       <button
+        onClick={() => handleClick(index)}
         type="button"
         className={`h-full rounded-[20px] transition-opacity duration-300 ease-out relative p-5 w-60  ${
           activeIndex === index ? 'bg-home-card opacity-60' : 'bg-home-card'

@@ -21,8 +21,8 @@ function DesktopOnboardingPage() {
               />
               <div className="flex flex-col gap-1">
                 <h3 className="text-2xl font-bold">Relive Memories</h3>
-                <p className="text-base">
-                  Walk down memory lane and create a habit of creating new
+                <p className="text-lg">
+                  Walk down memory lanes and create a habit of creating new
                   memories
                 </p>
               </div>
@@ -35,7 +35,7 @@ function DesktopOnboardingPage() {
               />
               <div className="flex flex-col gap-1">
                 <h3 className="text-2xl font-bold">Storytelling</h3>
-                <p className="text-base">
+                <p className="text-lg">
                   Share your authentic stories to real memories that matter the
                   most
                 </p>
@@ -49,7 +49,7 @@ function DesktopOnboardingPage() {
               />
               <div className="flex flex-col gap-1">
                 <h3 className="text-2xl font-bold">Discover Memories</h3>
-                <p className="text-base">
+                <p className="text-lg">
                   View and be inspired by the stories of other people
                 </p>
               </div>
@@ -62,6 +62,7 @@ function DesktopOnboardingPage() {
                 alt="Answer daily questions and create daily memories!"
                 width={266}
                 height={285}
+                priority
               />
             </span>
             <span className="self-center">
@@ -70,6 +71,7 @@ function DesktopOnboardingPage() {
                 alt="Have easy access to all your memories in one place!"
                 width={266}
                 height={285}
+                priority
               />
             </span>
             <span className="self-end">
@@ -78,6 +80,7 @@ function DesktopOnboardingPage() {
                 alt="See what memories are shared by others!"
                 width={266}
                 height={285}
+                priority
               />
             </span>
           </section>

@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { VscMail, VscLock } from 'react-icons/vsc';
-import { login, reset_register_success } from '../../actions/account';
+import { loginAccount } from '../../redux/features/account/accountSlice';
 import AppLayout from '../../components/Layouts/AppLayout';
 
 function SignInPage() {
@@ -28,7 +28,7 @@ function SignInPage() {
   const { email, password } = formData;
 
   useEffect(() => {
-    dispatch(reset_register_success());
+    // dispatch(reset_register_success());
   }, [dispatch]);
 
   // create function to handle input onChange
@@ -46,7 +46,7 @@ function SignInPage() {
       toast.error('Please provide all fields');
       return;
     }
-    dispatch(login(formData));
+    dispatch(loginAccount(formData));
     setFormData({
       email: '',
       password: '',
@@ -85,7 +85,6 @@ function SignInPage() {
               value={email}
               onChange={onChange}
               placeholder="Email"
-              required
             />
           </div>
           <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-black w-full">
@@ -98,7 +97,6 @@ function SignInPage() {
               placeholder="Password"
               minLength={8}
               onChange={onChange}
-              required
             />
           </div>
 

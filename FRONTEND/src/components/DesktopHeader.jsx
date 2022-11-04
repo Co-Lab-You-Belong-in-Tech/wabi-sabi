@@ -8,8 +8,7 @@ import Profile from './Profile';
 import navItems from './navItems';
 
 export default function DesktopHeader({ renderSide }) {
-  // const isLoggedIn = useSelector((state) => state.account.isLoggedIn);
-  const isLoggedIn = true;
+  const isLoggedIn = useSelector((state) => state.account.isLoggedIn);
 
   return (
     <header className="md:flex items-center justify-between w-full bg-white h-[72px] px-36 drop-shadow-3xl fixed top-0 hidden z-20">
@@ -21,12 +20,12 @@ export default function DesktopHeader({ renderSide }) {
             <Profile />
           </div>
         ) : (
-          <nav className="flex flex-row items-center gap-x-2">
+          <nav className="flex flex-row items-center gap-x-10">
             <Link href="/account/register">
-              <p className="text-xl font-bold px-3 py-[10px] cursor-pointer">Sign up</p>
+              <p className="text-2xl font-bold cursor-pointer">Sign up</p>
             </Link>
             <Link href="/account/login">
-              <p className="text-xl font-bold px-3 py-[10px] cursor-pointer">Log in</p>
+              <p className="text-2xl font-bold cursor-pointer">Log in</p>
             </Link>
           </nav>
         ))}
@@ -40,7 +39,6 @@ DesktopHeader.propTypes = {
 
 function DesktopNavbar() {
   const router = useRouter();
-  console.log(router.pathname)
   return (
     <nav className="flex items-center mr-6">
       <ul className="flex items-end gap-6 ml-auto list-none">

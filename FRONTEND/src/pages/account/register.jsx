@@ -8,29 +8,25 @@ import { useSelector, useDispatch } from 'react-redux';
 import { VscMail, VscLock } from 'react-icons/vsc';
 import { ImQuotesLeft } from 'react-icons/im';
 import { BsPerson } from 'react-icons/bs';
-import { register } from '../../actions/account';
+import { registerAccount } from '../../redux/features/account/accountSlice';
 
 import AppLayout from '../../components/Layouts/AppLayout';
 
 export default function SignUpPage() {
   const [formData, setFormData] = useState({
-    full_name: '',
+    name: '',
     email: '',
     password: '',
-    // password2: "",
   });
 
   // load states from redux
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.account.loading);
-  const register_success = useSelector(
-    (state) => state.account.register_success
-  );
   const isLoggedIn = useSelector((state) => state.account.isLoggedIn);
   const router = useRouter();
 
   // destructure register data from state
-  const { password, email, full_name } = formData;
+  const { password, email, name } = formData;
 
   // create function to handle input onChange
   const onChange = (event) => {
@@ -44,22 +40,17 @@ export default function SignUpPage() {
     event.preventDefault();
 
     //
-    if (!password || !email || !full_name) {
+    if (!password || !email || !name) {
       toast.error('Please complete all fields');
       return;
     }
 
-    dispatch(register({ ...formData, name: full_name }));
+    dispatch(registerAccount(formData));
   };
 
   // redirect to dashboard page if user is logged in
   if (isLoggedIn) {
     router.push('/home');
-  }
-
-  // if register success, redirect to login page
-  if (register_success) {
-    router.push('/account/login');
   }
 
   return (
@@ -83,13 +74,12 @@ export default function SignUpPage() {
           <div className="flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-black w-full">
             <BsPerson className="text-2xl" />
             <input
-              className="border-none bg-[transparent] box-border items-start justify-start "
+              className="border-none bg-[transparent] box-border items-start justify-start capitalize"
               type="text"
-              value={full_name}
-              name="full_name"
+              value={name}
+              name="name"
               onChange={onChange}
               placeholder="Your name"
-              required
             />
           </div>
           <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-black w-full">
@@ -101,7 +91,6 @@ export default function SignUpPage() {
               value={email}
               onChange={onChange}
               placeholder="Email"
-              required
             />
           </div>
           <div className=" flex gap-1.5 flex-row items-center rounded-[15px] border border-solid px-3 py-2 border-black w-full">
@@ -114,7 +103,6 @@ export default function SignUpPage() {
               placeholder="Password"
               minLength={8}
               onChange={onChange}
-              required
             />
           </div>
 

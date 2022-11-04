@@ -5,10 +5,10 @@ import DesktopHeader from '../desktopHeader';
 
 function AppLayout({ children, renderSide, renderNav }) {
   return (
-    <div className='font-roboto'>
+    <div className="font-roboto">
       <DesktopHeader renderSide={renderSide} />
       {children}
-      <Footer renderNav={renderNav}/>
+      <Footer renderNav={renderNav} />
     </div>
   );
 }
