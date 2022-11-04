@@ -8,7 +8,7 @@ import reducers from './reducers';
 
 const persistConfig = {
   key: 'root',
-  storage,
+  storage
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
@@ -18,7 +18,7 @@ function initStore(initialState) {
   return createStore(
     persistedReducer,
     initialState,
-    composeWithDevTools(applyMiddleware(thunkMiddleware)),
+    composeWithDevTools(applyMiddleware(thunkMiddleware))
   );
 }
 
@@ -31,7 +31,7 @@ export const initializeStore = (preloadedState) => {
   if (preloadedState && store) {
     _store = initStore({
       ...store.getState(),
-      ...preloadedState,
+      ...preloadedState
     });
     // Reset the current store
     store = undefined;
@@ -47,9 +47,6 @@ export const initializeStore = (preloadedState) => {
 
 export function useStore(initialState) {
   const store = useMemo(() => initializeStore(initialState), [initialState]);
-  const persistor = useMemo(
-    () => persistStore(initializeStore(initialState)),
-    [initialState],
-  );
+  const persistor = useMemo(() => persistStore(initializeStore(initialState)), [initialState]);
   return { store, persistor };
 }

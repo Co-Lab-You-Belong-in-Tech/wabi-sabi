@@ -8,14 +8,14 @@ export default async (request, response) => {
         method: 'POST',
         headers: {
           Accept: 'application/json',
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           full_name,
 
           email,
-          password,
-        }),
+          password
+        })
       });
 
       const data = await apiResponse.json();
@@ -29,8 +29,6 @@ export default async (request, response) => {
     }
   } else {
     response.setHeader('Allow', ['POST']);
-    return response
-      .status(405)
-      .json({ error: `Method ${request.method} not allowed` });
+    return response.status(405).json({ error: `Method ${request.method} not allowed` });
   }
 };
