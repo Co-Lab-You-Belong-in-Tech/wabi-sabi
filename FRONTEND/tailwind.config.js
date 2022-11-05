@@ -1,15 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx}',
-    './src/components/**/*.{js,ts,jsx,tsx}',
-  ],
+  content: ['./src/pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       fontFamily: {
-        montserrat: 'Montserrat',
         roboto: ['Roboto', 'sans-serif'],
-        ANLP: 'Avenir Next LT Pro',
       },
       colors: {
         white: '#fff',

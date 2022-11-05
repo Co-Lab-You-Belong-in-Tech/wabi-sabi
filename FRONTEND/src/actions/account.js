@@ -14,8 +14,7 @@ import {
 import API_URL from '../config';
 
 export const register =
-  ({ name, email, password }) =>
-  async (dispatch) => {
+  ({ name, email, password }) => async (dispatch) => {
     dispatch({ type: START_LOADING });
 
     try {
@@ -60,8 +59,7 @@ export const reset_register_success = () => (dispatch) => {
 };
 
 export const login =
-  ({ email, password }) =>
-  async (dispatch) => {
+  ({ email, password }) => async (dispatch) => {
     dispatch({ type: START_LOADING });
 
     try {
