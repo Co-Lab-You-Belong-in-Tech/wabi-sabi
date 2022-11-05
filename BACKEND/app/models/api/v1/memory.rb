@@ -14,6 +14,7 @@ class Api::V1::Memory < ApplicationRecord
   end
 
   private
+
   def purge_image
     image.purge
   end
