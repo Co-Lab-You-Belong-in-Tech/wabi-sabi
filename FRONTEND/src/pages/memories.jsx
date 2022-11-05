@@ -5,8 +5,11 @@ import { BsHeartFill, BsHeart } from 'react-icons/bs';
 import data from '../components/data/memories';
 import AppLayout from '../components/Layouts/AppLayout';
 import Profile from '../components/Profile';
+import { useSelector } from 'react-redux';
 
 export default function Memories() {
+  const { memories } = useSelector((state) => state.memory);
+
   const flat_data = data.map((item) => item.memories).flat();
   const [showFavorites, setShowFavorites] = useState(false);
   const { length } = flat_data.filter((item) => {
@@ -16,6 +19,20 @@ export default function Memories() {
       return item;
   });
 
+  
+  if (memories.length === 0) {
+    return (
+      <AppLayout>
+        <div className="flex flex-col items-center h-screen pt-40 gap-y-6">
+          <h1 className="text-2xl font-bold">No memories found!</h1>
+          <Link href="/memory/new">
+            <p className="px-4 py-2 text-xl font-medium text-white rounded-md bg-primary ">Let's create some</p>
+          </Link>
+        </div>
+      </AppLayout>
+    )
+  }
+  
   return (
     <AppLayout>
       <main className="grid gap-8 px-3 bg-white pt-7 md:pt-20 pb-28">
@@ -52,7 +69,7 @@ export default function Memories() {
           </div>
 
           <section className="flex flex-col gap-y-10">
-            {data.map((object) => (
+            {memories.map((object) => (
               <div key={object.month}>
                 <h2 className="mb-5 text-2xl font-bold ">{object.month}</h2>
                 <ImageGallery image_array={object.memories} show_favorites={showFavorites} />
