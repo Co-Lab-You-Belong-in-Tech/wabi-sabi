@@ -12,9 +12,9 @@ const nextConfig = {
         hostname: 'localhost',
         port: '3000',
         pathname: '/rails/**',
-      }
-    ]
-  }
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
