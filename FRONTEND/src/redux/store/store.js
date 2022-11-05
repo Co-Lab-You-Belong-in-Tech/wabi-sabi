@@ -4,6 +4,7 @@ import {
  persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER,
 } from 'redux-persist';
 import accountReducer from '../features/account/accountSlice';
+import memoryReducer from '../features/memory/memorySlice';
 
 const createNoopStorage = () => ({
   getItem(_key) {
@@ -27,6 +28,7 @@ const persistConfig = {
 
 const reducer = combineReducers({
   account: accountReducer,
+  memory: memoryReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducer);

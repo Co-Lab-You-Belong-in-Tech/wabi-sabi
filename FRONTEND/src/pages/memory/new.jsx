@@ -3,8 +3,11 @@ import Image from 'next/image';
 import moment from 'moment/moment';
 import { useRouter } from 'next/router';
 import { VscClose, VscCheck, VscAdd } from 'react-icons/vsc';
-import { BsHeartFill, BsHeart } from 'react-icons/bs';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+import { BsHeartFill, BsHeart, BsCheckCircle } from 'react-icons/bs';
 import AppLayout from '../../components/Layouts/AppLayout';
+import { useDispatch, useSelector } from 'react-redux';
+import { CreateMemory, getAllMemories } from '../../redux/features/memory/memorySlice';
 
 function NewMemory() {
   // handle image preview
@@ -16,11 +19,15 @@ function NewMemory() {
   const [story, setStory] = useState('');
   const [favorite, setFavorite] = useState(false);
   const [isPublic, setIsPublic] = useState(false);
-  const prompt = 'What\'s one thing you are grateful for today?';
+  const prompt = "What's one thing you are grateful for today?";
 
-  // keep track of the character count for the story and handle errors
+  // keep track of the character count for the story and handle alerts
   const [storyCount, setStoryCount] = useState(0);
-  const [error, setError] = useState(null);
+  const [alert, setAlert] = useState({
+    type: '',
+    message: '',
+    show: false,
+  });
 
   // add a reference to the actual file input field
   const uploadButton = useRef(null);
@@ -44,18 +51,35 @@ function NewMemory() {
     setSelectedFile(e.target.files[0] || undefined);
   };
 
+  const dispatch = useDispatch();
+  const router = useRouter();
   const submitMemory = () => {
     // prevent default behavior if some fields don't meet the requirements
     if (storyCount < 100) {
-      setError('You need to meet 100 characters for your story.');
+      setAlert((prevState) => ({
+        ...prevState,
+        type: 'Required:',
+        message: 'Your story must be at least 100 characters long.',
+        show: true,
+      }));
       return;
     }
     if (!title) {
-      setError('You need to add a title for your memory.');
+      setAlert((prevState) => ({
+        ...prevState,
+        type: 'Required:',
+        message: 'You need to add a title for your memory.',
+        show: true,
+      }));
       return;
     }
     if (!selectedFile) {
-      setError('You need to add an image for your memory.');
+      setAlert((prevState) => ({
+        ...prevState,
+        type: 'Required:',
+        message: 'You need to add an image for your memory.',
+        show: true,
+      }));
       return;
     }
     // send the data to the backend
@@ -63,13 +87,37 @@ function NewMemory() {
     formData.append('api_v1_memory[title]', title);
     formData.append('api_v1_memory[story]', story);
     formData.append('api_v1_memory[favorite]', favorite);
-    formData.append('api_v1_memory[isPublic]', isPublic);
+    formData.append('api_v1_memory[public]', isPublic);
     formData.append('api_v1_memory[image]', selectedFile);
     formData.append('api_v1_memory[prompt]', prompt);
+
+    dispatch(CreateMemory(formData))
+      .unwrap()
+      .then(() => {
+        setAlert((prevState) => ({
+          ...prevState,
+          type: <BsCheckCircle />,
+          message: 'Memory saved successfully.',
+          show: true,
+        }));
+        dispatch(getAllMemories());
+        setTimeout(() => {
+          router.push('/memories');
+        }, 2000);
+      })
+      .catch(() => {
+        setAlert((prevState) => ({
+          ...prevState,
+          type: 'Error:',
+          message: "Couldn't save your memory.",
+          show: true,
+        }));
+      });
   };
 
   const { back } = useRouter();
 
+  const { loading } = useSelector((state) => state.memory);
   return (
     <AppLayout renderNav={false}>
       <div className="relative">
@@ -82,23 +130,26 @@ function NewMemory() {
               <span className="text-base leading-6 uppercase sm:text-2xl sm:px-6">
                 {moment().format('ddd ll')}
               </span>
-              <button
+              {!loading && (<button
                 onClick={submitMemory}
                 type="button"
                 name="submit memory entry"
                 className="text-2xl bg-transparent border-0 cursor-pointer sm:text-5xl"
               >
                 <VscCheck />
-              </button>
+              </button>)}
+              {
+                loading && <AiOutlineLoading3Quarters className="text-2xl animate-spin sm:text-5xl" />
+              }
             </nav>
 
             <form className="flex flex-col">
               <div className="bg-[#EDEDED] h-80 sm:h-[427px] flex justify-center items-center relative">
-                <label htmlFor="file" className="sr-only">
+                <label htmlFor="image" className="sr-only">
                   Upload Image
                 </label>
                 <input
-                  id="file"
+                  id="image"
                   type="file"
                   name="image"
                   onChange={onSelectFile}
@@ -200,18 +251,18 @@ function NewMemory() {
                 </p>
               </div>
             </form>
-            {error && (
+            {alert.show && (
               <div className="absolute z-10 bottom-0 flex items-start justify-center w-full max-w-2xl min-h-full mx-auto bg-[#CCC] bg-opacity-75">
-                <div className="relative w-full px-4 py-6 mx-8 text-center bg-white max-w-max mt-60 rounded-2xl animate-shake">
+                <div className="relative flex flex-col items-center w-full px-4 pt-6 pb-3 mx-8 text-center bg-white max-w-max mt-60 rounded-2xl animate-shake">
                   <button
                     type="button"
                     className="absolute text-3xl bg-transparent border-0 cursor-pointer right-2 top-1"
-                    onClick={() => setError(null)}
+                    onClick={() => setAlert({})}
                   >
                     <VscClose />
                   </button>
-                  <p className="mb-2 text-xl font-bold text-red-500 ">Required:</p>
-                  <p className="text-lg font-medium">{error}</p>
+                  <span className={`mb-2 text-center text-2xl font-bold ${alert.type === 'Required:' ? 'text-red-500' : 'text-green-500'}`}>{alert.type}</span>
+                  <p className="text-lg font-medium">{alert.message}</p>
                 </div>
               </div>
             )}

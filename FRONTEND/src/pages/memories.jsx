@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BsHeartFill, BsHeart } from 'react-icons/bs';
-import data from '../components/data/memories';
 import AppLayout from '../components/Layouts/AppLayout';
 import Profile from '../components/Profile';
 import { useSelector } from 'react-redux';
@@ -10,7 +9,7 @@ import { useSelector } from 'react-redux';
 export default function Memories() {
   const { memories } = useSelector((state) => state.memory);
 
-  const flat_data = data.map((item) => item.memories).flat();
+  const flat_data = memories.map((item) => item.memories).flat();
   const [showFavorites, setShowFavorites] = useState(false);
   const { length } = flat_data.filter((item) => {
     if (showFavorites) {
@@ -26,7 +25,7 @@ export default function Memories() {
         <div className="flex flex-col items-center h-screen pt-40 gap-y-6">
           <h1 className="text-2xl font-bold">No memories found!</h1>
           <Link href="/memory/new">
-            <p className="px-4 py-2 text-xl font-medium text-white rounded-md bg-primary ">Let's create some</p>
+            <p className="px-4 py-2 text-xl font-medium text-white rounded-md cursor-pointer bg-primary">Let's create some</p>
           </Link>
         </div>
       </AppLayout>
@@ -103,7 +102,7 @@ function ImageCard({ image_url, favorite, id }) {
     <Link href={`memory/${id}`}>
       <div className="relative h-24 md:h-40">
         <Image
-          src={image_url}
+          src={image_url || '/assets/test-image.png'}
           objectFit="cover"
           layout="fill"
           alt="test"
@@ -111,7 +110,7 @@ function ImageCard({ image_url, favorite, id }) {
           priority
         />
         <div className="absolute top-0 left-0 z-10 p-2">
-          {favorite && <BsHeartFill className="text-xl text-red-600" />}
+          {favorite && <BsHeartFill className="text-2xl text-red-600 md:text-4xl" />}
         </div>
       </div>
     </Link>
