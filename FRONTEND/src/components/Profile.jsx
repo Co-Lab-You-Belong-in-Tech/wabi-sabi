@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useRouter } from 'next/router';
-import { logoutAccount } from '../redux/features/account/accountSlice';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useRouter } from "next/router";
+import { logoutAccount } from "../redux/features/account/accountSlice";
 
 export default function Profile() {
   const [showMe, setShowMe] = useState(false);
-  const isLoggedIn = useSelector((state) => state.account.isLoggedIn);
+  const { isLoggedIn, register_success } = useSelector(
+    (state) => state.account
+  );
   const account = useSelector((state) => state.account);
   const dispatch = useDispatch();
   const router = useRouter();
-  
+
   const handleLogout = () => {
     dispatch(logoutAccount());
   };
-  
+
   if (!isLoggedIn) {
-    router.push('/account/login');
+    router.push("/account/login");
   }
 
   return (
@@ -31,16 +33,20 @@ export default function Profile() {
           </span>
           <span
             className="absolute top-[110%] left-1/2 -translate-x-1/2 w-0 h-0 duration-700 border-solid border-[13px] border-black/0 border-t-green-500"
-            style={{ display: showMe ? 'block' : 'none' }}
+            style={{ display: showMe ? "block" : "none" }}
           />
         </button>
       </div>
-      <div className={`z-50 px-5 right-0 absolute top-16 ${showMe ? 'h-[150px]' : 'h-0'}`}>
+      <div
+        className={`z-50 px-5 right-0 absolute top-16 ${
+          showMe ? "h-[150px]" : "h-0"
+        }`}
+      >
         <div className="md:w-[270px] w-[144px]">
           <div
             className="w-full overflow-hidden text-2xl text-black duration-500 ease-in-out bg-white shadow-3xl rounded-4xl max-h-0 transition-max"
             style={{
-              maxHeight: showMe ? '400px' : '0px',
+              maxHeight: showMe ? "400px" : "0px",
             }}
           >
             <div className="flex gap-[14px] pb-4 p-5 items-center">
@@ -52,7 +58,9 @@ export default function Profile() {
                   {isLoggedIn && account.name[0]}
                 </h2>
               </button>
-              <p className="text-2xl font-bold capitalize">{isLoggedIn && account.name.split(' ')[0]}</p>
+              <p className="text-2xl font-bold capitalize">
+                {isLoggedIn && account.name.split(" ")[0]}
+              </p>
             </div>
             <div className="border-b-[#CECECE] border-b-[0.5px] border-solid border-l-0 border-r-0 border-t-0  mb-[18px]" />
             <div className="flex">

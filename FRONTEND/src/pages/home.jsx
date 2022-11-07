@@ -53,7 +53,7 @@ function LandingPage() {
   const [domWidth, setDomWidth] = useState(0);
   const pageRef = useRef(null);
   const handleResize = () => {
-    setDomWidth(pageRef.current.offsetWidth);
+    setDomWidth(window.innerWidth);
   };
 
   useLayoutEffect(() => {

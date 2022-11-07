@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import moment from 'moment/moment';
-import { VscArrowLeft, VscCheck, VscAdd, VscClose } from 'react-icons/vsc';
+import {
+ VscArrowLeft, VscCheck, VscAdd, VscClose,
+} from 'react-icons/vsc';
 import { BsHeartFill, BsHeart, BsGlobe } from 'react-icons/bs';
 import { GrLock } from 'react-icons/gr';
 import AppLayout from '../../components/Layouts/AppLayout';
@@ -133,18 +135,16 @@ export default function ViewMemory() {
                 />
               )}
               {editMode && (
-                <>
-                  <button
-                    type="button"
-                    className="absolute p-1 bg-white rounded-md bottom-2 right-2"
-                    onClick={() => {
+                <button
+                  type="button"
+                  className="absolute p-1 bg-white rounded-md bottom-2 right-2"
+                  onClick={() => {
                       setSelectedFile(null);
                       setPreview(null);
                     }}
-                  >
-                    Change photo
-                  </button>
-                </>
+                >
+                  Change photo
+                </button>
               )}
               <button
                 id="upload-icon"

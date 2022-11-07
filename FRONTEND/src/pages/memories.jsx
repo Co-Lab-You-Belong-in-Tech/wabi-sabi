@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BsHeartFill, BsHeart } from 'react-icons/bs';
+import { useSelector } from 'react-redux';
 import AppLayout from '../components/Layouts/AppLayout';
 import Profile from '../components/Profile';
-import { useSelector } from 'react-redux';
 
 export default function Memories() {
   const { memories } = useSelector((state) => state.memory);
@@ -18,7 +18,6 @@ export default function Memories() {
       return item;
   });
 
-  
   if (memories.length === 0) {
     return (
       <AppLayout>
@@ -29,9 +28,9 @@ export default function Memories() {
           </Link>
         </div>
       </AppLayout>
-    )
+    );
   }
-  
+
   return (
     <AppLayout>
       <main className="grid gap-8 px-3 bg-white pt-7 md:pt-20 pb-28">

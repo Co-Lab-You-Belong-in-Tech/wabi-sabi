@@ -5,8 +5,8 @@ import { useRouter } from 'next/router';
 import { VscClose, VscCheck, VscAdd } from 'react-icons/vsc';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { BsHeartFill, BsHeart, BsCheckCircle } from 'react-icons/bs';
-import AppLayout from '../../components/Layouts/AppLayout';
 import { useDispatch, useSelector } from 'react-redux';
+import AppLayout from '../../components/Layouts/AppLayout';
 import { CreateMemory, getAllMemories } from '../../redux/features/memory/memorySlice';
 
 function NewMemory() {
@@ -130,14 +130,16 @@ function NewMemory() {
               <span className="text-base leading-6 uppercase sm:text-2xl sm:px-6">
                 {moment().format('ddd ll')}
               </span>
-              {!loading && (<button
+              {!loading && (
+              <button
                 onClick={submitMemory}
                 type="button"
                 name="submit memory entry"
                 className="text-2xl bg-transparent border-0 cursor-pointer sm:text-5xl"
               >
                 <VscCheck />
-              </button>)}
+              </button>
+)}
               {
                 loading && <AiOutlineLoading3Quarters className="text-2xl animate-spin sm:text-5xl" />
               }

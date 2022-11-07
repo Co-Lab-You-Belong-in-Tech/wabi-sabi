@@ -23,6 +23,7 @@ export default function SignUpPage() {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.account.loading);
   const isLoggedIn = useSelector((state) => state.account.isLoggedIn);
+  const register_success = useSelector((state) => state.account.register_success);
   const router = useRouter();
 
   // destructure register data from state
@@ -51,6 +52,10 @@ export default function SignUpPage() {
   // redirect to dashboard page if user is logged in
   if (isLoggedIn) {
     router.push('/home');
+  }
+
+  if (register_success) {
+    router.push('/welcome');
   }
 
   return (
@@ -131,9 +136,15 @@ export default function SignUpPage() {
               <ImQuotesLeft />
             </p>
             <p className="text-xl tracking-[0.02em] text-center">
-              Sometimes you never know the value of a{' '}
-              <span className="font-semibold underline">moment</span> until it
-              becomes a <span className="font-semibold underline">memory</span>.
+              Sometimes you never know the value of a
+              {' '}
+              <span className="font-semibold underline">moment</span>
+              {' '}
+              until it
+              becomes a
+              {' '}
+              <span className="font-semibold underline">memory</span>
+              .
             </p>
           </div>
           <hr className="bg-[#373737] w-16 mx-auto my-4 h-0.5" />

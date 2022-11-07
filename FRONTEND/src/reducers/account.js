@@ -14,7 +14,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  user: null,
+  user: { name: 'Sam Latunde' },
   isLoggedIn: false,
   loading: false,
   register_success: false,
@@ -51,6 +51,7 @@ const accountReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoggedIn: false,
+        register_success: false,
         user: null,
       };
     case LOGOUT_FAIL:

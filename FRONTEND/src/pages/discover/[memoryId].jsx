@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
@@ -6,7 +7,9 @@ import { BsArrowLeft } from 'react-icons/bs';
 import data from '../../components/data/data';
 import AppLayout from '../../components/Layouts/AppLayout';
 
-function Memory({ name, date, image, title, prompt, story, id }) {
+function Memory({
+ name, date, image, title, prompt, story, id,
+}) {
   const { back } = useRouter();
   return (
     <AppLayout renderNav={false}>
@@ -17,7 +20,11 @@ function Memory({ name, date, image, title, prompt, story, id }) {
               <BsArrowLeft className="m-2" />
             </button>
             <span>{moment(date).format('ddd ll').toUpperCase()}</span>
-            <motion.p className="font-bold" layout="position" layoutId={`memory-name-${id}`}>
+            <motion.p
+              className="font-bold"
+              layout="position"
+              layoutId={`memory-name-${id}`}
+            >
               {name}
             </motion.p>
           </header>
