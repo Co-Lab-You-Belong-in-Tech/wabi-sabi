@@ -1,20 +1,33 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/default-props-match-prop-types */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Footer from '../Footer';
-import DesktopHeader from '../desktopHeader';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
-
+import DesktopHeader from '../DesktopHeader';
+import Footer from '../Footer';
 
 function AppLayout({ children, renderSide, renderNav }) {
   const isLoggedIn = useSelector((state) => state.account.isLoggedIn);
   const router = useRouter();
-  const protectedRoutes = ['/home', '/memories', '/discover', '/memory/[memoryId]', '/discover/[memoryId]', '/memory/new'];
-  
+  const protectedRoutes = [
+    '/home',
+    '/memories',
+    '/discover',
+    '/memory/[memoryId]',
+    '/discover/[memoryId]',
+    '/memory/new',
+  ];
+
   useEffect(() => {
     console.log(router.pathname);
-    if (isLoggedIn && (router.pathname === '/account/login' || router.pathname === '/account/register' || router.pathname === '/')) {
+    if (
+      isLoggedIn &&
+      (router.pathname === '/account/login' ||
+        router.pathname === '/account/register' ||
+        router.pathname === '/')
+    ) {
       router.push('/home');
     }
 

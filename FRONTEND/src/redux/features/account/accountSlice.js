@@ -26,6 +26,7 @@ export const accountSlice = createSlice({
   initialState: {
     name: null,
     isLoggedIn: false,
+    register_success: false,
     loading: false,
   },
   reducers: {},
@@ -51,6 +52,7 @@ export const accountSlice = createSlice({
     },
     [registerAccount.fulfilled]: (state, action) => {
       state.loading = false;
+      state.register_success = true;
       state.isLoggedIn = true;
       const { user } = action.payload;
       state.name = user.name;

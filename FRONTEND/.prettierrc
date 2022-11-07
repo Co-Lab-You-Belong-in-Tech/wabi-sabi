@@ -1,0 +1,6 @@
+{
+  "singleQuote": true,
+  "plugins": ["eslint"],
+  
+  "tabWidth": 2
+}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {  ImQuotesRight  } from 'react-icons/im';;
+import { ImQuotesRight } from 'react-icons/im';
 import { ThreeDots } from 'react-loader-spinner';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -118,7 +118,9 @@ function SignInPage() {
         <div>
           <div className="flex flex-col items-end justify-center w-full">
             <p className="text-xl tracking-[0.02em] text-center">
-              <span className="font-semibold underline">Memory</span> ... is the
+              <span className="font-semibold underline">Memory</span>
+              {' '}
+              ... is the
               diary that we all carry about with us.
             </p>
             <p className="text-3xl">
