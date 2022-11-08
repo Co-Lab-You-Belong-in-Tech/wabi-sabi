@@ -8,7 +8,8 @@
   "extends": [
     "eslint:recommended",
     "airbnb",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "prettier"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -17,8 +18,9 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "plugins": ["react", "prettier"],
   "rules": {
+    "prettier/prettier":"error",
     "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
     "react/react-in-jsx-scope": "off",
     "import/no-unresolved": "off",
@@ -44,7 +46,8 @@
         "props": true,
         "ignorePropertyModificationsFor": ["state"]
       }
-    ]
+    ],
+    "react/prop-types":"off"
   },
   "ignorePatterns": ["dist/", "build/", "src/pages/_app.js"]
 }
