@@ -50,8 +50,9 @@ function NewMemory() {
       setSelectedFile(null);
       return;
     }
-
-    if (selectedFile.type !== 'image/jpeg' || selectedFile.type !== 'image/png') {
+    
+    const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+    if (!allowedExtensions.exec(selectedFile.name)) {
       setAlert({
         type: 'Error:',
         message: 'Please upload a JPEG or PNG file.',

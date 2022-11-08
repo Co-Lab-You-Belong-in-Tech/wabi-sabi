@@ -21,7 +21,6 @@ function AppLayout({ children, renderSide, renderNav }) {
   ];
 
   useEffect(() => {
-    console.log(router.pathname);
     if (
       isLoggedIn &&
       (router.pathname === '/account/login' ||
