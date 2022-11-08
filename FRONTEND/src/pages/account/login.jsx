@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {  ImQuotesRight  } from 'react-icons/im';;
+import { ImQuotesRight } from 'react-icons/im';
 import { ThreeDots } from 'react-loader-spinner';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -67,7 +67,12 @@ function SignInPage() {
         >
           <div>
             <div className="flex items-center justify-center">
-              <Image src="/assets/auth-page-logo.svg" alt="Logo" height={90} width={80} />
+              <Image
+                src="/assets/auth-page-logo.svg"
+                alt="Logo"
+                height={90}
+                width={80}
+              />
               <h1 className="text-5xl tracking-[0.02em] font-bold text-center">
                 Sign In
               </h1>

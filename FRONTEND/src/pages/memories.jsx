@@ -2,41 +2,44 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BsHeartFill, BsHeart } from 'react-icons/bs';
+import { useSelector } from 'react-redux';
 import AppLayout from '../components/Layouts/AppLayout';
 import Profile from '../components/Profile';
-import { useSelector } from 'react-redux';
 
 export default function Memories() {
   const { memories } = useSelector((state) => state.memory);
-
   const flat_data = memories.map((item) => item.memories).flat();
   const [showFavorites, setShowFavorites] = useState(false);
   const { length } = flat_data.filter((item) => {
     if (showFavorites) {
       return item.favorite;
     }
-      return item;
+    return item;
   });
 
-  
   if (memories.length === 0) {
     return (
       <AppLayout>
         <div className="flex flex-col items-center h-screen pt-40 gap-y-6">
           <h1 className="text-2xl font-bold">No memories found!</h1>
           <Link href="/memory/new">
-            <p className="px-4 py-2 text-xl font-medium text-white rounded-md cursor-pointer bg-primary">Let's create some</p>
+            <p className="px-4 py-2 text-xl font-medium text-white rounded-md cursor-pointer bg-primary">
+              Let&lsquo;s create some
+            </p>
           </Link>
         </div>
       </AppLayout>
-    )
+    );
   }
-  
+
   return (
     <AppLayout>
       <main className="grid gap-8 px-3 bg-white pt-7 md:pt-20 pb-28">
         <div className="relative flex items-center justify-between px-2 md:hidden">
-          <button type="button" onClick={() => setShowFavorites(!showFavorites)}>
+          <button
+            type="button"
+            onClick={() => setShowFavorites(!showFavorites)}
+          >
             {showFavorites ? (
               <BsHeartFill className="text-2xl text-red-600 sm:text-3xl" />
             ) : (
@@ -44,8 +47,9 @@ export default function Memories() {
             )}
           </button>
           <p>
-            <span className="mr-4 font-bold">{showFavorites ? 'FAVORITES' : 'MEMORIES'}</span>
-            {' '}
+            <span className="mr-4 font-bold">
+              {showFavorites ? 'FAVORITES' : 'MEMORIES'}
+            </span>
             {length}
           </p>
           <Profile />
@@ -54,11 +58,15 @@ export default function Memories() {
         <div className="w-full max-w-6xl min-h-screen mx-auto">
           <div className="justify-between hidden w-1/2 py-5 pr-10 ml-auto md:flex">
             <p>
-              <span className="mr-4 font-bold">{showFavorites ? 'FAVORITES' : 'MEMORIES'}</span>
-              {' '}
+              <span className="mr-4 font-bold">
+                {showFavorites ? 'FAVORITES' : 'MEMORIES'}
+              </span>
               {length}
             </p>
-            <button type="button" onClick={() => setShowFavorites(!showFavorites)}>
+            <button
+              type="button"
+              onClick={() => setShowFavorites(!showFavorites)}
+            >
               {showFavorites ? (
                 <BsHeartFill className="text-2xl text-red-600 sm:text-3xl" />
               ) : (
@@ -71,7 +79,10 @@ export default function Memories() {
             {memories.map((object) => (
               <div key={object.month}>
                 <h2 className="mb-5 text-2xl font-bold ">{object.month}</h2>
-                <ImageGallery image_array={object.memories} show_favorites={showFavorites} />
+                <ImageGallery
+                  image_array={object.memories}
+                  show_favorites={showFavorites}
+                />
               </div>
             ))}
           </section>
@@ -92,6 +103,7 @@ function ImageGallery({ image_array, show_favorites }) {
         } else {
           return <ImageCard key={image.id} {...image} />;
         }
+        return null;
       })}
     </div>
   );
@@ -110,7 +122,9 @@ function ImageCard({ image_url, favorite, id }) {
           priority
         />
         <div className="absolute top-0 left-0 z-10 p-2">
-          {favorite && <BsHeartFill className="text-2xl text-red-600 md:text-4xl" />}
+          {favorite && (
+            <BsHeartFill className="text-2xl text-red-600 md:text-4xl" />
+          )}
         </div>
       </div>
     </Link>

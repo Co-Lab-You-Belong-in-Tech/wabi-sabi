@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx}',
+    './src/components/**/*.{js,ts,jsx,tsx}',
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -29,6 +32,8 @@ module.exports = {
       backgroundImage: {
         'home-card':
           'linear-gradient(172.93deg, #348D52 32.33%, #348D5200 72.2%), linear-gradient(#37C367, #37C367)',
+        ellipse:
+          'linear-gradient(180deg, #37C467 0%, rgba(55, 196, 103, 0) 16.35%), linear-gradient(#F7F7F9, #F7F7F9)',
       },
       fontSize: {
         base: '0.75rem',
