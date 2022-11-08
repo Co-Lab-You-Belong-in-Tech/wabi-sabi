@@ -5,12 +5,12 @@ import AppLayout from '../components/Layouts/AppLayout';
 
 function welcome() {
   const { push } = useRouter();
-//   useEffect(() => {
-//     const timer = setTimeout(() => push('/home'), 15000);
-//     return () => clearTimeout(timer);
-//   }, []);
+  //   useEffect(() => {
+  //     const timer = setTimeout(() => push('/home'), 15000);
+  //     return () => clearTimeout(timer);
+  //   }, []);
   const { isLoggedIn, register_success } = useSelector(
-    (state) => state.account,
+    (state) => state.account
   );
   const account = useSelector((state) => state.account);
   // console.log(account.user.name);
@@ -22,12 +22,8 @@ function welcome() {
         <header className="flex items-center justify-center mb-24 md:mb-16">
           <img src="/assets/auth-page-logo.svg" alt="Logo" />
           <h2 className="font-bold text-[2.25rem]">
-            Hi
-            {' '}
-            {(isLoggedIn || register_success) &&
-              account?.name?.split(' ')[0]}
-            {' '}
-            !
+            Hi{' '}
+            {(isLoggedIn || register_success) && account?.name?.split(' ')[0]} !
           </h2>
         </header>
         <section className="mb-[18px]">
