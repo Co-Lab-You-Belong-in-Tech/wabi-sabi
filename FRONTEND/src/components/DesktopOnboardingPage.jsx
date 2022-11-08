@@ -6,7 +6,7 @@ function DesktopOnboardingPage() {
   return (
     <AppLayout>
       <main className="flex flex-col items-center justify-end w-full h-screen text-base text-black bg-white z-1">
-        <div className="relative flex items-end justify-center w-full gap-x-20 h-2/3 bg-desktop-onboarding">
+        <div className="relative flex items-end justify-center w-full gap-x-20 h-2/3 bg-desktop-onboarding bg-[url('/assets/dk-onboarding-page-bg.svg')]">
           <img
             src="/assets/dk-onboarding-page-tree.svg"
             alt="Logo"

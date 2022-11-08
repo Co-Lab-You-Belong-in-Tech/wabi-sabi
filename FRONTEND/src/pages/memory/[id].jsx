@@ -34,8 +34,29 @@ export default function ViewMemory() {
     if (preview) {
       return;
     }
+    
     if (!selectedFile) {
       setPreview(undefined);
+      return;
+    }
+
+    if (selectedFile.size > 10000000) {
+      setAlert({
+        type: 'Error:',
+        message: 'Please upload a file less than 10MB.',
+        show: true,
+      });
+      setSelectedFile(null);
+      return;
+    }
+
+    if (selectedFile.type !== 'image/jpeg' || selectedFile.type !== 'image/png') {
+      setAlert({
+        type: 'Error:',
+        message: 'Please upload a JPEG or PNG file.',
+        show: true,
+      });
+      setSelectedFile(null);
       return;
     }
 

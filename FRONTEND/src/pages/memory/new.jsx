@@ -41,6 +41,27 @@ function NewMemory() {
       return;
     }
 
+    if (selectedFile.size > 10000000) {
+      setAlert({
+        type: 'Error:',
+        message: 'Please upload a file less than 10MB.',
+        show: true,
+      });
+      setSelectedFile(null);
+      return;
+    }
+    
+    const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+    if (!allowedExtensions.exec(selectedFile.name)) {
+      setAlert({
+        type: 'Error:',
+        message: 'Please upload a JPEG or PNG file.',
+        show: true,
+      });
+      setSelectedFile(null);
+      return;
+    }
+
     const objectUrl = URL.createObjectURL(selectedFile);
     setPreview(objectUrl);
 
@@ -261,7 +282,7 @@ function NewMemory() {
                   >
                     <VscClose />
                   </button>
-                  <span className={`mb-2 text-center text-2xl font-bold ${alert.type === 'Required:' ? 'text-red-500' : 'text-green-500'}`}>{alert.type}</span>
+                  <span className={`mb-2 text-center text-2xl font-bold ${alert.type !== <BsCheckCircle /> ? 'text-red-500' : 'text-green-500'}`}>{alert.type}</span>
                   <p className="text-lg font-medium">{alert.message}</p>
                 </div>
               </div>
