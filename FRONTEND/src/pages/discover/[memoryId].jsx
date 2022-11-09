@@ -3,11 +3,22 @@ import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import moment from 'moment/moment';
 import { BsArrowLeft } from 'react-icons/bs';
-import data from '../../components/data/data';
+// import data from '../../components/data/data';
+import { useSelector } from 'react-redux';
 import AppLayout from '../../components/Layouts/AppLayout';
 
-function Memory({ name, date, image, title, prompt, story, id }) {
-  const { back } = useRouter();
+function Memory() {
+  const {
+    query: { memoryId },
+    back,
+  } = useRouter();
+  const { discoveries } = useSelector((state) => state.discover);
+  const { created_at, image_url, title, prompt, story, id } = discoveries.find(
+    (memory) => memory.id === memoryId
+  );
+
+  const name = useSelector((state) => state.account.name);
+
   return (
     <AppLayout renderNav={false}>
       <section className="bg-[#F7F7F9] md:pt-20">
@@ -16,8 +27,12 @@ function Memory({ name, date, image, title, prompt, story, id }) {
             <button type="button" onClick={back}>
               <BsArrowLeft className="m-2" />
             </button>
-            <span>{moment(date).format('ddd ll').toUpperCase()}</span>
-            <motion.p className="font-bold" layout="position" layoutId={`memory-name-${id}`}>
+            <span>{moment(created_at).format('ddd ll').toUpperCase()}</span>
+            <motion.p
+              className="font-bold"
+              layout="position"
+              layoutId={`memory-name-${id}`}
+            >
               {name}
             </motion.p>
           </header>
@@ -25,7 +40,7 @@ function Memory({ name, date, image, title, prompt, story, id }) {
             <motion.img
               layout
               layoutId={`memory-image-${id}`}
-              src={image.src}
+              src={image_url}
               alt={title}
               className="w-full aspect-[5/3] object-cover object-center rounded-[15px_15px_0px_0px"
             />
@@ -53,24 +68,3 @@ function Memory({ name, date, image, title, prompt, story, id }) {
 // memory.getInitialProps = ({ query }) => {};
 
 export default Memory;
-
-export function getStaticProps({ params }) {
-  const { memoryId } = params;
-
-  const memoryData = data.find((_memory) => _memory.id.toString() === memoryId);
-
-  return {
-    props: { ...memoryData },
-  };
-}
-
-export function getStaticPaths() {
-  return {
-    paths: [
-      ...data.map((_memory) => ({
-        params: { memoryId: _memory.id.toString() },
-      })),
-    ],
-    fallback: false,
-  };
-}

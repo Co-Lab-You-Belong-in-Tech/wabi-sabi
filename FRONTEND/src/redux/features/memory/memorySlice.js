@@ -3,20 +3,26 @@ import * as api from './memoryAPI';
 
 const API_URL = 'http://localhost:3000';
 
-export const getAllMemories = createAsyncThunk('memory/getAllMemories', async () => {
-  const response = await api.getAllMemories(API_URL);
-  return response;
-});
+export const getAllMemories = createAsyncThunk(
+  'memory/getAllMemories',
+  async () => {
+    const response = await api.getAllMemories(API_URL);
+    return response;
+  }
+);
 
 export const getMemory = createAsyncThunk('memory/getMemory', async (id) => {
   const response = await api.getMemory(API_URL, id);
   return response;
 });
 
-export const CreateMemory = createAsyncThunk('memory/CreateMemory', async (memory) => {
-  const response = await api.CreateMemory(API_URL, memory);
-  return response;
-});
+export const CreateMemory = createAsyncThunk(
+  'memory/CreateMemory',
+  async (memory) => {
+    const response = await api.CreateMemory(API_URL, memory);
+    return response;
+  }
+);
 
 const initialState = {
   memories: [],
