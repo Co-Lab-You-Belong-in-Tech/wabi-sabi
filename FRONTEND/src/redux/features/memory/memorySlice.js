@@ -8,7 +8,7 @@ export const getAllMemories = createAsyncThunk(
   async () => {
     const response = await api.getAllMemories(API_URL);
     return response;
-  }
+  },
 );
 
 export const createMemory = createAsyncThunk(
@@ -16,7 +16,7 @@ export const createMemory = createAsyncThunk(
   async (memory) => {
     const response = await api.createMemory(API_URL, memory);
     return response;
-  }
+  },
 );
 
 export const updateMemory = createAsyncThunk(
@@ -24,7 +24,7 @@ export const updateMemory = createAsyncThunk(
   async (id, memory) => {
     const response = await api.updateMemory(API_URL, id, memory);
     return response;
-  }
+  },
 );
 
 const initialState = {

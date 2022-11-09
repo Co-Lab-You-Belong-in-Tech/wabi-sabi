@@ -39,7 +39,7 @@ export const cardSlice = createSlice({
     setCurrentCard: (state, action) => {
       if (action.payload) {
         const pickedCard = state.cards.find(
-          (card) => card.id === action.payload
+          (card) => card.id === action.payload,
         );
         state.currentCard = pickedCard.question;
       } else {
@@ -52,7 +52,9 @@ export const cardSlice = createSlice({
   },
 });
 
-export const { setCardInactive, setCurrentCard, resetCardsState, setDate } =
+export const {
+ setCardInactive, setCurrentCard, resetCardsState, setDate,
+} =
   cardSlice.actions;
 
 export default cardSlice.reducer;

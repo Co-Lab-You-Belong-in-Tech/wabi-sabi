@@ -24,7 +24,7 @@ export const registerAccount = createAsyncThunk(
     } catch (error) {
       throw new Error(error.message);
     }
-  }
+  },
 );
 
 export const logoutAccount = createAsyncThunk('users/logout', async () => {
