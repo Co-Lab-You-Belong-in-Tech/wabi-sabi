@@ -14,7 +14,7 @@ export default function MobileOnboardingPage() {
           width={300}
           height={180}
         />
-        <div className="flex flex-col items-center w-full pt-20 pb-10 bg-mobile-onboarding">
+        <div className="flex flex-col items-center w-full pt-20 pb-10 bg-mobile-onboarding bg-[url('/assets/mobile-onboarding-page-bg.svg')]">
           <section className="flex flex-col w-4/5 max-w-lg gap-5 mx-auto text-black">
             <article className="flex items-center gap-5">
               <img

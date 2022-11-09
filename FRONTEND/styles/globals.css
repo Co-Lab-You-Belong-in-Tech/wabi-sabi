@@ -17,14 +17,12 @@ html {
 }
 
 .bg-mobile-onboarding {
-  background-image: url('../public/assets/mobile-onboarding-page-bg.svg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
 .bg-desktop-onboarding {
-  background-image: url('../public/assets/dk-onboarding-page-bg.svg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
