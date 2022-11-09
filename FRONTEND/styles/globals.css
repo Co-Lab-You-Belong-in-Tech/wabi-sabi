@@ -13,7 +13,9 @@ html {
 }
 
 .bg-ellipse {
-  background: linear-gradient(180deg, #37c467 0%, #f7f7f9 20.87%), #f7f7f9;
+  background: linear-gradient(180deg, #37c467 0%, rgba(55, 196, 103, 0) 16.35%);
+  position: absolute;
+  border-radius: 100%;
 }
 
 .bg-mobile-onboarding {

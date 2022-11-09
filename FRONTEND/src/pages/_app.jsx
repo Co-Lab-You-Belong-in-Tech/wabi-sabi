@@ -8,7 +8,8 @@ import store from '../redux/store/store';
 import '../../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
-  let persistor = persistStore(store);
+  const persistor = persistStore(store);
+
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>

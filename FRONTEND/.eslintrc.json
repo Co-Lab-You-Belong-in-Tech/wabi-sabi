@@ -38,13 +38,9 @@
     "consistent-return": "off",
     "indent": "off",
     "camelcase": "off",
-    "no-param-reassign": [
-      "error",
-      {
-        "props": true,
-        "ignorePropertyModificationsFor": ["state"]
-      }
-    ]
+    "no-param-reassign": "off",
+    "no-return-assign": "off",
+    "react/prop-types":"off"
   },
   "ignorePatterns": ["dist/", "build/", "src/pages/_app.js"]
 }

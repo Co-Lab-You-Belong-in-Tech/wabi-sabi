@@ -3,20 +3,29 @@ import * as api from './memoryAPI';
 
 const API_URL = 'http://localhost:3000';
 
-export const getAllMemories = createAsyncThunk('memory/getAllMemories', async () => {
-  const response = await api.getAllMemories(API_URL);
-  return response;
-});
+export const getAllMemories = createAsyncThunk(
+  'memory/getAllMemories',
+  async () => {
+    const response = await api.getAllMemories(API_URL);
+    return response;
+  },
+);
 
-export const getMemory = createAsyncThunk('memory/getMemory', async (id) => {
-  const response = await api.getMemory(API_URL, id);
-  return response;
-});
+export const createMemory = createAsyncThunk(
+  'memory/createMemory',
+  async (memory) => {
+    const response = await api.createMemory(API_URL, memory);
+    return response;
+  },
+);
 
-export const CreateMemory = createAsyncThunk('memory/CreateMemory', async (memory) => {
-  const response = await api.CreateMemory(API_URL, memory);
-  return response;
-});
+export const updateMemory = createAsyncThunk(
+  'memory/updateMemory',
+  async (id, memory) => {
+    const response = await api.updateMemory(API_URL, id, memory);
+    return response;
+  },
+);
 
 const initialState = {
   memories: [],
@@ -38,24 +47,22 @@ export const memorySlice = createSlice({
     [getAllMemories.rejected]: (state) => {
       state.loading = false;
     },
-    [getMemory.pending]: (state) => {
+    [createMemory.pending]: (state) => {
       state.loading = true;
     },
-    [getMemory.fulfilled]: (state, action) => {
-      state.loading = false;
-      state.memories = action.payload;
-    },
-    [getMemory.rejected]: (state) => {
+    [createMemory.fulfilled]: (state) => {
       state.loading = false;
     },
-    [CreateMemory.pending]: (state) => {
+    [createMemory.rejected]: (state) => {
+      state.loading = false;
+    },
+    [updateMemory.pending]: (state) => {
       state.loading = true;
     },
-    [CreateMemory.fulfilled]: (state, action) => {
+    [updateMemory.fulfilled]: (state) => {
       state.loading = false;
-      state.memories = action.payload;
     },
-    [CreateMemory.rejected]: (state) => {
+    [updateMemory.rejected]: (state) => {
       state.loading = false;
     },
   },

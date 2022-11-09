@@ -51,6 +51,8 @@ export default async (request, response) => {
     }
   } else {
     response.setHeader('Allow', ['POST']);
-    return response.status(405).json({ error: `Method ${request.method} not allowed` });
+    return response
+      .status(405)
+      .json({ error: `Method ${request.method} not allowed` });
   }
 };

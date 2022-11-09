@@ -6,7 +6,8 @@ const data = [
         id: '48b345b4-0fa9-4c60-b7b5-38b738bd41ed',
         prompt: 'Voluptatum sint sed similique.',
         title: 'Eos ullam laborum est.',
-        story: 'Sunt veritatis voluptatem. Perspiciatis aut minus. Doloribus veritatis enim.',
+        story:
+          'Sunt veritatis voluptatem. Perspiciatis aut minus. Doloribus veritatis enim.',
         image_url: '/assets/demo/1.png',
         public: false,
         favorite: true,
@@ -16,7 +17,8 @@ const data = [
         id: '3cddee98-5964-4d09-b738-2a9c4143b014',
         prompt: 'Quas est iusto accusamus.',
         title: 'Nemo id velit consequatur.',
-        story: 'Reiciendis rerum numquam. Nulla ad debitis. Dolor ipsa laboriosam.',
+        story:
+          'Reiciendis rerum numquam. Nulla ad debitis. Dolor ipsa laboriosam.',
         image_url: '/assets/demo/2.png',
         public: false,
         favorite: false,
@@ -46,7 +48,8 @@ const data = [
         id: 'fac21a18-c603-4021-b3ac-88f15db53178',
         prompt: 'Iusto exercitationem quia nobis.',
         title: 'Voluptas vel sint dolorum.',
-        story: 'Praesentium nemo ut. Temporibus nam sapiente. Enim praesentium velit.',
+        story:
+          'Praesentium nemo ut. Temporibus nam sapiente. Enim praesentium velit.',
         image_url: '/assets/demo/5.png',
         public: true,
         favorite: true,
@@ -56,7 +59,8 @@ const data = [
         id: 'eec7c1cc-1725-428a-b68a-5abbe848a9bc',
         prompt: 'Iure similique sit exercitationem.',
         title: 'Commodi explicabo sed exercitationem.',
-        story: 'Alias omnis qui. Exercitationem voluptatibus ut. Suscipit sint quidem.',
+        story:
+          'Alias omnis qui. Exercitationem voluptatibus ut. Suscipit sint quidem.',
         image_url: '/assets/demo/6.png',
         public: false,
         favorite: true,
@@ -66,7 +70,8 @@ const data = [
         id: '45c3041f-babc-4763-b904-e6243ba59741',
         prompt: 'Totam quia fugiat eos.',
         title: 'Quis quo voluptas reiciendis.',
-        story: 'Deserunt necessitatibus nihil. Maiores architecto fugit. Illo nisi dolorum.',
+        story:
+          'Deserunt necessitatibus nihil. Maiores architecto fugit. Illo nisi dolorum.',
         image_url: '/assets/demo/7.png',
         public: false,
         favorite: false,
@@ -76,7 +81,8 @@ const data = [
         id: '48c43349-fb46-4f3b-ba53-06988335b541',
         prompt: 'Suscipit animi sunt quas.',
         title: 'Aliquam deserunt est mollitia.',
-        story: 'Est fuga perspiciatis. Quidem voluptatem quia. Amet totam earum.',
+        story:
+          'Est fuga perspiciatis. Quidem voluptatem quia. Amet totam earum.',
         image_url: '/assets/demo/8.png',
         public: true,
         favorite: false,
@@ -111,7 +117,8 @@ const data = [
         id: '9f9b6b34-c7b9-468c-bd68-3ee2b2ff9ee9',
         prompt: 'Suscipit expedita eos ipsa.',
         title: 'Et debitis eius ipsa.',
-        story: 'Sint vel explicabo. Quod tempore molestiae. Odit consequatur et.',
+        story:
+          'Sint vel explicabo. Quod tempore molestiae. Odit consequatur et.',
         image_url: '/assets/demo/11.png',
         public: false,
         favorite: false,
@@ -146,7 +153,8 @@ const data = [
         id: 'dbc0fac6-f66b-45e9-827c-0380b020c273',
         prompt: 'Officiis fugit blanditiis accusamus.',
         title: 'Optio voluptatem molestiae est.',
-        story: 'Itaque architecto magnam. Aut provident inventore. Accusantium veritatis id.',
+        story:
+          'Itaque architecto magnam. Aut provident inventore. Accusantium veritatis id.',
         image_url: '/assets/demo/14.png',
         public: false,
         favorite: false,
@@ -156,7 +164,8 @@ const data = [
         id: '8896bcd3-95eb-42ff-841e-9f95f420fb18',
         prompt: 'Ducimus officiis ut occaecati.',
         title: 'Dicta debitis labore nihil.',
-        story: 'Alias nisi explicabo. Vitae reprehenderit perspiciatis. Quas tempora quia.',
+        story:
+          'Alias nisi explicabo. Vitae reprehenderit perspiciatis. Quas tempora quia.',
         image_url: '/assets/demo/15.png',
         public: true,
         favorite: true,
@@ -166,7 +175,8 @@ const data = [
         id: '6988f997-bf59-467b-b433-1525dc4943aa',
         prompt: 'Voluptatibus qui saepe minima.',
         title: 'Temporibus quibusdam necessitatibus omnis.',
-        story: 'Quasi sit ut. Magni doloremque quibusdam. Doloremque quia totam.',
+        story:
+          'Quasi sit ut. Magni doloremque quibusdam. Doloremque quia totam.',
         image_url: '/assets/demo/16.png',
         public: true,
         favorite: true,
@@ -186,7 +196,8 @@ const data = [
         id: '45b8e245-5f57-466b-b535-292f06d5b4e5',
         prompt: 'Aut corrupti culpa sapiente.',
         title: 'Placeat voluptatem deserunt culpa.',
-        story: 'Consequatur animi autem. Voluptatem reiciendis dolores. Nobis ad nemo.',
+        story:
+          'Consequatur animi autem. Voluptatem reiciendis dolores. Nobis ad nemo.',
         image_url: '/assets/demo/18.png',
         public: false,
         favorite: true,

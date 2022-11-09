@@ -23,6 +23,7 @@ export default function SignUpPage() {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.account.loading);
   const isLoggedIn = useSelector((state) => state.account.isLoggedIn);
+
   const router = useRouter();
 
   // destructure register data from state
@@ -62,7 +63,12 @@ export default function SignUpPage() {
         >
           <div>
             <div className="flex items-center justify-center">
-              <Image src="/assets/auth-page-logo.svg" alt="Logo" height={90} width={80} />
+              <Image
+                src="/assets/auth-page-logo.svg"
+                alt="Logo"
+                height={90}
+                width={80}
+              />
               <h1 className="text-5xl tracking-[0.02em] font-bold text-center">
                 Sign Up
               </h1>

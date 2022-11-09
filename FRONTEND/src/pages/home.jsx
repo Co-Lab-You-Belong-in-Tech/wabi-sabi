@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
-// import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import moment from 'moment/moment';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,26 +12,13 @@ import 'swiper/css/pagination';
 
 import AppLayout from '../components/Layouts/AppLayout';
 import Profile from '../components/Profile';
-import Link from 'next/link';
 
-const questions = [
-  {
-    question: 'What’s one thing you are grateful for today?',
-    id: 1,
-  },
-  {
-    question: 'What is the highlight of your day?',
-    id: 2,
-  },
-  {
-    question: 'What makes you smile today?',
-    id: 3,
-  },
-];
+import { setCurrentCard } from '../redux/features/card/cardSlice';
 
 const currentDate = moment().format('ll').split(',').join('');
 
 function LandingPage() {
+  const questions = useSelector((state) => state.card.cards);
   const router = useRouter();
 
   // const isLoggedIn = useSelector((state) => state.account.isLoggedIn);
@@ -42,11 +29,10 @@ function LandingPage() {
     }
   }, [isLoggedIn, router]);
 
-  const [activeIndex, setActiveIndex] = useState(null);
-
+  const dispatch = useDispatch()
   const handleClick = (id) => {
-    // 👇️ toggle
-    setActiveIndex(id);
+    dispatch(setCurrentCard(id))
+    router.push('/memory/new')
   };
 
   // change the swiper slide centered property when the domwidth changes
@@ -80,7 +66,9 @@ function LandingPage() {
           </div>
         </div>
         <div className="p-2 px-6 text-2xl text-black bg-white shadow-3xl w-fit rounded-2xl">
-          <p className="tracking-[0.02em] leading-5">Pick a card to create a memory.</p>
+          <p className="tracking-[0.02em] leading-5">
+            Pick a card to create a memory.
+          </p>
         </div>
         <div className="mx-16 md:max-w-max">
           <Swiper
@@ -102,8 +90,8 @@ function LandingPage() {
                 <Slide
                   question={item.question}
                   handleClick={handleClick}
-                  activeIndex={activeIndex}
-                  index={item.id}
+                  active={item.active}
+                  id={item.id}
                 />
               </SwiperSlide>
             ))}
@@ -114,31 +102,34 @@ function LandingPage() {
   );
 }
 
+// LandingPage.getLayout = (page) => <AppLayout renderSide>{page}</AppLayout>;
+
 export default LandingPage;
 
-function Slide({ question, handleClick, activeIndex, index }) {
+function Slide({ question, handleClick, active, id }) {
   return (
-    <Link href="memory/new">
-      <button
-        onClick={() => handleClick(index)}
-        type="button"
-        className={`h-full rounded-[20px] transition-opacity duration-300 ease-out relative p-5 w-60  ${
-          activeIndex === index ? 'bg-home-card opacity-60' : 'bg-home-card'
+    <button
+      id={id}
+      disabled={active === false}
+      onClick={() => handleClick(id)}
+      type="button"
+      className={`h-full rounded-[20px] transition-opacity duration-300 ease-out relative p-5 w-60  ${active === false ? 'bg-home-card opacity-60' : 'bg-home-card'
         }`}
-      >
-        <strong className="tracking-wide inline-block w-[181px]">{question}</strong>
-        <div className="absolute flex items-center bottom-5 gap-x-4">
-          <div className=" bg-white w-[84px] h-1" />
-          <div className="text-base tracking-wide uppercase">{currentDate}</div>
-        </div>
-      </button>
-    </Link>
+    >
+      <strong className="tracking-wide inline-block w-[181px]">
+        {question}
+      </strong>
+      <div className="absolute flex items-center bottom-5 gap-x-4">
+        <div className=" bg-white w-[84px] h-1" />
+        <div className="text-base tracking-wide uppercase">{currentDate}</div>
+      </div>
+    </button>
   );
 }
 
 Slide.propTypes = {
   question: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
-  activeIndex: PropTypes.number,
-  index: PropTypes.number.isRequired,
+  active: PropTypes.bool.isRequired,
+  id: PropTypes.string.isRequired,
 };
