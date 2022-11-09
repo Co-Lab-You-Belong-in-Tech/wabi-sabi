@@ -1,14 +1,34 @@
+/* eslint-disable no-restricted-syntax */
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
 import moment from 'moment/moment';
 import { VscArrowLeft, VscCheck, VscAdd, VscClose } from 'react-icons/vsc';
-import { BsHeartFill, BsHeart, BsGlobe } from 'react-icons/bs';
+import { BsHeartFill, BsHeart, BsGlobe, BsCheckCircle } from 'react-icons/bs';
+
 import { GrLock } from 'react-icons/gr';
 import AppLayout from '../../components/Layouts/AppLayout';
-import { memory } from '../../components/data/memories';
 
 export default function ViewMemory() {
+  const [alert, setAlert] = useState({
+    type: '',
+    message: '',
+    show: false,
+  });
   const [editMode, setEditMode] = useState(false);
+
+  const {
+    query: { id },
+  } = useRouter();
+
+  let { memories } = useSelector((state) => state.memory);
+
+  memories = memories.map((memory) => memory.memories).flat(Infinity);
+
+  const memoryIndex = memories.flat().findIndex((memory) => memory.id === id);
+
+  const memory = memories[memoryIndex] || {};
   const [changedFiles, setChangedFiles] = useState({
     title: memory.title,
     story: memory.story,
@@ -34,7 +54,7 @@ export default function ViewMemory() {
     if (preview) {
       return;
     }
-    
+
     if (!selectedFile) {
       setPreview(undefined);
       return;
@@ -50,7 +70,8 @@ export default function ViewMemory() {
       return;
     }
 
-    if (selectedFile.type !== 'image/jpeg' || selectedFile.type !== 'image/png') {
+    const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+    if (!allowedExtensions.exec(selectedFile.name)) {
       setAlert({
         type: 'Error:',
         message: 'Please upload a JPEG or PNG file.',
@@ -76,6 +97,7 @@ export default function ViewMemory() {
   };
 
   const { title, story } = changedFiles;
+
   const submitMemory = () => {
     // prevent default behavior if some fields don't meet the requirements
     if (storyCount < 100) {
@@ -90,6 +112,7 @@ export default function ViewMemory() {
       setError('You need to add an image for your memory.');
       return;
     }
+
     // send the data to the backend
     const formData = new FormData();
     formData.append('api_v1_memory[favorite]', favorite);
@@ -124,7 +147,9 @@ export default function ViewMemory() {
             )}
             {!editMode && (
               <button type="button" onClick={() => setEditMode(true)}>
-                <p className="text-base font-semibold leading-6 sm:text-2xl">EDIT</p>
+                <p className="text-base font-semibold leading-6 sm:text-2xl">
+                  EDIT
+                </p>
               </button>
             )}
           </nav>
@@ -154,18 +179,16 @@ export default function ViewMemory() {
                 />
               )}
               {editMode && (
-                <>
-                  <button
-                    type="button"
-                    className="absolute p-1 bg-white rounded-md bottom-2 right-2"
-                    onClick={() => {
-                      setSelectedFile(null);
-                      setPreview(null);
-                    }}
-                  >
-                    Change photo
-                  </button>
-                </>
+                <button
+                  type="button"
+                  className="absolute p-1 bg-white rounded-md bottom-2 right-2"
+                  onClick={() => {
+                    setSelectedFile(null);
+                    setPreview(null);
+                  }}
+                >
+                  Change photo
+                </button>
               )}
               <button
                 id="upload-icon"
@@ -195,7 +218,11 @@ export default function ViewMemory() {
             </div>
 
             <div className="flex justify-between mx-6 border-[#EDEDED] border-b-2 py-4 border-solid border-0 items-center sm:mx-20 sm:order-last sm:justify-end sm:gap-x-10 sm:border-0 sm:p-0">
-              <button type="button" onClick={() => setFavorite(!favorite)} disabled={!editMode}>
+              <button
+                type="button"
+                onClick={() => setFavorite(!favorite)}
+                disabled={!editMode}
+              >
                 {favorite ? (
                   <BsHeartFill className="text-2xl text-red-600 sm:text-3xl" />
                 ) : (
@@ -248,7 +275,11 @@ export default function ViewMemory() {
               />
               {editMode && (
                 <p className="text-lg font-semibold">
-                  <span className={storyCount < 100 ? 'text-red-500' : 'text-green-500'}>
+                  <span
+                    className={
+                      storyCount < 100 ? 'text-red-500' : 'text-green-500'
+                    }
+                  >
                     {storyCount}
                   </span>
                   /100
@@ -256,7 +287,30 @@ export default function ViewMemory() {
               )}
             </div>
           </form>
-          {error && (
+          {alert.show && (
+            <div className="absolute z-10 bottom-0 flex items-start justify-center w-full max-w-2xl min-h-full mx-auto bg-[#CCC] bg-opacity-75">
+              <div className="relative flex flex-col items-center w-full px-4 pt-6 pb-3 mx-8 text-center bg-white max-w-max mt-60 rounded-2xl animate-shake">
+                <button
+                  type="button"
+                  className="absolute text-3xl bg-transparent border-0 cursor-pointer right-2 top-1"
+                  onClick={() => setAlert({})}
+                >
+                  <VscClose />
+                </button>
+                <span
+                  className={`mb-2 text-center text-2xl font-bold ${
+                    alert.type !== <BsCheckCircle />
+                      ? 'text-red-500'
+                      : 'text-green-500'
+                  }`}
+                >
+                  {alert.type}
+                </span>
+                <p className="text-lg font-medium">{alert.message}</p>
+              </div>
+            </div>
+          )}
+          {/* {error && (
             <div className="absolute z-10 bottom-0 flex items-start justify-center w-full max-w-2xl min-h-full mx-auto bg-[#CCC] bg-opacity-75">
               <div className="relative w-full px-4 py-6 mx-8 text-center bg-white max-w-max mt-60 rounded-2xl animate-shake">
                 <button
@@ -266,11 +320,13 @@ export default function ViewMemory() {
                 >
                   <VscClose />
                 </button>
-                <p className="mb-2 text-xl font-bold text-red-500 ">Required:</p>
+                <p className="mb-2 text-xl font-bold text-red-500 ">
+                  Required:
+                </p>
                 <p className="text-lg font-medium">{error}</p>
               </div>
             </div>
-          )}
+          )} */}
         </div>
         ;
       </main>
