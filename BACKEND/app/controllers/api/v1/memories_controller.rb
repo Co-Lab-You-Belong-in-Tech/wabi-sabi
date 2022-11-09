@@ -24,7 +24,11 @@ class Api::V1::MemoriesController < ApplicationController
     @api_v1_memories = Api::V1::Memory.includes(:image_attachment).where(public: true).order(created_at: :desc)
     public_memories_data = []
     @api_v1_memories.each do |memory|
-      public_memories_data << Api::V1::MemorySerializer.new(memory).serializable_hash[:data][:attributes]
+      data = {
+        name: memory.user.name, 
+        memory: Api::V1::MemorySerializer.new(memory).serializable_hash[:data][:attributes]
+      }
+      public_memories_data << data
     end
     render json: public_memories_data
   end
