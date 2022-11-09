@@ -24,6 +24,14 @@ export const CreateMemory = createAsyncThunk(
   }
 );
 
+export const UpdateMemory = createAsyncThunk(
+  'memory/UpdateMemory',
+  async ({ formData: memory, id }) => {
+    const response = await api.UpdateMemory(API_URL, id, memory);
+    return response;
+  }
+);
+
 const initialState = {
   memories: [],
   loading: false,
@@ -62,6 +70,15 @@ export const memorySlice = createSlice({
       state.memories = action.payload;
     },
     [CreateMemory.rejected]: (state) => {
+      state.loading = false;
+    },
+    [UpdateMemory.pending]: (state) => {
+      state.loading = true;
+    },
+    [UpdateMemory.fulfilled]: (state) => {
+      state.loading = false;
+    },
+    [UpdateMemory.rejected]: (state) => {
       state.loading = false;
     },
   },

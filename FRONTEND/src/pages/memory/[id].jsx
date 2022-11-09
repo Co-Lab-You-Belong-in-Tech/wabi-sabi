@@ -2,13 +2,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import moment from 'moment/moment';
 import { VscArrowLeft, VscCheck, VscAdd, VscClose } from 'react-icons/vsc';
 import { BsHeartFill, BsHeart, BsGlobe, BsCheckCircle } from 'react-icons/bs';
 
 import { GrLock } from 'react-icons/gr';
 import AppLayout from '../../components/Layouts/AppLayout';
+import {
+  getAllMemories,
+  UpdateMemory,
+} from '../../redux/features/memory/memorySlice';
 
 export default function ViewMemory() {
   const [alert, setAlert] = useState({
@@ -21,6 +25,8 @@ export default function ViewMemory() {
   const {
     query: { id },
   } = useRouter();
+
+  const router = useRouter();
 
   let { memories } = useSelector((state) => state.memory);
 
@@ -41,7 +47,7 @@ export default function ViewMemory() {
   const [isPublic, setIsPublic] = useState(memory.public);
 
   // keep track of the character count for the story and handle errors
-  const [storyCount, setStoryCount] = useState(0);
+  const [storyCount, setStoryCount] = useState(memory.story.length);
   const [error, setError] = useState(null);
 
   // add a reference to the actual file input field
@@ -98,6 +104,8 @@ export default function ViewMemory() {
 
   const { title, story } = changedFiles;
 
+  const dispatch = useDispatch();
+
   const submitMemory = () => {
     // prevent default behavior if some fields don't meet the requirements
     if (storyCount < 100) {
@@ -108,7 +116,7 @@ export default function ViewMemory() {
       setError('You need to add a title for your memory.');
       return;
     }
-    if (!selectedFile) {
+    if (!selectedFile && !preview) {
       setError('You need to add an image for your memory.');
       return;
     }
@@ -117,6 +125,7 @@ export default function ViewMemory() {
     const formData = new FormData();
     formData.append('api_v1_memory[favorite]', favorite);
     formData.append('api_v1_memory[isPublic]', isPublic);
+
     if (selectedFile) {
       formData.append('api_v1_memory[image]', selectedFile);
     }
@@ -124,6 +133,29 @@ export default function ViewMemory() {
     for (const [key, value] of Object.entries(changedFiles)) {
       formData.append(`api_v1_memory[${key}]`, value);
     }
+
+    dispatch(UpdateMemory({ formData, id }))
+      .unwrap()
+      .then(() => {
+        setAlert((prevState) => ({
+          ...prevState,
+          type: <BsCheckCircle />,
+          message: 'Memory updated successfully.',
+          show: true,
+        }));
+        dispatch(getAllMemories());
+        setTimeout(() => {
+          router.push('/memories');
+        }, 2000);
+      })
+      .catch(() => {
+        setAlert((prevState) => ({
+          ...prevState,
+          type: 'Error:',
+          message: "Couldn't save your memory.",
+          show: true,
+        }));
+      });
   };
 
   return (

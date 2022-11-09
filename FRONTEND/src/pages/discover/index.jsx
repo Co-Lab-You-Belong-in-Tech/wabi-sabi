@@ -32,23 +32,23 @@ export default function DiscoverPage() {
         </div>
 
         <section className="grid gap-12">
-          {discoveries.map((memory) => (
+          {discoveries.map((data) => (
             <div
-              key={memory.id}
+              key={data.memory.id}
               className="bg-white drop-shadow-4xl w-full max-w-[625px] m-auto rounded-2xl"
             >
-              <Link href={`/discover/${memory.id}`}>
+              <Link href={`/discover/${data.memory.id}`}>
                 <div>
                   <header className="px-6 py-5 md:px-16">
                     <motion.p
                       layout
-                      layoutId={`memory-name-${memory.id}`}
+                      layoutId={`memory-name-${data.memory.id}`}
                       className="font-bold"
                     >
-                      {memory.name}
+                      {data.name}
                     </motion.p>
                     <p>
-                      {moment(memory.created_at)
+                      {moment(data.memory.created_at)
                         .format('MMM D')
                         .split(',')
                         .join('')
@@ -56,21 +56,24 @@ export default function DiscoverPage() {
                     </p>
                   </header>
                   <motion.img
-                    src={memory.image_url}
+                    src={data.memory.image_url}
                     layout
-                    layoutId={`memory-image-${memory.id}`}
+                    layoutId={`memory-image-${data.memory.id}`}
                     className="w-full aspect-[5/3] object-cover object-center rounded-[15px_15px_0px_0px]"
                   />
                   <div className="px-5 md:px-9 py-5 grid gap-1.5">
                     <motion.h3
                       layout
-                      layoutId={`memory-title-${memory.id}`}
+                      layoutId={`memory-title-${data.memory.id}`}
                       className="font-medium"
                     >
-                      {memory.prompt}
+                      {data.memory.prompt}
                     </motion.h3>
-                    <motion.p layout layoutId={`memory-story-${memory.id}`}>
-                      {memory.story}
+                    <motion.p
+                      layout
+                      layoutId={`memory-story-${data.memory.id}`}
+                    >
+                      {data.memory.story}
                     </motion.p>
                   </div>
                 </div>
