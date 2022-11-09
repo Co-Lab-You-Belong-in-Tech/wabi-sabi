@@ -21,6 +21,5 @@ export const getPublicMemories = async (API_URL) => {
     },
   });
   const data = await response.json();
-  console.log(data);
   return data;
 };

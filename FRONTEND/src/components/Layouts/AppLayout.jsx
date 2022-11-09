@@ -20,7 +20,7 @@ function AppLayout({ children, renderSide, renderNav }) {
     '/home',
     '/memories',
     '/discover',
-    '/memory/[memoryId]',
+    '/memory/[id]',
     '/discover/[memoryId]',
     '/memory/new',
   ];

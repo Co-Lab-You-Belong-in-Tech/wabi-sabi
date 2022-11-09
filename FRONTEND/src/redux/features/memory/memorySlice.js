@@ -11,23 +11,18 @@ export const getAllMemories = createAsyncThunk(
   }
 );
 
-export const getMemory = createAsyncThunk('memory/getMemory', async (id) => {
-  const response = await api.getMemory(API_URL, id);
-  return response;
-});
-
-export const CreateMemory = createAsyncThunk(
-  'memory/CreateMemory',
+export const createMemory = createAsyncThunk(
+  'memory/createMemory',
   async (memory) => {
-    const response = await api.CreateMemory(API_URL, memory);
+    const response = await api.createMemory(API_URL, memory);
     return response;
   }
 );
 
-export const UpdateMemory = createAsyncThunk(
-  'memory/UpdateMemory',
-  async ({ formData: memory, id }) => {
-    const response = await api.UpdateMemory(API_URL, id, memory);
+export const updateMemory = createAsyncThunk(
+  'memory/updateMemory',
+  async (id, memory) => {
+    const response = await api.updateMemory(API_URL, id, memory);
     return response;
   }
 );
@@ -52,33 +47,23 @@ export const memorySlice = createSlice({
     [getAllMemories.rejected]: (state) => {
       state.loading = false;
     },
-    [getMemory.pending]: (state) => {
+    [createMemory.pending]: (state) => {
       state.loading = true;
     },
-    [getMemory.fulfilled]: (state, action) => {
+    [createMemory.fulfilled]: (state, action) => {
       state.loading = false;
       state.memories = action.payload;
     },
-    [getMemory.rejected]: (state) => {
+    [createMemory.rejected]: (state) => {
       state.loading = false;
     },
-    [CreateMemory.pending]: (state) => {
+    [updateMemory.pending]: (state) => {
       state.loading = true;
     },
-    [CreateMemory.fulfilled]: (state, action) => {
-      state.loading = false;
-      state.memories = action.payload;
-    },
-    [CreateMemory.rejected]: (state) => {
+    [updateMemory.fulfilled]: (state) => {
       state.loading = false;
     },
-    [UpdateMemory.pending]: (state) => {
-      state.loading = true;
-    },
-    [UpdateMemory.fulfilled]: (state) => {
-      state.loading = false;
-    },
-    [UpdateMemory.rejected]: (state) => {
+    [updateMemory.rejected]: (state) => {
       state.loading = false;
     },
   },

@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import moment from 'moment/moment';
 import { BsArrowLeft } from 'react-icons/bs';
-// import data from '../../components/data/data';
 import { useSelector } from 'react-redux';
 import AppLayout from '../../components/Layouts/AppLayout';
 
@@ -17,8 +16,6 @@ function Memory() {
     (data) => data.memory.id === memoryId
   );
   const { created_at, image_url, title, prompt, story, id } = memory;
-
-  // const name = useSelector((state) => state.account.name);
 
   return (
     <AppLayout renderNav={false}>

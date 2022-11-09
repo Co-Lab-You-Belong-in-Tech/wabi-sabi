@@ -11,7 +11,6 @@ function welcome() {
     (state) => state.account
   );
   const account = useSelector((state) => state.account);
-  // console.log(account.user.name);
 
   const goToHome = useCallback(() => {
     dispatch(resetRegisterSuccess());
@@ -24,7 +23,6 @@ function welcome() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      console.log('Going to home');
       goToHome();
     }, 15000);
     return () => clearTimeout(timer);
@@ -32,7 +30,7 @@ function welcome() {
 
   return (
     <AppLayout renderSide={false}>
-      <main className="relative flex flex-col flex-grow items-center mt-28 px-9 pb-10 overflow-hidden">
+      <main className="relative flex flex-col items-center flex-grow pb-10 overflow-hidden mt-28 px-9">
         <div className="bg-ellipse -z-10 w-[140vw] h-[80vh] left-1/2 -translate-x-1/2 top-full -translate-y-full md:-translate-y-[18%] " />
         <header className="flex items-center justify-center mb-24 md:mb-16">
           <img src="/assets/auth-page-logo.svg" alt="Logo" />
@@ -42,7 +40,7 @@ function welcome() {
           </h2>
         </header>
         <section className="mb-[18px]">
-          <div className="flex gap-6 items-center">
+          <div className="flex items-center gap-6">
             <h1 className="text-primary font-bold text-[2.5rem] sm:text-[2.8125rem]">
               1
             </h1>
@@ -50,7 +48,7 @@ function welcome() {
               Start by selecting a question card
             </p>
           </div>
-          <div className="flex gap-6 items-center">
+          <div className="flex items-center gap-6">
             <h1 className="text-primary font-bold text-[2.5rem] sm:text-[2.8125rem]">
               2
             </h1>
@@ -58,7 +56,7 @@ function welcome() {
               Add a photo and tell your stories
             </p>
           </div>
-          <div className="flex gap-6 items-center">
+          <div className="flex items-center gap-6">
             <h1 className="text-primary font-bold text-[2.5rem] sm:text-[2.8125rem]">
               3
             </h1>
@@ -77,7 +75,7 @@ function welcome() {
         <p className="sm:text-[1.5rem] text-2xl  tracking-wide mb-10 md:mb-3 text-center mx-auto max-w-[218px] md:max-w-none">
           Now you’re ready to start creating new memories!
         </p>
-        <div className="w-full flex justify-end md:justify-center">
+        <div className="flex justify-end w-full md:justify-center">
           <button
             type="button"
             onClick={goToHome}

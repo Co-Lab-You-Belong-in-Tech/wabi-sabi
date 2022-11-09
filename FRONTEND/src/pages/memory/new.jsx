@@ -8,7 +8,7 @@ import { BsHeartFill, BsHeart, BsCheckCircle } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import AppLayout from '../../components/Layouts/AppLayout';
 import {
-  CreateMemory,
+  createMemory,
   getAllMemories,
 } from '../../redux/features/memory/memorySlice';
 
@@ -115,7 +115,7 @@ function NewMemory() {
     formData.append('api_v1_memory[image]', selectedFile);
     formData.append('api_v1_memory[prompt]', prompt);
 
-    dispatch(CreateMemory(formData))
+    dispatch(createMemory(formData))
       .unwrap()
       .then(() => {
         setAlert((prevState) => ({
@@ -292,11 +292,10 @@ function NewMemory() {
                     <VscClose />
                   </button>
                   <span
-                    className={`mb-2 text-center text-2xl font-bold ${
-                      alert.type !== <BsCheckCircle />
-                        ? 'text-red-500'
-                        : 'text-green-500'
-                    }`}
+                    className={`mb-2 text-center text-2xl font-bold ${alert.type === <BsCheckCircle />
+                        ? 'text-green-500'
+                        : 'text-red-500'
+                      }`}
                   >
                     {alert.type}
                   </span>
