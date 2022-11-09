@@ -1,19 +1,34 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import AppLayout from '../components/Layouts/AppLayout';
+import { resetRegisterSuccess } from '../redux/features/account/accountSlice';
 
 function welcome() {
   const { push } = useRouter();
-  //   useEffect(() => {
-  //     const timer = setTimeout(() => push('/home'), 15000);
-  //     return () => clearTimeout(timer);
-  //   }, []);
+  const dispatch = useDispatch();
   const { isLoggedIn, register_success } = useSelector(
     (state) => state.account
   );
   const account = useSelector((state) => state.account);
   // console.log(account.user.name);
+
+  const goToHome = useCallback(() => {
+    dispatch(resetRegisterSuccess());
+    push('/home');
+  }, []);
+
+  if (!register_success) {
+    push('/home');
+  }
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      console.log('Going to home');
+      goToHome();
+    }, 15000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <AppLayout renderSide={false}>
@@ -63,13 +78,14 @@ function welcome() {
           Now you’re ready to start creating new memories!
         </p>
         <div className="w-full flex justify-end md:justify-center">
-          <a
-            href="/home"
-            className="underline flex text-[#373737] text-sm tracking-wide sm:text-center items-center "
+          <button
+            type="button"
+            onClick={goToHome}
+            className="underline border-0 bg-transparent flex text-[#373737] text-sm tracking-wide sm:text-center items-center "
           >
             <img src="/assets/Tablet_Tap.svg" alt="" />
             <span>Touch to skip</span>
-          </a>
+          </button>
         </div>
       </main>
     </AppLayout>
