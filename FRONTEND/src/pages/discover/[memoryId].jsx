@@ -13,11 +13,12 @@ function Memory() {
     back,
   } = useRouter();
   const { discoveries } = useSelector((state) => state.discover);
-  const { created_at, image_url, title, prompt, story, id } = discoveries.find(
-    (memory) => memory.id === memoryId
+  const { memory, name } = discoveries.find(
+    (data) => data.memory.id === memoryId
   );
+  const { created_at, image_url, title, prompt, story, id } = memory;
 
-  const name = useSelector((state) => state.account.name);
+  // const name = useSelector((state) => state.account.name);
 
   return (
     <AppLayout renderNav={false}>
