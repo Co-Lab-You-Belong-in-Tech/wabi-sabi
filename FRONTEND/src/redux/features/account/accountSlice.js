@@ -96,4 +96,6 @@ export const accountSlice = createSlice({
   },
 });
 
+export const { resetRegisterSuccess } = accountSlice.actions;
+
 export default accountSlice.reducer;

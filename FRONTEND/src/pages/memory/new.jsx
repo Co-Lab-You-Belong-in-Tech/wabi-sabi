@@ -5,9 +5,12 @@ import { useRouter } from 'next/router';
 import { VscClose, VscCheck, VscAdd } from 'react-icons/vsc';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { BsHeartFill, BsHeart, BsCheckCircle } from 'react-icons/bs';
-import AppLayout from '../../components/Layouts/AppLayout';
 import { useDispatch, useSelector } from 'react-redux';
-import { CreateMemory, getAllMemories } from '../../redux/features/memory/memorySlice';
+import AppLayout from '../../components/Layouts/AppLayout';
+import {
+  CreateMemory,
+  getAllMemories,
+} from '../../redux/features/memory/memorySlice';
 
 function NewMemory() {
   // handle image preview
@@ -50,7 +53,7 @@ function NewMemory() {
       setSelectedFile(null);
       return;
     }
-    
+
     const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
     if (!allowedExtensions.exec(selectedFile.name)) {
       setAlert({
@@ -151,17 +154,19 @@ function NewMemory() {
               <span className="text-base leading-6 uppercase sm:text-2xl sm:px-6">
                 {moment().format('ddd ll')}
               </span>
-              {!loading && (<button
-                onClick={submitMemory}
-                type="button"
-                name="submit memory entry"
-                className="text-2xl bg-transparent border-0 cursor-pointer sm:text-5xl"
-              >
-                <VscCheck />
-              </button>)}
-              {
-                loading && <AiOutlineLoading3Quarters className="text-2xl animate-spin sm:text-5xl" />
-              }
+              {!loading && (
+                <button
+                  onClick={submitMemory}
+                  type="button"
+                  name="submit memory entry"
+                  className="text-2xl bg-transparent border-0 cursor-pointer sm:text-5xl"
+                >
+                  <VscCheck />
+                </button>
+              )}
+              {loading && (
+                <AiOutlineLoading3Quarters className="text-2xl animate-spin sm:text-5xl" />
+              )}
             </nav>
 
             <form className="flex flex-col">
@@ -265,7 +270,11 @@ function NewMemory() {
                   required
                 />
                 <p className="text-lg font-semibold">
-                  <span className={storyCount < 100 ? 'text-red-500' : 'text-green-500'}>
+                  <span
+                    className={
+                      storyCount < 100 ? 'text-red-500' : 'text-green-500'
+                    }
+                  >
                     {storyCount}
                   </span>
                   /100
@@ -282,7 +291,15 @@ function NewMemory() {
                   >
                     <VscClose />
                   </button>
-                  <span className={`mb-2 text-center text-2xl font-bold ${alert.type !== <BsCheckCircle /> ? 'text-red-500' : 'text-green-500'}`}>{alert.type}</span>
+                  <span
+                    className={`mb-2 text-center text-2xl font-bold ${
+                      alert.type !== <BsCheckCircle />
+                        ? 'text-red-500'
+                        : 'text-green-500'
+                    }`}
+                  >
+                    {alert.type}
+                  </span>
                   <p className="text-lg font-medium">{alert.message}</p>
                 </div>
               </div>
