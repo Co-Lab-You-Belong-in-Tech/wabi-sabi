@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.bg-ellipse {
+  background: linear-gradient(180deg, #37c467 0%, rgba(55, 196, 103, 0) 16.35%);
+  position: absolute;
+  border-radius: 100%;
+}
+
+.bg-mobile-onboarding {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-desktop-onboarding {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+}
+
+.primary {
+  background: linear-gradient(172.93deg,
+      #348d52 32.33%,
+      rgba(52, 141, 82, 0) 72.2%),
+    #37c367;
+}
+
+input {
+  caret-color: #000;
+}
+
+input:focus {
+  outline: none !important;
+}
+
+input::placeholder {
+  color: #000;
+  position: absolute;
+}
+
+.swiper-pagination {
+  bottom: -50px !important;
+}
+
+.swiper-pagination-bullet {
+  width: 14px !important;
+  height: 14px !important;
+  color: #37C367;
+  opacity: 1;
+  background: #fff !important;
+  border: 1px solid #37C367;
+  margin: 0 6px !important;
+  opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+  color: #37C367;
+  background: #37C367 !important;
+}

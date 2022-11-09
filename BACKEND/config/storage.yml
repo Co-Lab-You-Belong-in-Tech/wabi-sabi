@@ -1,0 +1,13 @@
+test:
+  service: Disk
+  root: <%= Rails.root.join("tmp/storage") %>
+
+local:
+  service: Disk
+  root: <%= Rails.root.join("storage") %>
+
+cloudinary:
+  service: Cloudinary
+  cloud_name: deyemiobaa
+  api_key: <%= ENV['API_KEY'] %>
+  api_secret: <%= ENV['API_SECRET_KEY'] %>
