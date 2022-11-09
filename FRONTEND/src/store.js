@@ -18,7 +18,7 @@ function initStore(initialState) {
   return createStore(
     persistedReducer,
     initialState,
-    composeWithDevTools(applyMiddleware(thunkMiddleware)),
+    composeWithDevTools(applyMiddleware(thunkMiddleware))
   );
 }
 
@@ -47,6 +47,9 @@ export const initializeStore = (preloadedState) => {
 
 export function useStore(initialState) {
   const store = useMemo(() => initializeStore(initialState), [initialState]);
-  const persistor = useMemo(() => persistStore(initializeStore(initialState)), [initialState]);
+  const persistor = useMemo(
+    () => persistStore(initializeStore(initialState)),
+    [initialState]
+  );
   return { store, persistor };
 }
