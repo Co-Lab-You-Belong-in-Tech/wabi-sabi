@@ -50,9 +50,8 @@ export const memorySlice = createSlice({
     [createMemory.pending]: (state) => {
       state.loading = true;
     },
-    [createMemory.fulfilled]: (state, action) => {
+    [createMemory.fulfilled]: (state) => {
       state.loading = false;
-      state.memories = action.payload;
     },
     [createMemory.rejected]: (state) => {
       state.loading = false;

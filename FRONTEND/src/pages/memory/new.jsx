@@ -11,6 +11,7 @@ import {
   createMemory,
   getAllMemories,
 } from '../../redux/features/memory/memorySlice';
+import { setCardInactive, setCurrentCard } from '../../redux/features/card/cardSlice';
 
 function NewMemory() {
   // handle image preview
@@ -22,7 +23,7 @@ function NewMemory() {
   const [story, setStory] = useState('');
   const [favorite, setFavorite] = useState(false);
   const [isPublic, setIsPublic] = useState(false);
-  const prompt = "What's one thing you are grateful for today?";
+  const prompt = useSelector((state) => state.card.currentCard)
 
   // keep track of the character count for the story and handle alerts
   const [storyCount, setStoryCount] = useState(0);
@@ -125,8 +126,10 @@ function NewMemory() {
           show: true,
         }));
         dispatch(getAllMemories());
+        dispatch(setCardInactive(prompt));
         setTimeout(() => {
           router.push('/memories');
+          dispatch(setCurrentCard(null));
         }, 2000);
       })
       .catch(() => {
@@ -292,9 +295,9 @@ function NewMemory() {
                     <VscClose />
                   </button>
                   <span
-                    className={`mb-2 text-center text-2xl font-bold ${alert.type === <BsCheckCircle />
-                        ? 'text-green-500'
-                        : 'text-red-500'
+                    className={`mb-2 text-center text-2xl font-bold ${alert.type === 'Error:' || alert.type === 'Required:'
+                        ? 'text-red-500'
+                        : 'text-green-500'
                       }`}
                   >
                     {alert.type}
