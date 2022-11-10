@@ -9,11 +9,11 @@ export default function Profile() {
   const account = useSelector((state) => state.account);
   const dispatch = useDispatch();
   const router = useRouter();
-  
+
   const handleLogout = () => {
     dispatch(logoutAccount());
   };
-  
+
   if (!isLoggedIn) {
     router.push('/account/login');
   }
@@ -35,8 +35,12 @@ export default function Profile() {
           />
         </button>
       </div>
-      <div className={`z-50 px-5 right-0 absolute top-16 ${showMe ? 'h-[150px]' : 'h-0'}`}>
-        <div className="md:w-[270px] w-[144px]">
+      <div
+        className={`z-50 px-5 right-0 absolute top-16 ${
+          showMe ? 'h-[150px]' : 'h-0'
+        }`}
+      >
+        <div className="">
           <div
             className="w-full overflow-hidden text-2xl text-black duration-500 ease-in-out bg-white shadow-3xl rounded-4xl max-h-0 transition-max"
             style={{
@@ -52,7 +56,9 @@ export default function Profile() {
                   {isLoggedIn && account.name[0]}
                 </h2>
               </button>
-              <p className="text-2xl font-bold capitalize">{isLoggedIn && account.name.split(' ')[0]}</p>
+              <p className="text-2xl font-bold capitalize">
+                {isLoggedIn && account.name.split(' ')[0]}
+              </p>
             </div>
             <div className="border-b-[#CECECE] border-b-[0.5px] border-solid border-l-0 border-r-0 border-t-0  mb-[18px]" />
             <div className="flex">
