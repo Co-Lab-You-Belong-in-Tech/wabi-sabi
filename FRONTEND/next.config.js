@@ -17,7 +17,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'wabisabi-app.herokuapp.com',
         pathname: '/rails/**',
-      }
+      },
     ],
   },
 };

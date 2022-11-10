@@ -2,17 +2,12 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from './discoverAPI';
 import API_URL from '../../../config';
 
-
-// const API_URL = 'http://localhost:3000';
-
-
-
 export const getPublicMemories = createAsyncThunk(
   'discover/getPublicMemories',
   async () => {
     const response = await api.getPublicMemories(API_URL);
     return response;
-  }
+  },
 );
 
 // export const getPublicMemory = createAsyncThunk(
