@@ -31,7 +31,7 @@ function Memory() {
               layout="position"
               layoutId={`memory-name-${id}`}
             >
-              {name}
+              {name.split(' ')[0]}
             </motion.p>
           </header>
           <figure className="grid gap-6">
