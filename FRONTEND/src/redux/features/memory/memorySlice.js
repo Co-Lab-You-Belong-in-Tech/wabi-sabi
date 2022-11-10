@@ -1,14 +1,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from './memoryAPI';
+import API_URL from '../../../config';
 
-const API_URL = 'http://localhost:3000';
+// const API_URL = 'http://localhost:3000';
 
 export const getAllMemories = createAsyncThunk(
   'memory/getAllMemories',
   async () => {
     const response = await api.getAllMemories(API_URL);
     return response;
-  },
+  }
 );
 
 export const createMemory = createAsyncThunk(
@@ -16,7 +17,7 @@ export const createMemory = createAsyncThunk(
   async (memory) => {
     const response = await api.createMemory(API_URL, memory);
     return response;
-  },
+  }
 );
 
 export const updateMemory = createAsyncThunk(
@@ -24,7 +25,7 @@ export const updateMemory = createAsyncThunk(
   async (id, memory) => {
     const response = await api.updateMemory(API_URL, id, memory);
     return response;
-  },
+  }
 );
 
 const initialState = {

@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import { login, register, logout } from './accountApi';
+import API_URL from '../../../config';
 
-const API_URL = 'http://localhost:3000';
+// const API_URL = 'http://localhost:3000';
 
 export const loginAccount = createAsyncThunk('users/login', async (args) => {
   try {
@@ -24,7 +25,7 @@ export const registerAccount = createAsyncThunk(
     } catch (error) {
       throw new Error(error.message);
     }
-  },
+  }
 );
 
 export const logoutAccount = createAsyncThunk('users/logout', async () => {
