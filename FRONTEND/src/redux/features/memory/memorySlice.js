@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from './memoryAPI';
 
-const API_URL = 'http://localhost:3000';
+const API_URL = 'https://wabisabi-app.herokuapp.com';
 
 export const getAllMemories = createAsyncThunk(
   'memory/getAllMemories',

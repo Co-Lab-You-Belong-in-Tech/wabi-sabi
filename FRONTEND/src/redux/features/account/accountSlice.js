@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import { login, register, logout } from './accountApi';
 
-const API_URL = 'http://localhost:3000';
+const API_URL = 'https://wabisabi-app.herokuapp.com';
 
 export const loginAccount = createAsyncThunk('users/login', async (args) => {
   try {
