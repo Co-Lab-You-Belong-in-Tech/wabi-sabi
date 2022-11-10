@@ -13,6 +13,11 @@ const nextConfig = {
         port: '3000',
         pathname: '/rails/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'wabisabi-app.herokuapp.com',
+        pathname: '/rails/**',
+      }
     ],
   },
 };
