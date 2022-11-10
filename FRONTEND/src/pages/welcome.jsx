@@ -30,7 +30,7 @@ function welcome() {
 
   return (
     <AppLayout renderSide={false}>
-      <main className="relative flex flex-col items-center flex-grow pb-10 overflow-hidden mt-28 px-9">
+      <main className="relative flex flex-col items-center flex-grow pb-20 md:pb-10 overflow-hidden mt-28 px-9">
         <div className="bg-ellipse -z-10 w-[140vw] h-[80vh] left-1/2 -translate-x-1/2 top-full -translate-y-full md:-translate-y-[18%] " />
         <header className="flex items-center justify-center mb-24 md:mb-16">
           <img src="/assets/auth-page-logo.svg" alt="Logo" />
