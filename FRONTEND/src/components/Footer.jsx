@@ -32,7 +32,12 @@ function MobileNavbar() {
           <li className="menu-items" key={menu.url}>
             <Link href={menu.url}>
               <img
-                src={checkUrlMatch(menu.activeUrls, router.pathname) ? menu.active : menu.inactive}
+                src={
+                  checkUrlMatch(menu.activeUrls, router.pathname)
+                    ? menu.active
+                    : menu.inactive
+                }
+                alt="menu-items"
                 className="h-9 w-9"
               />
             </Link>
