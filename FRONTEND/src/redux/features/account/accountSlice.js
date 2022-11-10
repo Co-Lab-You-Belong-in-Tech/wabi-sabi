@@ -3,12 +3,6 @@ import { toast } from 'react-toastify';
 import { login, register, logout } from './accountApi';
 import API_URL from '../../../config';
 
-
-// const API_URL = 'http://localhost:3000';
-
-
-
-
 export const loginAccount = createAsyncThunk('users/login', async (args) => {
   try {
     const { email, password } = args;
