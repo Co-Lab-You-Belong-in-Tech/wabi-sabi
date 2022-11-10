@@ -7,7 +7,7 @@ export const getPublicMemories = createAsyncThunk(
   async () => {
     const response = await api.getPublicMemories(API_URL);
     return response;
-  }
+  },
 );
 
 // export const getPublicMemory = createAsyncThunk(
